@@ -1,8 +1,10 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 import logo from "../../assets/image/logo-born.png";
+import url from "../Services/url";
 
 export default function Login() {
 	const [loginDataInput, setLoginDataInput] = useState({
@@ -18,9 +20,16 @@ export default function Login() {
 		setLoginDataInput(loginData);
 	}
 
-	function login(e) {
+	async function login(e) {
 		e.preventDefault();
-		navigate("/home");
+
+		try {
+			await axios.post(url.login, loginDataInput);
+			navigate("/home");
+		} catch (error) {
+			console.log(error);
+			alert(error);
+		}
 	}
 
 	return (

@@ -1,5 +1,5 @@
 const url = {
-	login: "",
+	login: "http://localhost:5000/login",
 };
 
 export default url;

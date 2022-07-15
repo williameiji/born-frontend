@@ -13,7 +13,7 @@ export default function App() {
 			<GlobalStyle />
 			<BrowserRouter>
 				<Routes>
-					<Route path="/" element={<Login />} />
+					<Route path="/login" element={<Login />} />
 					<Route path="/home" element={<Home />} />
 					<Route path="/students" element={<SearchStudent />} />
 				</Routes>

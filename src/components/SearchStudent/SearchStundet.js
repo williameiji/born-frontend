@@ -14,10 +14,17 @@ export default function SearchStudent() {
 		setLoginDataInput(loginData);
 	}
 
+	function searchName(e) {
+		e.preventDefault();
+
+		try {
+		} catch (error) {}
+	}
+
 	return (
 		<Home>
 			<Box>
-				<form>
+				<form onSubmit={searchName}>
 					<input
 						type="text"
 						name="nome"

@@ -5,6 +5,7 @@ import GlobalStyle from "../assets/css/GlobalStyle";
 import Login from "./Login/Login";
 import Home from "./Home/Home";
 import SearchStudent from "./SearchStudent/SearchStundet";
+import SignupStudents from "../SignupStudents/SignupStudents";
 
 export default function App() {
 	return (
@@ -16,6 +17,7 @@ export default function App() {
 					<Route path="/login" element={<Login />} />
 					<Route path="/home" element={<Home />} />
 					<Route path="/students" element={<SearchStudent />} />
+					<Route path="/newstudent" element={<SignupStudents />} />
 				</Routes>
 			</BrowserRouter>
 		</>

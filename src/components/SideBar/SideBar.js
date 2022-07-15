@@ -8,10 +8,14 @@ export default function SideBar() {
 		navigate("/students");
 	}
 
+	function navigateToSignupStudents() {
+		navigate("/newstudent");
+	}
+
 	return (
 		<Box>
 			<button onClick={navigateToSearch}>Pesquisar Aluno</button>
-			<button>Cadastrar Aluno</button>
+			<button onClick={navigateToSignupStudents}>Cadastrar Aluno</button>
 			<button>Gerar Recibo</button>
 			<button>Gerar Declaração</button>
 		</Box>

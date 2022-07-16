@@ -1,12 +1,17 @@
 import styled from "styled-components";
 import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 import Home from "../Home/Home";
+import url from "../Services/url";
 
-export default function SearchStudent() {
+export default function SearchStudent({ setRenderFinds, renderFinds }) {
 	const [loginDataInput, setLoginDataInput] = useState({
 		nome: "",
 	});
+
+	const navigate = useNavigate();
 
 	function handleFormSearch(e) {
 		let loginData = { ...loginDataInput };
@@ -14,11 +19,21 @@ export default function SearchStudent() {
 		setLoginDataInput(loginData);
 	}
 
-	function searchName(e) {
+	async function searchName(e) {
 		e.preventDefault();
 
 		try {
-		} catch (error) {}
+			const data = await axios.get(
+				url.searchStudent + "/" + loginDataInput.nome
+			);
+			setRenderFinds(data.data);
+		} catch (error) {
+			alert(error);
+		}
+	}
+
+	function showStudentInformation(index) {
+		navigate(`/studentinfo/${index}`);
 	}
 
 	return (
@@ -34,7 +49,18 @@ export default function SearchStudent() {
 					></input>
 					<button type="submit">Pesquisar</button>
 				</form>
-				<ContainerStudents></ContainerStudents>
+				<ContainerStudents>
+					{renderFinds.length !== 0
+						? renderFinds.map((element, index) => (
+								<RenderStudent
+									key={index}
+									onClick={() => showStudentInformation(index)}
+								>
+									{element.name}
+								</RenderStudent>
+						  ))
+						: null}
+				</ContainerStudents>
 			</Box>
 		</Home>
 	);
@@ -43,7 +69,7 @@ export default function SearchStudent() {
 const Box = styled.div`
 	background-color: white;
 	width: 100%;
-	height: 80vh;
+	height: 75vh;
 	margin-left: 5px;
 	border-radius: 5px;
 	padding: 20px;
@@ -73,7 +99,20 @@ const Box = styled.div`
 
 const ContainerStudents = styled.div`
 	width: 100%;
-	height: 90%;
+	height: 85%;
 	border: 1px solid #87ceeb;
 	border-radius: 5px;
+	overflow: auto;
+	padding: 10px;
+`;
+
+const RenderStudent = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 50px;
+	border: 1px solid black;
+	border-radius: 5px;
+	margin-bottom: 5px;
 `;

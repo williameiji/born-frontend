@@ -34,9 +34,9 @@ export default function EditStudentInformation({
 		try {
 			const promise = await axios.put(url.editInfo, editInformation);
 			alert(promise.data);
-			navigate("/students");
 			setRenderFinds([]);
 			setEditInformation([]);
+			navigate("/students");
 		} catch (error) {
 			alert(error);
 		}

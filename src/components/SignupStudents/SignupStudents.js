@@ -3,9 +3,9 @@ import { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
-import Home from "../components/Home/Home";
-import TestaCPF from "../components/Shared/checkCPF";
-import url from "../components/Services/url";
+import Home from "../Home/Home";
+import TestaCPF from "../Shared/checkCPF";
+import url from "../Services/url";
 import SignupForm from "./SignupForm";
 
 export default function SignupStudents() {

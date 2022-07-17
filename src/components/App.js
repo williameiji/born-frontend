@@ -6,7 +6,7 @@ import GlobalStyle from "../assets/css/GlobalStyle";
 import Login from "./Login/Login";
 import Home from "./Home/Home";
 import SearchStudent from "./SearchStudent/SearchStundet";
-import SignupStudents from "../SignupStudents/SignupStudents";
+import SignupStudents from "./SignupStudents/SignupStudents";
 import ShowInformation from "./SearchStudent/ShowInformation";
 import EditStudentInformation from "./EditStudentInformation/EditStudentInformation";
 import Receipt from "./Receipt/Receipt";

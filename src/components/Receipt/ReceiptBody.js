@@ -3,6 +3,7 @@ import numero from "numero-por-extenso";
 import dayjs from "dayjs";
 
 import logo from "../../assets/image/logo-born.png";
+import mCPF from "../Shared/mCPF";
 
 export default function ReceiptBody({ receiptDataInput }) {
 	return (
@@ -25,9 +26,9 @@ export default function ReceiptBody({ receiptDataInput }) {
 							? parseInt(receiptDataInput.valor).toFixed(2).replace(".", ",")
 							: "0,00"
 					}`}</h3>
-					<p>{`Recebi(emos) de ${receiptDataInput.nome.toUpperCase()} - ${
+					<p>{`Recebi(emos) de ${receiptDataInput.nome.toUpperCase()} - ${mCPF(
 						receiptDataInput.cpf
-					}`}</p>
+					)}`}</p>
 					<p>{`a quantia supra de ${numero
 						.porExtenso(
 							parseInt(receiptDataInput.valor),

@@ -10,6 +10,7 @@ import SignupStudents from "./SignupStudents/SignupStudents";
 import ShowInformation from "./SearchStudent/ShowInformation";
 import EditStudentInformation from "./EditStudentInformation/EditStudentInformation";
 import Receipt from "./Receipt/Receipt";
+import Declaration from "./Declaration/Declaration";
 
 export default function App() {
 	const [renderFinds, setRenderFinds] = useState([]);
@@ -52,6 +53,7 @@ export default function App() {
 						}
 					/>
 					<Route path="/receipt" element={<Receipt />} />
+					<Route path="/declaration" element={<Declaration />} />
 				</Routes>
 			</BrowserRouter>
 		</>

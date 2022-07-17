@@ -3,18 +3,11 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 import Home from "../Home/Home";
+import mCPF from "../Shared/mCPF";
 
 export default function ShowInformation({ renderFinds, setEditInformation }) {
 	const params = useParams();
 	const navigate = useNavigate();
-
-	function mCPF(cpf) {
-		cpf = cpf.replace(/\D/g, "");
-		cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2");
-		cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2");
-		cpf = cpf.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
-		return cpf;
-	}
 
 	function editPage() {
 		setEditInformation(renderFinds[params.id]);

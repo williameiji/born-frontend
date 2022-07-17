@@ -16,12 +16,16 @@ export default function SideBar() {
 		navigate("/receipt");
 	}
 
+	function navigateToDeclaration() {
+		navigate("/declaration");
+	}
+
 	return (
 		<Box>
 			<button onClick={navigateToSearch}>Pesquisar Aluno</button>
 			<button onClick={navigateToSignupStudents}>Cadastrar Aluno</button>
 			<button onClick={navigateToReceipt}>Gerar Recibo</button>
-			<button>Gerar Declaração</button>
+			<button onClick={navigateToDeclaration}>Gerar Declaração</button>
 		</Box>
 	);
 }

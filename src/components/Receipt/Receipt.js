@@ -4,6 +4,7 @@ import { useState } from "react";
 import Home from "../Home/Home";
 import ReceiptForm from "./ReceiptForm";
 import ReceiptBody from "./ReceiptBody";
+import printHere from "../Shared/printHere.js";
 
 export default function Receipt() {
 	const [receiptDataInput, setReceiptDataInput] = useState({
@@ -17,14 +18,6 @@ export default function Receipt() {
 		let data = { ...receiptDataInput };
 		data[e.target.name] = e.target.value;
 		setReceiptDataInput(data);
-	}
-
-	function printHere() {
-		let printContents = document.getElementById("printablediv").innerHTML;
-		let originalContents = document.body.innerHTML;
-		document.body.innerHTML = printContents;
-		window.print();
-		document.body.innerHTML = originalContents;
 	}
 
 	return (

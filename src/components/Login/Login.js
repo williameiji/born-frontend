@@ -5,6 +5,7 @@ import axios from "axios";
 
 import logo from "../../assets/image/logo-born.png";
 import url from "../Services/url";
+import LoginForm from "./LoginForm";
 
 export default function Login() {
 	const [loginDataInput, setLoginDataInput] = useState({
@@ -36,25 +37,11 @@ export default function Login() {
 		<Box>
 			<Container>
 				<img src={logo} alt="logo" />
-				<form onSubmit={login}>
-					<input
-						type="text"
-						name="nome"
-						placeholder="Nome"
-						onChange={(e) => handleFormLogin(e)}
-						value={loginDataInput.nome}
-						required
-					></input>
-					<input
-						type="password"
-						name="password"
-						placeholder="Senha"
-						onChange={(e) => handleFormLogin(e)}
-						value={loginDataInput.password}
-						required
-					></input>
-					<button type="submit">Entrar</button>
-				</form>
+				<LoginForm
+					loginDataInput={loginDataInput}
+					handleFormLogin={handleFormLogin}
+					login={login}
+				/>
 			</Container>
 		</Box>
 	);

@@ -16,7 +16,7 @@ export default function ReceiptForm({
 				<input
 					type="text"
 					name="cpf"
-					placeholder="CPF"
+					placeholder="CPF/RG"
 					onChange={(e) => handleReceiptForm(e)}
 					value={receiptDataInput.cpf}
 				></input>

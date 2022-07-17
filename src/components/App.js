@@ -9,6 +9,7 @@ import SearchStudent from "./SearchStudent/SearchStundet";
 import SignupStudents from "../SignupStudents/SignupStudents";
 import ShowInformation from "./SearchStudent/ShowInformation";
 import EditStudentInformation from "./EditStudentInformation/EditStudentInformation";
+import Receipt from "./Receipt/Receipt";
 
 export default function App() {
 	const [renderFinds, setRenderFinds] = useState([]);
@@ -50,6 +51,7 @@ export default function App() {
 							/>
 						}
 					/>
+					<Route path="/receipt" element={<Receipt />} />
 				</Routes>
 			</BrowserRouter>
 		</>

@@ -12,11 +12,15 @@ export default function SideBar() {
 		navigate("/newstudent");
 	}
 
+	function navigateToReceipt() {
+		navigate("/receipt");
+	}
+
 	return (
 		<Box>
 			<button onClick={navigateToSearch}>Pesquisar Aluno</button>
 			<button onClick={navigateToSignupStudents}>Cadastrar Aluno</button>
-			<button>Gerar Recibo</button>
+			<button onClick={navigateToReceipt}>Gerar Recibo</button>
 			<button>Gerar Declaração</button>
 		</Box>
 	);

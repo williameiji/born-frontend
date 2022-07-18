@@ -5,7 +5,7 @@ export default function DeclarationForm({
 }) {
 	return (
 		<>
-			<form>
+			<form onSubmit={print}>
 				<div>
 					<input
 						type="text"
@@ -28,7 +28,7 @@ export default function DeclarationForm({
 						onChange={(e) => handleDeclarationForm(e)}
 						value={declarationDataInput.idioma}
 					></input>
-					<button onClick={print}>Imprimir</button>
+					<button type="submit">Imprimir</button>
 				</div>
 				<div>
 					<input

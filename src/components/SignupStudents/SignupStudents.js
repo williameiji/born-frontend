@@ -37,6 +37,12 @@ export default function SignupStudents() {
 		setSignupData(data);
 	}
 
+	let config = {
+		headers: {
+			Authorization: `Bearer ${userData.token}`,
+		},
+	};
+
 	async function signupNewStudent(e) {
 		e.preventDefault();
 
@@ -48,7 +54,7 @@ export default function SignupStudents() {
 
 		if (userData) {
 			try {
-				const promise = await axios.post(url.addStudent, signupData);
+				const promise = await axios.post(url.addStudent, signupData, config);
 				alert(promise.data);
 				navigate("/students");
 			} catch (error) {

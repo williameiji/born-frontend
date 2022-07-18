@@ -1,11 +1,13 @@
 import axios from "axios";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
 
 import Home from "../Home/Home";
 import TestaCPF from "../Shared/checkCPF";
 import url from "../Services/url";
 import EditStudentForm from "./EditStudentForm";
+import UserContext from "../Contexts/UserContext";
 
 export default function EditStudentInformation({
 	editInformation,
@@ -14,11 +16,19 @@ export default function EditStudentInformation({
 }) {
 	const navigate = useNavigate();
 
+	const { userData } = useContext(UserContext);
+
 	function handleSignupForm(e) {
 		let data = { ...editInformation };
 		data[e.target.name] = e.target.value;
 		setEditInformation(data);
 	}
+
+	let config = {
+		headers: {
+			Authorization: `Bearer ${userData.token}`,
+		},
+	};
 
 	async function editStudentInfo(e) {
 		e.preventDefault();
@@ -32,14 +42,19 @@ export default function EditStudentInformation({
 		if (editInformation.cpfResp !== "" && !TestaCPF(editInformation.cpfResp))
 			return alert("CPF do responsável inválido");
 
-		try {
-			const promise = await axios.put(url.editInfo, editInformation);
-			alert(promise.data);
-			setRenderFinds([]);
-			setEditInformation([]);
-			navigate("/students");
-		} catch (error) {
-			alert(error);
+		if (userData) {
+			try {
+				const promise = await axios.put(url.editInfo, editInformation, config);
+				alert(promise.data);
+				setRenderFinds([]);
+				setEditInformation([]);
+				navigate("/students");
+			} catch (error) {
+				alert(error);
+			}
+		} else {
+			alert("Você precisa estar logado!");
+			navigate("/");
 		}
 	}
 

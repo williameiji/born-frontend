@@ -1,13 +1,14 @@
 import styled from "styled-components";
 import dayjs from "dayjs";
+import React from "react";
 
 import logo from "../../assets/image/logo-timbre.png";
 import mCPF from "../Shared/mCPF";
 import "dayjs/locale/pt-br";
 
-export default function DeclarationBody({ declarationDataInput }) {
+export const DeclarationBody = React.forwardRef((props, ref) => {
 	return (
-		<>
+		<div ref={ref}>
 			<ContainerDeclaration>
 				<Top>
 					<img src={logo} alt="logo" />
@@ -18,14 +19,14 @@ export default function DeclarationBody({ declarationDataInput }) {
 						.format("MMMM")} de ${dayjs().format("YYYY")}`}</div>
 					<h2>**DECLARAÇÃO**</h2>
 
-					<p>{`Declaramos para os devidos fins que se fizerem necessários que ${declarationDataInput.nome.toUpperCase()}, portador(a) do CPF nº ${mCPF(
-						declarationDataInput.cpf
-					)}, estudou ${declarationDataInput.idioma.toUpperCase()} de ${
-						declarationDataInput.inicio
-					} a ${declarationDataInput.final} com um total de ${
-						declarationDataInput.horas
-					} horas, com ${declarationDataInput.pontos} pontos e ${
-						declarationDataInput.presença
+					<p>{`Declaramos para os devidos fins que se fizerem necessários que ${props.declarationDataInput.nome.toUpperCase()}, portador(a) do CPF nº ${mCPF(
+						props.declarationDataInput.cpf
+					)}, estudou ${props.declarationDataInput.idioma.toUpperCase()} de ${
+						props.declarationDataInput.inicio
+					} a ${props.declarationDataInput.final} com um total de ${
+						props.declarationDataInput.horas
+					} horas, com ${props.declarationDataInput.pontos} pontos e ${
+						props.declarationDataInput.presença
 					}% de frequência.`}</p>
 				</Body>
 				<Assign>
@@ -36,9 +37,9 @@ export default function DeclarationBody({ declarationDataInput }) {
 					<p>CNPJ 09.586.161/0001-83</p>
 				</Assign>
 			</ContainerDeclaration>
-		</>
+		</div>
 	);
-}
+});
 
 const Body = styled.div`
 	display: flex;
@@ -93,7 +94,7 @@ const Top = styled.span`
 
 	img {
 		height: 150px;
-		margin: 0 10px 0 40px;
+		margin: 0 10px 0 22px;
 	}
 
 	p {

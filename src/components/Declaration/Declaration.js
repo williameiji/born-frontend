@@ -1,12 +1,12 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useRef } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useReactToPrint } from "react-to-print";
 
 import Home from "../Home/Home";
 import DeclarationForm from "./DeclarationForm";
-import DeclarationBody from "./DeclarationBody";
+import { DeclarationBody } from "./DeclarationBody";
 import UserContext from "../Contexts/UserContext";
-import printHere from "../Shared/printHere.js";
 
 export default function Declaration() {
 	const [declarationDataInput, setDeclarationDataInput] = useState({
@@ -21,6 +21,7 @@ export default function Declaration() {
 	});
 	const navigate = useNavigate();
 	const { userData } = useContext(UserContext);
+	const componentRef = useRef();
 
 	function handleDeclarationForm(e) {
 		let data = { ...declarationDataInput };
@@ -28,9 +29,14 @@ export default function Declaration() {
 		setDeclarationDataInput(data);
 	}
 
-	function print() {
+	const handlePrint = useReactToPrint({
+		content: () => componentRef.current,
+	});
+
+	function print(e) {
+		e.preventDefault();
 		if (userData) {
-			printHere();
+			handlePrint();
 		} else {
 			alert("Você precisa estar logado!");
 			navigate("/");
@@ -45,9 +51,10 @@ export default function Declaration() {
 					handleDeclarationForm={handleDeclarationForm}
 					print={print}
 				/>
-				<div id="printablediv">
-					<DeclarationBody declarationDataInput={declarationDataInput} />
-				</div>
+				<DeclarationBody
+					ref={componentRef}
+					declarationDataInput={declarationDataInput}
+				/>
 			</Box>
 		</Home>
 	);

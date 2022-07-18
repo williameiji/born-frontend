@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import { useState, useContext } from "react";
+import { useState, useContext, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { useReactToPrint } from "react-to-print";
 
 import Home from "../Home/Home";
 import ReceiptForm from "./ReceiptForm";
-import ReceiptBody from "./ReceiptBody";
-import printHere from "../Shared/printHere.js";
+import { ReceiptBody } from "./ReceiptBody";
 import UserContext from "../Contexts/UserContext";
 
 export default function Receipt() {
@@ -17,6 +17,11 @@ export default function Receipt() {
 	});
 	const navigate = useNavigate();
 	const { userData } = useContext(UserContext);
+	const componentRef = useRef();
+
+	const handlePrint = useReactToPrint({
+		content: () => componentRef.current,
+	});
 
 	function handleReceiptForm(e) {
 		let data = { ...receiptDataInput };
@@ -24,9 +29,10 @@ export default function Receipt() {
 		setReceiptDataInput(data);
 	}
 
-	function print() {
+	function print(e) {
+		e.preventDefault();
 		if (userData) {
-			printHere();
+			handlePrint();
 		} else {
 			alert("Você precisa estar logado!");
 			navigate("/");
@@ -41,9 +47,7 @@ export default function Receipt() {
 					handleReceiptForm={handleReceiptForm}
 					print={print}
 				/>
-				<div id="printablediv">
-					<ReceiptBody receiptDataInput={receiptDataInput} />
-				</div>
+				<ReceiptBody ref={componentRef} receiptDataInput={receiptDataInput} />
 			</Box>
 		</Home>
 	);

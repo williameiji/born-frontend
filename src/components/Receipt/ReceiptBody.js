@@ -1,13 +1,14 @@
 import styled from "styled-components";
 import numero from "numero-por-extenso";
 import dayjs from "dayjs";
+import React from "react";
 
 import logo from "../../assets/image/logo-born.png";
 import mCPF from "../Shared/mCPF";
 
-export default function ReceiptBody({ receiptDataInput }) {
+export const ReceiptBody = React.forwardRef((props, ref) => {
 	return (
-		<>
+		<div ref={ref}>
 			<ContainerReceipt>
 				<Top>
 					<img src={logo} alt="logo" />
@@ -22,20 +23,22 @@ export default function ReceiptBody({ receiptDataInput }) {
 				<Body>
 					<h2>**RECIBO**</h2>
 					<h3>{`Valor: ${
-						receiptDataInput.valor !== ""
-							? parseInt(receiptDataInput.valor).toFixed(2).replace(".", ",")
+						props.receiptDataInput.valor !== ""
+							? parseInt(props.receiptDataInput.valor)
+									.toFixed(2)
+									.replace(".", ",")
 							: "0,00"
 					}`}</h3>
-					<p>{`Recebi(emos) de ${receiptDataInput.nome.toUpperCase()} - ${mCPF(
-						receiptDataInput.cpf
+					<p>{`Recebi(emos) de ${props.receiptDataInput.nome.toUpperCase()} - ${mCPF(
+						props.receiptDataInput.cpf
 					)}`}</p>
 					<p>{`a quantia supra de ${numero
 						.porExtenso(
-							parseInt(receiptDataInput.valor),
+							parseInt(props.receiptDataInput.valor),
 							numero.estilo.monetario
 						)
 						.toUpperCase()}`}</p>
-					<p>{`Referente a ${receiptDataInput.ref.toUpperCase()}`}</p>
+					<p>{`Referente a ${props.receiptDataInput.ref.toUpperCase()}`}</p>
 				</Body>
 				<Assign>
 					<p>__________________________________________</p>
@@ -44,9 +47,9 @@ export default function ReceiptBody({ receiptDataInput }) {
 					<p>{`Marilía-SP - ${dayjs().format("DD/MM/YYYY HH:mm:ss")}`}</p>
 				</Assign>
 			</ContainerReceipt>
-		</>
+		</div>
 	);
-}
+});
 
 const ContainerReceipt = styled.div`
 	width: 100%;

@@ -43,6 +43,7 @@ const Box = styled.div`
 	margin-left: 5px;
 	border-radius: 5px;
 	padding: 20px;
+	overflow: auto;
 
 	form {
 		display: flex;

@@ -51,7 +51,6 @@ export default function ReceiptBody({ receiptDataInput }) {
 const ContainerReceipt = styled.div`
 	width: 100%;
 	height: 85%;
-	border: 1px solid #87ceeb;
 	border-radius: 5px;
 	overflow: auto;
 	padding: 10px;

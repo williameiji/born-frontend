@@ -1,8 +1,8 @@
 const url = {
-	login: "http://localhost:5000/login",
-	addStudent: "http://localhost:5000/signupStudents",
-	searchStudent: "http://localhost:5000/searchstudents",
-	editInfo: "http://localhost:5000/edit",
+	login: "https://born-idiomas.herokuapp.com/login",
+	addStudent: "https://born-idiomas.herokuapp.com/signupStudents",
+	searchStudent: "https://born-idiomas.herokuapp.com/searchstudents",
+	editInfo: "https://born-idiomas.herokuapp.com/edit",
 };
 
 export default url;

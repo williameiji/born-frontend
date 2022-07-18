@@ -1,17 +1,20 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import logo from "../../assets/image/logo-born.png";
 import url from "../Services/url";
 import LoginForm from "./LoginForm";
+import UserContext from "../Contexts/UserContext";
 
 export default function Login() {
 	const [loginDataInput, setLoginDataInput] = useState({
 		nome: "",
 		password: "",
 	});
+
+	const { setUserData } = useContext(UserContext);
 
 	const navigate = useNavigate();
 
@@ -25,7 +28,8 @@ export default function Login() {
 		e.preventDefault();
 
 		try {
-			await axios.post(url.login, loginDataInput);
+			const promise = await axios.post(url.login, loginDataInput);
+			setUserData(promise.data);
 			navigate("/home");
 		} catch (error) {
 			console.log(error);

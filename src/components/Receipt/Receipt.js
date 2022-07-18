@@ -1,10 +1,12 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 import Home from "../Home/Home";
 import ReceiptForm from "./ReceiptForm";
 import ReceiptBody from "./ReceiptBody";
 import printHere from "../Shared/printHere.js";
+import UserContext from "../Contexts/UserContext";
 
 export default function Receipt() {
 	const [receiptDataInput, setReceiptDataInput] = useState({
@@ -13,11 +15,22 @@ export default function Receipt() {
 		ref: "",
 		valor: "",
 	});
+	const navigate = useNavigate();
+	const { userData } = useContext(UserContext);
 
 	function handleReceiptForm(e) {
 		let data = { ...receiptDataInput };
 		data[e.target.name] = e.target.value;
 		setReceiptDataInput(data);
+	}
+
+	function print() {
+		if (userData) {
+			printHere();
+		} else {
+			alert("Você precisa estar logado!");
+			navigate("/");
+		}
 	}
 
 	return (
@@ -26,7 +39,7 @@ export default function Receipt() {
 				<ReceiptForm
 					receiptDataInput={receiptDataInput}
 					handleReceiptForm={handleReceiptForm}
-					printHere={printHere}
+					print={print}
 				/>
 				<div id="printablediv">
 					<ReceiptBody receiptDataInput={receiptDataInput} />

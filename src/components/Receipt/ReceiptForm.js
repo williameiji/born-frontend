@@ -1,7 +1,7 @@
 export default function ReceiptForm({
 	receiptDataInput,
 	handleReceiptForm,
-	printHere,
+	print,
 }) {
 	return (
 		<>
@@ -34,7 +34,7 @@ export default function ReceiptForm({
 					onChange={(e) => handleReceiptForm(e)}
 					value={receiptDataInput.ref}
 				></input>
-				<button onClick={printHere}>Imprimir</button>
+				<button onClick={print}>Imprimir</button>
 			</form>
 		</>
 	);

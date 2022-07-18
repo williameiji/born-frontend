@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
@@ -7,6 +7,7 @@ import Home from "../Home/Home";
 import TestaCPF from "../Shared/checkCPF";
 import url from "../Services/url";
 import SignupForm from "./SignupForm";
+import UserContext from "../Contexts/UserContext";
 
 export default function SignupStudents() {
 	const [signupData, setSignupData] = useState({
@@ -26,6 +27,8 @@ export default function SignupStudents() {
 		email: "",
 	});
 
+	const { userData } = useContext(UserContext);
+
 	const navigate = useNavigate();
 
 	function handleSignupForm(e) {
@@ -43,12 +46,17 @@ export default function SignupStudents() {
 		if (signupData.cpfResp !== "" && !TestaCPF(signupData.cpfResp))
 			return alert("CPF do responsável inválido");
 
-		try {
-			const promise = await axios.post(url.addStudent, signupData);
-			alert(promise.data);
-			navigate("/students");
-		} catch (error) {
-			alert(error);
+		if (userData) {
+			try {
+				const promise = await axios.post(url.addStudent, signupData);
+				alert(promise.data);
+				navigate("/students");
+			} catch (error) {
+				alert(error);
+			}
+		} else {
+			alert("Você precisa estar logado!");
+			navigate("/");
 		}
 	}
 

@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 import Home from "../Home/Home";
 import DeclarationForm from "./DeclarationForm";
 import DeclarationBody from "./DeclarationBody";
+import UserContext from "../Contexts/UserContext";
+import printHere from "../Shared/printHere.js";
 
 export default function Declaration() {
 	const [declarationDataInput, setDeclarationDataInput] = useState({
@@ -16,11 +19,22 @@ export default function Declaration() {
 		horas: "",
 		idioma: "",
 	});
+	const navigate = useNavigate();
+	const { userData } = useContext(UserContext);
 
 	function handleDeclarationForm(e) {
 		let data = { ...declarationDataInput };
 		data[e.target.name] = e.target.value;
 		setDeclarationDataInput(data);
+	}
+
+	function print() {
+		if (userData) {
+			printHere();
+		} else {
+			alert("Você precisa estar logado!");
+			navigate("/");
+		}
 	}
 
 	return (
@@ -29,6 +43,7 @@ export default function Declaration() {
 				<DeclarationForm
 					declarationDataInput={declarationDataInput}
 					handleDeclarationForm={handleDeclarationForm}
+					print={print}
 				/>
 				<div id="printablediv">
 					<DeclarationBody declarationDataInput={declarationDataInput} />

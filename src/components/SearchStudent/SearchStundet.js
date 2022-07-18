@@ -1,10 +1,11 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 import Home from "../Home/Home";
 import url from "../Services/url";
+import UserContext from "../Contexts/UserContext";
 
 export default function SearchStudent({ setRenderFinds, renderFinds }) {
 	const [loginDataInput, setLoginDataInput] = useState({
@@ -12,6 +13,8 @@ export default function SearchStudent({ setRenderFinds, renderFinds }) {
 	});
 
 	const navigate = useNavigate();
+
+	const { userData } = useContext(UserContext);
 
 	function handleFormSearch(e) {
 		let loginData = { ...loginDataInput };
@@ -22,13 +25,18 @@ export default function SearchStudent({ setRenderFinds, renderFinds }) {
 	async function searchName(e) {
 		e.preventDefault();
 
-		try {
-			const data = await axios.get(
-				url.searchStudent + "/" + loginDataInput.nome
-			);
-			setRenderFinds(data.data);
-		} catch (error) {
-			alert(error);
+		if (userData) {
+			try {
+				const data = await axios.get(
+					url.searchStudent + "/" + loginDataInput.nome
+				);
+				setRenderFinds(data.data);
+			} catch (error) {
+				alert(error);
+			}
+		} else {
+			alert("Você precisa estar logado!");
+			navigate("/");
 		}
 	}
 

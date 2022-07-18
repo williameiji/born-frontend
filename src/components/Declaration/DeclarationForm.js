@@ -1,8 +1,7 @@
-import printHere from "../Shared/printHere.js";
-
 export default function DeclarationForm({
 	declarationDataInput,
 	handleDeclarationForm,
+	print,
 }) {
 	return (
 		<>
@@ -29,7 +28,7 @@ export default function DeclarationForm({
 						onChange={(e) => handleDeclarationForm(e)}
 						value={declarationDataInput.idioma}
 					></input>
-					<button onClick={printHere}>Imprimir</button>
+					<button onClick={print}>Imprimir</button>
 				</div>
 				<div>
 					<input

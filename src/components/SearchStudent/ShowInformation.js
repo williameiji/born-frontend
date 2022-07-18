@@ -66,7 +66,8 @@ const Box = styled.div`
 		border: 1px solid gray;
 		margin-bottom: 8px;
 		font-size: 18px;
-		padding: 3px;
+		padding: 5px;
+		border-radius: 5px;
 	}
 
 	button {

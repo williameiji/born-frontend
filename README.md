@@ -1,11 +1,12 @@
 # BORN INSTITUTO DE IDIOMAS
 
 <div align="center">
-<img src="https://user-images.githubusercontent.com/86417618/179513257-23dd59a9-e1f5-499d-8a2b-83030b575523.gif"></div>
+<img src="https://user-images.githubusercontent.com/86417618/181343735-47cb5124-99ce-4796-b79b-459952fe3478.gif"></div>
 
 
 
-## About
+## About!
+
 
 Project for the company Born Instituto de Idiomas to register students, generate receipts and statements
 

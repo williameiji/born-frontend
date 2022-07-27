@@ -39,7 +39,7 @@ export default function SignupStudents() {
 
 	let config = {
 		headers: {
-			Authorization: `Bearer ${userData.token}`,
+			Authorization: `Bearer ${userData}`,
 		},
 	};
 
@@ -58,7 +58,7 @@ export default function SignupStudents() {
 				alert(promise.data);
 				navigate("/students");
 			} catch (error) {
-				alert(error);
+				alert(error.response.data);
 			}
 		} else {
 			alert("Você precisa estar logado!");
@@ -109,6 +109,13 @@ const Box = styled.div`
 			width: 100px;
 			margin: 0 auto;
 			background-color: #87ceeb;
+			font-weight: bold;
+
+			:hover {
+				background-color: darkblue;
+				color: white;
+				cursor: pointer;
+			}
 		}
 
 		input:valid {

@@ -18,7 +18,7 @@ export default function ShowInformation({ renderFinds, setEditInformation }) {
 		<Home>
 			<Box>
 				{renderFinds.length ? (
-					<>
+					<div>
 						<p>Data de início: {renderFinds[params.id].date}</p>
 						<p>
 							Valor da mensalidade: R$
@@ -39,7 +39,7 @@ export default function ShowInformation({ renderFinds, setEditInformation }) {
 						<p>Telefone: {renderFinds[params.id].phone}</p>
 						<p>E-mail: {renderFinds[params.id].email}</p>
 						<button onClick={editPage}>Editar informações</button>
-					</>
+					</div>
 				) : (
 					"Sem informação"
 				)}
@@ -49,10 +49,6 @@ export default function ShowInformation({ renderFinds, setEditInformation }) {
 }
 
 const Box = styled.div`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
 	background-color: white;
 	width: 100%;
 	height: 75vh;
@@ -61,20 +57,33 @@ const Box = styled.div`
 	padding: 20px;
 	overflow: auto;
 
-	p {
+	div {
 		width: 100%;
-		border: 1px solid gray;
-		margin-bottom: 8px;
-		font-size: 18px;
-		padding: 5px;
-		border-radius: 5px;
-	}
+		height: 100%;
 
-	button {
-		border: none;
-		border-radius: 5px;
-		height: 40px;
-		padding: 10px;
-		background-color: #87ceeb;
+		p {
+			width: 100%;
+			border: 1px solid gray;
+			margin-bottom: 8px;
+			font-size: 18px;
+			padding: 5px;
+			border-radius: 5px;
+		}
+
+		button {
+			border: none;
+			border-radius: 5px;
+			height: 40px;
+			padding: 10px;
+			background-color: #87ceeb;
+			font-weight: bold;
+			margin: 0 auto 5px auto;
+
+			:hover {
+				background-color: darkblue;
+				color: white;
+				cursor: pointer;
+			}
+		}
 	}
 `;

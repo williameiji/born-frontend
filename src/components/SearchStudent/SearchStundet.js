@@ -101,6 +101,13 @@ const Box = styled.div`
 			width: 100px;
 			margin-left: 10px;
 			background-color: #87ceeb;
+			font-weight: bold;
+
+			:hover {
+				background-color: darkblue;
+				color: white;
+				cursor: pointer;
+			}
 		}
 	}
 `;

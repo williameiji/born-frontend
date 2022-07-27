@@ -7,7 +7,7 @@ export default function SignupForm({
 }) {
 	return (
 		<>
-			<form onSubmit={signupNewStudent}>
+			<Forms onSubmit={signupNewStudent}>
 				<p>CADASTRO</p>
 				<input
 					type="text"
@@ -120,7 +120,7 @@ export default function SignupForm({
 					value={signupData.email}
 				></input>
 				<button type="submit">Cadastrar</button>
-			</form>
+			</Forms>
 		</>
 	);
 }
@@ -144,5 +144,17 @@ const BoxData = styled.span`
 
 	input:first-child {
 		margin-right: 10px;
+	}
+`;
+
+const Forms = styled.form`
+	p:first-child {
+		text-align: center;
+		margin-bottom: 10px;
+		font-weight: bold;
+	}
+
+	p {
+		font-weight: bold;
 	}
 `;

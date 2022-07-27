@@ -87,6 +87,13 @@ const Container = styled.div`
 			width: 70px;
 			margin: 10px auto 0 auto;
 			background-color: #87ceeb;
+			font-weight: bold;
+
+			:hover {
+				background-color: darkblue;
+				color: white;
+				cursor: pointer;
+			}
 		}
 	}
 `;

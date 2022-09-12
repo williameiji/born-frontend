@@ -63,6 +63,7 @@ const Body = styled.div`
 		margin: 10px 40px 0 40px;
 		text-align: left;
 		font-size: 25px;
+		line-height: 35px;
 	}
 `;
 

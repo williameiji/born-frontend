@@ -31,6 +31,49 @@ const GlobalStyle = createGlobalStyle`
     ::-webkit-scrollbar-thumb:hover {
         background: #555; 
     }
+
+    @keyframes spin {
+        50%,
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes fill {
+        25%,
+        50% {
+            transform: scaleY(0);
+        }
+        100% {
+            transform: scaleY(1);
+        }
+    }
+
+    .Modal {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 20px;
+        background: white;
+        pointer-events: none;
+        border-radius: 5px;
+        outline: none;
+    }
+
+    .Overlay {
+        position: fixed;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        pointer-events: none;
+    }
 `;
 
 export default GlobalStyle;

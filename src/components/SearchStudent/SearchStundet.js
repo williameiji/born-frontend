@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Home from "../Home/Home";
 import url from "../Services/url";
 import UserContext from "../Contexts/UserContext";
+import ModalGeneric from "../Shared/ModalGeneric";
 
 export default function SearchStudent({ setRenderFinds, renderFinds }) {
 	const [loginDataInput, setLoginDataInput] = useState({
@@ -13,7 +14,7 @@ export default function SearchStudent({ setRenderFinds, renderFinds }) {
 	});
 
 	const navigate = useNavigate();
-
+	const [isModalOpen, setIsModalOpen] = useState(false);
 	const { userData } = useContext(UserContext);
 
 	function handleFormSearch(e) {
@@ -24,14 +25,21 @@ export default function SearchStudent({ setRenderFinds, renderFinds }) {
 
 	async function searchName(e) {
 		e.preventDefault();
+		setIsModalOpen(true);
 
 		if (userData) {
 			try {
 				const data = await axios.get(
 					url.searchStudent + "/" + loginDataInput.nome
 				);
+				setTimeout(() => {
+					setIsModalOpen(false);
+				}, 2000);
 				setRenderFinds(data.data);
 			} catch (error) {
+				setTimeout(() => {
+					setIsModalOpen(false);
+				}, 2000);
 				alert(error);
 			}
 		} else {
@@ -46,6 +54,7 @@ export default function SearchStudent({ setRenderFinds, renderFinds }) {
 
 	return (
 		<Home>
+			<ModalGeneric isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
 			<Box>
 				<form onSubmit={searchName}>
 					<input

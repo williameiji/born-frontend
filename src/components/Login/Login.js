@@ -7,13 +7,14 @@ import logo from "../../assets/image/logo-born.png";
 import url from "../Services/url";
 import LoginForm from "./LoginForm";
 import UserContext from "../Contexts/UserContext";
+import ModalGeneric from "../Shared/ModalGeneric";
 
 export default function Login() {
 	const [loginDataInput, setLoginDataInput] = useState({
 		nome: "",
 		password: "",
 	});
-
+	const [isModalOpen, setIsModalOpen] = useState(false);
 	const { setUserData } = useContext(UserContext);
 
 	const navigate = useNavigate();
@@ -26,19 +27,30 @@ export default function Login() {
 
 	async function login(e) {
 		e.preventDefault();
+		setIsModalOpen(true);
 
 		try {
 			const promise = await axios.post(url.login, loginDataInput);
+
+			setTimeout(() => {
+				setIsModalOpen(false);
+			}, 2000);
+
 			setUserData(promise.data);
+
 			navigate("/home");
 		} catch (error) {
+			setTimeout(() => {
+				setIsModalOpen(false);
+			}, 2000);
+
 			console.log(error);
-			alert(error);
 		}
 	}
 
 	return (
 		<Box>
+			<ModalGeneric isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
 			<Container>
 				<img src={logo} alt="logo" />
 				<LoginForm

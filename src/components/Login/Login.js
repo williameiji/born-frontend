@@ -30,19 +30,17 @@ export default function Login() {
 		setIsModalOpen(true);
 
 		try {
-			const promise = await axios.post(url.login, loginDataInput);
+			const promise = await axios.post(url.login, loginDataInput, {
+				"Access-Control-Allow-Origin": "*",
+			});
 
-			setTimeout(() => {
-				setIsModalOpen(false);
-			}, 2000);
+			setIsModalOpen(false);
 
 			setUserData(promise.data);
 
 			navigate("/home");
 		} catch (error) {
-			setTimeout(() => {
-				setIsModalOpen(false);
-			}, 2000);
+			setIsModalOpen(false);
 
 			console.log(error);
 		}

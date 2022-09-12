@@ -32,14 +32,13 @@ export default function SearchStudent({ setRenderFinds, renderFinds }) {
 				const data = await axios.get(
 					url.searchStudent + "/" + loginDataInput.nome
 				);
-				setTimeout(() => {
-					setIsModalOpen(false);
-				}, 2000);
+
+				setIsModalOpen(false);
+
 				setRenderFinds(data.data);
 			} catch (error) {
-				setTimeout(() => {
-					setIsModalOpen(false);
-				}, 2000);
+				setIsModalOpen(false);
+
 				alert(error);
 			}
 		} else {

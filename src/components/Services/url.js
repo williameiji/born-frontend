@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:5001";
+const BASE_URL = "https://born-backend.onrender.com";
 
 const url = {
 	login: `${BASE_URL}/login`,

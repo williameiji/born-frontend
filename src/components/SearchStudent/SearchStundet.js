@@ -30,7 +30,10 @@ export default function SearchStudent({ setRenderFinds, renderFinds }) {
 		if (userData) {
 			try {
 				const data = await axios.get(
-					url.searchStudent + "/" + loginDataInput.nome
+					url.searchStudent + "/" + loginDataInput.nome,
+					{
+						"Access-Control-Allow-Origin": "https://born-frontend.vercel.app",
+					}
 				);
 
 				setIsModalOpen(false);

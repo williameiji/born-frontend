@@ -31,7 +31,7 @@ export default function Login() {
 
 		try {
 			const promise = await axios.post(url.login, loginDataInput, {
-				"Access-Control-Allow-Origin": "*",
+				"Access-Control-Allow-Origin": "https://born-frontend.vercel.app",
 			});
 
 			setIsModalOpen(false);

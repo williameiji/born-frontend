@@ -11,7 +11,7 @@ import ModalGeneric from "../Shared/ModalGeneric";
 
 export default function Login() {
 	const [loginDataInput, setLoginDataInput] = useState({
-		nome: "",
+		name: "",
 		password: "",
 	});
 	const [isModalOpen, setIsModalOpen] = useState(false);
@@ -25,23 +25,24 @@ export default function Login() {
 		setLoginDataInput(loginData);
 	}
 
-	async function login(e) {
+	function login(e) {
 		e.preventDefault();
 		setIsModalOpen(true);
 
-		try {
-			const promise = await axios.post(url.login, loginDataInput);
+		axios
+			.post(url.login, loginDataInput)
+			.then((response) => {
+				setIsModalOpen(false);
 
-			setIsModalOpen(false);
+				setUserData(response.data);
 
-			setUserData(promise.data);
+				navigate("/home");
+			})
+			.catch((err) => {
+				setIsModalOpen(false);
 
-			navigate("/home");
-		} catch (error) {
-			setIsModalOpen(false);
-
-			console.log(error);
-		}
+				console.log(err);
+			});
 	}
 
 	return (

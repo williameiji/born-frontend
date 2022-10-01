@@ -4,10 +4,10 @@ export default function LoginForm({ loginDataInput, handleFormLogin, login }) {
 			<form onSubmit={login}>
 				<input
 					type="text"
-					name="nome"
+					name="name"
 					placeholder="Nome"
 					onChange={(e) => handleFormLogin(e)}
-					value={loginDataInput.nome}
+					value={loginDataInput.name}
 					required
 				></input>
 				<input

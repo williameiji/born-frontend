@@ -45,6 +45,10 @@ export default function Login() {
 			});
 	}
 
+	function goToSignup() {
+		navigate("/signup");
+	}
+
 	return (
 		<Box>
 			<ModalGeneric isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
@@ -55,6 +59,9 @@ export default function Login() {
 					handleFormLogin={handleFormLogin}
 					login={login}
 				/>
+				<SignupText onClick={goToSignup}>
+					Cadastro de administradores
+				</SignupText>
 			</Container>
 		</Box>
 	);
@@ -105,4 +112,12 @@ const Container = styled.div`
 			}
 		}
 	}
+`;
+
+const SignupText = styled.p`
+	text-align: center;
+	margin: 10px 0;
+	color: grey;
+	text-decoration: underline;
+	cursor: pointer;
 `;

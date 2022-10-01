@@ -3,10 +3,10 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-import logo from "../../assets/image/logo-born.png";
 import url from "../Services/url";
 import LoginForm from "./LoginForm";
 import UserContext from "../Contexts/UserContext";
+import AuthScreen from "../AuthScreen/AuthScreen";
 import ModalGeneric from "../Shared/ModalGeneric";
 
 export default function Login() {
@@ -14,8 +14,8 @@ export default function Login() {
 		name: "",
 		password: "",
 	});
-	const [isModalOpen, setIsModalOpen] = useState(false);
 	const { setUserData } = useContext(UserContext);
+	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	const navigate = useNavigate();
 
@@ -50,69 +50,17 @@ export default function Login() {
 	}
 
 	return (
-		<Box>
+		<AuthScreen>
 			<ModalGeneric isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
-			<Container>
-				<img src={logo} alt="logo" />
-				<LoginForm
-					loginDataInput={loginDataInput}
-					handleFormLogin={handleFormLogin}
-					login={login}
-				/>
-				<SignupText onClick={goToSignup}>
-					Cadastro de administradores
-				</SignupText>
-			</Container>
-		</Box>
+			<LoginForm
+				loginDataInput={loginDataInput}
+				handleFormLogin={handleFormLogin}
+				login={login}
+			/>
+			<SignupText onClick={goToSignup}>Cadastro de administradores</SignupText>
+		</AuthScreen>
 	);
 }
-
-const Box = styled.div`
-	display: flex;
-	justify-content: center;
-`;
-
-const Container = styled.div`
-	border-radius: 5px;
-	margin-top: 20vh;
-	border: 1px solid #708090;
-	background-color: white;
-	padding: 5px;
-
-	img {
-		height: 150px;
-	}
-
-	form {
-		display: flex;
-		flex-direction: column;
-		padding: 20px;
-
-		input {
-			border: 1px solid #87ceeb;
-			border-radius: 5px;
-			margin-top: 10px;
-			height: 30px;
-			text-align: center;
-		}
-
-		button {
-			border: none;
-			border-radius: 5px;
-			height: 30px;
-			width: 70px;
-			margin: 10px auto 0 auto;
-			background-color: #87ceeb;
-			font-weight: bold;
-
-			:hover {
-				background-color: darkblue;
-				color: white;
-				cursor: pointer;
-			}
-		}
-	}
-`;
 
 const SignupText = styled.p`
 	text-align: center;

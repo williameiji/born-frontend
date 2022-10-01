@@ -32,30 +32,12 @@ const Container = styled.div`
 	form {
 		display: flex;
 		flex-direction: column;
+
 		padding: 20px;
 
-		input {
-			border: 1px solid #87ceeb;
-			border-radius: 5px;
-			margin-top: 10px;
-			height: 30px;
-			text-align: center;
-		}
-
 		button {
-			border: none;
-			border-radius: 5px;
-			height: 30px;
-			width: 70px;
-			margin: 10px auto 0 auto;
-			background-color: #87ceeb;
-			font-weight: bold;
-
-			:hover {
-				background-color: darkblue;
-				color: white;
-				cursor: pointer;
-			}
+			width: 50%;
+			margin: 0 auto;
 		}
 	}
 `;

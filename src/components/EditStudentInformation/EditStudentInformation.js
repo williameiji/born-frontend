@@ -26,7 +26,7 @@ export default function EditStudentInformation({
 
 	let config = {
 		headers: {
-			Authorization: `Bearer ${userData.token}`,
+			Authorization: `Bearer ${userData}`,
 		},
 	};
 

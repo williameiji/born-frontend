@@ -10,6 +10,7 @@ import SignupStudents from "./SignupStudents/SignupStudents";
 import ShowInformation from "./SearchStudent/ShowInformation";
 import EditStudentInformation from "./EditStudentInformation/EditStudentInformation";
 import Receipt from "./Receipt/Receipt";
+import SignupScreen from "./Signup/SignupScreen";
 import Declaration from "./Declaration/Declaration";
 import UserContext from "./Contexts/UserContext";
 
@@ -26,7 +27,9 @@ export default function App() {
 				<UserContext.Provider value={{ userData, setUserData }}>
 					<Routes>
 						<Route path="/" element={<Login />} />
+						<Route path="/signup" element={<SignupScreen />} />
 						<Route path="/home" element={<Home />} />
+
 						<Route
 							path="/students"
 							element={

@@ -1,7 +1,5 @@
 # BORN INSTITUTO DE IDIOMAS
 
-<div align="center">
-<img src="https://user-images.githubusercontent.com/86417618/181343735-47cb5124-99ce-4796-b79b-459952fe3478.gif"></div>
 
 
 

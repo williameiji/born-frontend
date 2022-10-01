@@ -8,6 +8,7 @@ if (process.env.REACT_APP_MODE === "DEV") {
 
 const url = {
 	login: `${BASE_URL}/login`,
+	signup: `${BASE_URL}/signup`,
 	addStudent: `${BASE_URL}/students`,
 	searchStudent: `${BASE_URL}/students/search`,
 	editInfo: `${BASE_URL}/students/edit`,

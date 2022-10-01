@@ -1,24 +1,32 @@
-export default function LoginForm({ loginDataInput, handleFormLogin, login }) {
+import { TextField } from "@mui/material";
+import Button from "@mui/material/Button";
+
+export default function LoginForm({ handleFormLogin, login }) {
 	return (
 		<>
 			<form onSubmit={login}>
-				<input
-					type="text"
+				<TextField
+					data-cy="name"
 					name="name"
-					placeholder="Nome"
+					label="Nome"
+					variant="outlined"
+					size="small"
 					onChange={(e) => handleFormLogin(e)}
-					value={loginDataInput.name}
-					required
-				></input>
-				<input
-					type="password"
+					sx={{ mb: "15px" }}
+				/>
+				<TextField
+					data-cy="password"
 					name="password"
-					placeholder="Senha"
+					label="Senha"
+					variant="outlined"
+					size="small"
+					type="password"
 					onChange={(e) => handleFormLogin(e)}
-					value={loginDataInput.password}
-					required
-				></input>
-				<button type="submit">Entrar</button>
+					sx={{ mb: "15px" }}
+				/>
+				<Button variant="outlined" size="medium" type="submit" data-cy="login">
+					Entrar
+				</Button>
 			</form>
 		</>
 	);

@@ -65,7 +65,7 @@ export default function Login() {
 const SignupText = styled.p`
 	text-align: center;
 	margin: 10px 0;
-	color: grey;
+	color: lightblue;
 	text-decoration: underline;
 	cursor: pointer;
 `;

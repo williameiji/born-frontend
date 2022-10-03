@@ -97,11 +97,8 @@ const Box = styled.div`
 
 		input {
 			width: 100%;
-			border: 1px solid #87ceeb;
-			border-radius: 5px;
-			height: 40px;
+
 			text-align: center;
-			margin: 0 0 15px 0;
 		}
 
 		button {
@@ -120,17 +117,14 @@ const Box = styled.div`
 			}
 		}
 
-		input:valid {
-			border: 2px solid green;
+		p:first-child {
+			text-align: center;
+			font-weight: bold;
 		}
 
-		input:invalid {
-			border: 2px solid red;
-		}
-
-		textarea:focus,
-		input:focus {
-			outline: none;
+		p {
+			font-weight: bold;
+			margin-bottom: 15px;
 		}
 	}
 `;

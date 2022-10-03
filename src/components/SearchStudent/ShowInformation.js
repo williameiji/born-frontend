@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useState } from "react";
-import Button from "@mui/material/Button";
+import { Button } from "@mui/material";
 
 import Home from "../Home/Home";
 import mCPF from "../Shared/mCPF";

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { TextField } from "@mui/material";
 
 import Home from "../Home/Home";
 import url from "../Services/url";
@@ -60,13 +61,15 @@ export default function SearchStudent({ setRenderFinds, renderFinds }) {
 			<ModalGeneric isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
 			<Box>
 				<form onSubmit={searchName}>
-					<input
-						type="text"
-						name="nome"
-						placeholder="Nome do aluno"
+					<TextField
+						data-cy="name"
+						name="name"
+						label="Nome do aluno"
+						variant="outlined"
+						size="small"
 						onChange={(e) => handleFormSearch(e)}
-						value={searchDataInput.name}
-					></input>
+						sx={{ height: "30px", width: "100%" }}
+					/>
 					<button type="submit">Pesquisar</button>
 				</form>
 				<ContainerStudents>
@@ -99,17 +102,13 @@ const Box = styled.div`
 		padding: 20px;
 
 		input {
-			width: 100%;
-			border: 1px solid #87ceeb;
 			border-radius: 5px;
-			height: 30px;
-			text-align: center;
 		}
 
 		button {
 			border: none;
 			border-radius: 5px;
-			height: 30px;
+			height: 39px;
 			width: 100px;
 			margin-left: 10px;
 			background-color: #87ceeb;
@@ -139,7 +138,7 @@ const RenderStudent = styled.div`
 	justify-content: center;
 	width: 100%;
 	height: 50px;
-	border: 1px solid black;
+	border: 1px solid lightgray;
 	border-radius: 5px;
 	margin-bottom: 5px;
 `;

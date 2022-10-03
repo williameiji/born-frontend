@@ -60,6 +60,7 @@ const GlobalStyle = createGlobalStyle`
         pointer-events: none;
         border-radius: 5px;
         outline: none;
+        z-index: 1;
     }
 
     .Overlay {
@@ -72,7 +73,7 @@ const GlobalStyle = createGlobalStyle`
         right: 0;
         bottom: 0;
         background: rgba(0, 0, 0, 0.5);
-        pointer-events: none;
+        z-index: 1;
     }
 `;
 

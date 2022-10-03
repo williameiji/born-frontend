@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export default function SignupForm({
+export default function NewStudentsForm({
 	signupData,
 	handleSignupForm,
 	signupNewStudent,

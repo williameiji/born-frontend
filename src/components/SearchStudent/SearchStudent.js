@@ -7,6 +7,7 @@ import Home from "../Home/Home";
 import url from "../Services/url";
 import UserContext from "../Contexts/UserContext";
 import ModalGeneric from "../Shared/ModalGeneric";
+import ModalContext from "../Contexts/ModelContext";
 
 export default function SearchStudent({ setRenderFinds, renderFinds }) {
 	const [loginDataInput, setLoginDataInput] = useState({
@@ -16,6 +17,7 @@ export default function SearchStudent({ setRenderFinds, renderFinds }) {
 	const navigate = useNavigate();
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const { userData } = useContext(UserContext);
+	const { setModalStatus } = useContext(ModalContext);
 
 	function handleFormSearch(e) {
 		let loginData = { ...loginDataInput };
@@ -36,10 +38,8 @@ export default function SearchStudent({ setRenderFinds, renderFinds }) {
 				setIsModalOpen(false);
 
 				setRenderFinds(data.data);
-			} catch (error) {
-				setIsModalOpen(false);
-
-				alert(error);
+			} catch (err) {
+				setModalStatus({ status: "error", message: err.response.data });
 			}
 		} else {
 			alert("Você precisa estar logado!");

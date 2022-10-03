@@ -1,9 +1,19 @@
 import styled from "styled-components";
 import Modal from "react-modal";
+import { useContext } from "react";
 
-export default function ModalGeneric({ isModalOpen, setIsModalOpen }) {
+import ModalContext from "../Contexts/ModelContext";
+
+export default function ModalGeneric({
+	isModalOpen,
+	setIsModalOpen,
+	setBlockInput,
+}) {
+	const { modalStatus } = useContext(ModalContext);
+
 	function closeModal() {
 		setIsModalOpen(false);
+		setBlockInput(false);
 	}
 
 	return (
@@ -16,8 +26,17 @@ export default function ModalGeneric({ isModalOpen, setIsModalOpen }) {
 				overlayClassName="Overlay"
 			>
 				<Box>
-					<TextTitle>Aguarde...</TextTitle>
-					<Loading></Loading>
+					{modalStatus.status === "error" ? (
+						<>
+							<TextTitle>Erro:</TextTitle>
+							<p>{modalStatus.message}</p>
+						</>
+					) : (
+						<>
+							<TextTitle>Aguarde...</TextTitle>
+							<Loading></Loading>
+						</>
+					)}
 				</Box>
 			</Modal>
 		</div>

@@ -1,7 +1,7 @@
 import { TextField } from "@mui/material";
 import Button from "@mui/material/Button";
 
-export default function LoginForm({ handleFormLogin, login }) {
+export default function LoginForm({ handleFormLogin, login, blockInput }) {
 	return (
 		<>
 			<form onSubmit={login}>
@@ -13,6 +13,7 @@ export default function LoginForm({ handleFormLogin, login }) {
 					size="small"
 					onChange={(e) => handleFormLogin(e)}
 					sx={{ mb: "15px" }}
+					disabled={blockInput}
 				/>
 				<TextField
 					data-cy="password"
@@ -23,6 +24,7 @@ export default function LoginForm({ handleFormLogin, login }) {
 					type="password"
 					onChange={(e) => handleFormLogin(e)}
 					sx={{ mb: "15px" }}
+					disabled={blockInput}
 				/>
 				<Button variant="outlined" size="medium" type="submit" data-cy="login">
 					Entrar

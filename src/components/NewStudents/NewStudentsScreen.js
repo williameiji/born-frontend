@@ -6,10 +6,11 @@ import { useNavigate } from "react-router-dom";
 import Home from "../Home/Home";
 import TestaCPF from "../Shared/checkCPF";
 import url from "../Services/url";
-import SignupForm from "./SignupForm";
+import NewStudentsForm from "./NewStudentsForm";
 import UserContext from "../Contexts/UserContext";
+import ModalContext from "../Contexts/ModelContext";
 
-export default function SignupStudents() {
+export default function NewStudentsScreen() {
 	const [signupData, setSignupData] = useState({
 		date: "",
 		value: "",
@@ -28,6 +29,7 @@ export default function SignupStudents() {
 	});
 
 	const { userData } = useContext(UserContext);
+	const { setModalStatus } = useContext(ModalContext);
 
 	const navigate = useNavigate();
 
@@ -69,7 +71,7 @@ export default function SignupStudents() {
 	return (
 		<Home>
 			<Box>
-				<SignupForm
+				<NewStudentsForm
 					signupData={signupData}
 					handleSignupForm={handleSignupForm}
 					signupNewStudent={signupNewStudent}

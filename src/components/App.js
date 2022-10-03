@@ -5,7 +5,7 @@ import GlobalResetStyle from "../assets/css/GlobalResetStyle.css";
 import GlobalStyle from "../assets/css/GlobalStyle";
 import Login from "./Login/Login";
 import Home from "./Home/Home";
-import SearchStudent from "./SearchStudent/SearchStundet";
+import SearchStudent from "./SearchStudent/SearchStudent";
 import NewStudentsScreen from "./NewStudents/NewStudentsScreen";
 import ShowInformation from "./SearchStudent/ShowInformation";
 import EditStudentInformation from "./EditStudentInformation/EditStudentInformation";

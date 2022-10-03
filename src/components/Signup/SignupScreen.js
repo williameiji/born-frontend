@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -7,6 +7,7 @@ import url from "../Services/url";
 import SignupForm from "./SignupForm";
 import AuthScreen from "../AuthScreen/AuthScreen";
 import ModalGeneric from "../Shared/ModalGeneric";
+import ModalContext from "../Contexts/ModelContext";
 
 export default function SignupScreen() {
 	const [signupDataInput, setSignupDataInput] = useState({
@@ -14,7 +15,8 @@ export default function SignupScreen() {
 		password: "",
 		key: 0,
 	});
-
+	const { setModalStatus } = useContext(ModalContext);
+	const [blockInput, setBlockInput] = useState(false);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	const navigate = useNavigate();
@@ -27,6 +29,7 @@ export default function SignupScreen() {
 
 	function signup(e) {
 		e.preventDefault();
+		setBlockInput(!blockInput);
 		setIsModalOpen(true);
 
 		axios
@@ -40,9 +43,7 @@ export default function SignupScreen() {
 				navigate("/");
 			})
 			.catch((err) => {
-				setIsModalOpen(false);
-
-				console.log(err);
+				setModalStatus({ status: "error", message: err.response.data });
 			});
 	}
 
@@ -52,8 +53,16 @@ export default function SignupScreen() {
 
 	return (
 		<AuthScreen>
-			<ModalGeneric isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
-			<SignupForm handleFormSignup={handleFormSignup} signup={signup} />
+			<ModalGeneric
+				isModalOpen={isModalOpen}
+				setIsModalOpen={setIsModalOpen}
+				setBlockInput={setBlockInput}
+			/>
+			<SignupForm
+				handleFormSignup={handleFormSignup}
+				signup={signup}
+				blockInput={blockInput}
+			/>
 			<LoginText onClick={goToLogin}>Já tem conta? Entrar</LoginText>
 		</AuthScreen>
 	);

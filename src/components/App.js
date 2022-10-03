@@ -18,7 +18,7 @@ import ModalContext from "./Contexts/ModalContext";
 export default function App() {
 	const [renderFinds, setRenderFinds] = useState([]);
 	const [editInformation, setEditInformation] = useState({});
-	const [userData, setUserData] = useState(null);
+	const [userData, setUserData] = useState(localStorage?.getItem("token"));
 	const [modalStatus, setModalStatus] = useState({ status: "", message: "" });
 
 	return (

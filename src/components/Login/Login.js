@@ -40,6 +40,8 @@ export default function Login() {
 
 				setUserData(response.data);
 
+				localStorage.setItem("token", response.data);
+
 				navigate("/home");
 			})
 			.catch((err) => {

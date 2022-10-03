@@ -59,8 +59,8 @@ export default function NewStudentsScreen() {
 				const promise = await axios.post(url.addStudent, signupData, config);
 				alert(promise.data);
 				navigate("/students");
-			} catch (error) {
-				alert(error.response.data);
+			} catch (err) {
+				setModalStatus({ status: "error", message: err.response.data });
 			}
 		} else {
 			alert("Você precisa estar logado!");

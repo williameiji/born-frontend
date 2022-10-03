@@ -44,11 +44,10 @@ export default function EditStudentInformation({
 
 		if (userData) {
 			try {
-				const promise = await axios.put(url.editInfo, editInformation, config);
-				alert(promise.data);
-				setRenderFinds([]);
-				setEditInformation([]);
+				await axios.put(url.editInfo, editInformation, config);
 				navigate("/students");
+				setRenderFinds([]);
+				setEditInformation(null);
 			} catch (error) {
 				alert(error);
 			}
@@ -85,15 +84,6 @@ const Box = styled.div`
 		flex-direction: column;
 		padding: 20px;
 
-		input {
-			width: 100%;
-			border: 1px solid #87ceeb;
-			border-radius: 5px;
-			height: 40px;
-			text-align: center;
-			margin: 0 0 15px 0;
-		}
-
 		button {
 			border: none;
 			border-radius: 5px;
@@ -101,19 +91,12 @@ const Box = styled.div`
 			width: 100px;
 			margin: 0 auto;
 			background-color: #87ceeb;
+			font-weight: bold;
 		}
 
-		input:valid {
-			border: 2px solid green;
-		}
-
-		input:invalid {
-			border: 2px solid red;
-		}
-
-		textarea:focus,
-		input:focus {
-			outline: none;
+		p {
+			font-weight: bold;
+			margin-bottom: 15px;
 		}
 	}
 `;

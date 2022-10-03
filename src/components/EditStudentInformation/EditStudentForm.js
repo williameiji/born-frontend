@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import TextField from "@mui/material/TextField";
 
 export default function EditStudentForm({
 	editInformation,
@@ -9,140 +10,151 @@ export default function EditStudentForm({
 		<>
 			<form onSubmit={editStudentInfo}>
 				<p>CADASTRO</p>
-				<input
+				<TextField
 					type="text"
 					name="date"
-					placeholder="Data de início"
+					size="small"
+					sx={{ mb: "15px" }}
+					label="Data de início"
 					onChange={(e) => handleSignupForm(e)}
 					value={editInformation.date}
 					required
-				></input>
-				<input
+				/>
+				<TextField
 					type="text"
-					placeholder="Valor da Mensalidade"
+					size="small"
+					sx={{ mb: "15px" }}
+					label="Valor da Mensalidade"
 					name="value"
 					onChange={(e) => handleSignupForm(e)}
 					value={editInformation.value}
 					required
-				></input>
+				/>
 				<p>Dados do aluno:</p>
-				<input
+				<TextField
 					type="text"
 					name="name"
-					placeholder="Nome do aluno"
+					size="small"
+					sx={{ mb: "15px" }}
+					label="Nome do aluno"
 					onChange={(e) => handleSignupForm(e)}
 					value={editInformation.name}
 					required
-				></input>
-				<BoxData>
-					<input
+				/>
+				<Box>
+					<TextField
 						type="text"
 						name="cpfStudent"
-						placeholder="CPF"
+						size="small"
+						sx={{ mb: "15px", mr: "20px", width: "100%" }}
+						label="CPF"
 						onChange={(e) => handleSignupForm(e)}
 						value={editInformation.cpfStudent}
-					></input>
-					<input
+					/>
+					<TextField
 						type="text"
 						name="rgStudent"
-						placeholder="RG"
+						size="small"
+						sx={{ mb: "15px", mr: "20px", width: "100%" }}
+						label="RG"
 						onChange={(e) => handleSignupForm(e)}
 						value={editInformation.rgStudent}
-					></input>
-				</BoxData>
+					/>
+				</Box>
 				<p>Caso menor:</p>
-				<input
+				<TextField
 					type="text"
 					name="nameResp"
-					placeholder="Nome do responsável"
+					size="small"
+					sx={{ mb: "15px" }}
+					label="Nome do responsável"
 					onChange={(e) => handleSignupForm(e)}
 					value={editInformation.nameResp}
-				></input>
-				<BoxData>
-					<input
+				/>
+				<Box>
+					<TextField
 						type="text"
 						name="cpfResp"
-						placeholder="CPF"
+						size="small"
+						sx={{ mb: "15px", mr: "20px", width: "100%" }}
+						label="CPF"
 						onChange={(e) => handleSignupForm(e)}
 						value={editInformation.cpfResp}
-					></input>
-					<input
+					/>
+					<TextField
 						type="text"
 						name="rgResp"
-						placeholder="RG"
+						size="small"
+						sx={{ mb: "15px", mr: "20px", width: "100%" }}
+						label="RG"
 						onChange={(e) => handleSignupForm(e)}
 						value={editInformation.rgResp}
-					></input>
-				</BoxData>
+					/>
+				</Box>
 				<p>Dados de localização:</p>
-				<BoxAdress>
-					<input
+				<Box>
+					<TextField
 						type="text"
 						name="adress"
-						placeholder="Endereço"
+						size="small"
+						sx={{ mb: "15px", mr: "20px", width: "100%" }}
+						label="Endereço"
 						onChange={(e) => handleSignupForm(e)}
 						value={editInformation.adress}
-					></input>
-					<input
+					/>
+					<TextField
 						type="text"
 						name="number"
-						placeholder="Nº"
+						size="small"
+						sx={{ mb: "15px", mr: "20px", width: "100%" }}
+						label="Nº"
 						onChange={(e) => handleSignupForm(e)}
 						value={editInformation.number}
-					></input>
-				</BoxAdress>
-				<input
+					/>
+				</Box>
+				<TextField
 					type="text"
 					name="district"
-					placeholder="Bairro"
+					size="small"
+					sx={{ mb: "15px" }}
+					label="Bairro"
 					onChange={(e) => handleSignupForm(e)}
 					value={editInformation.district}
-				></input>
-				<input
+				/>
+				<TextField
 					type="text"
 					name="city"
-					placeholder="Cidade"
+					size="small"
+					sx={{ mb: "15px" }}
+					label="Cidade"
 					onChange={(e) => handleSignupForm(e)}
 					value={editInformation.city}
-				></input>
-				<input
+				/>
+				<TextField
 					type="text"
 					name="phone"
-					placeholder="Telefone"
+					size="small"
+					sx={{ mb: "15px" }}
+					label="Telefone"
 					onChange={(e) => handleSignupForm(e)}
 					value={editInformation.phone}
-				></input>
-				<input
+				/>
+				<TextField
 					type="text"
 					name="email"
-					placeholder="E-mail"
+					size="small"
+					sx={{ mb: "15px" }}
+					label="E-mail"
 					onChange={(e) => handleSignupForm(e)}
 					value={editInformation.email}
-				></input>
+				/>
 				<button type="submit">Editar</button>
 			</form>
 		</>
 	);
 }
 
-const BoxAdress = styled.span`
+const Box = styled.span`
 	display: flex;
 	flex-direction: row;
-
-	input:first-child {
-		margin-right: 10px;
-	}
-
-	input:last-child {
-		width: 30%;
-	}
-`;
-
-const BoxData = styled.span`
-	display: flex;
-	flex-direction: row;
-
-	input:first-child {
-		margin-right: 10px;
-	}
 `;

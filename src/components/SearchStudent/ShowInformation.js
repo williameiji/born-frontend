@@ -1,21 +1,33 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import Button from "@mui/material/Button";
 
 import Home from "../Home/Home";
 import mCPF from "../Shared/mCPF";
+import DeleteModal from "./DeleteModal";
 
 export default function ShowInformation({ renderFinds, setEditInformation }) {
 	const params = useParams();
 	const navigate = useNavigate();
+	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	function editPage() {
 		setEditInformation(renderFinds[params.id]);
 		navigate("/edit");
 	}
 
+	function deleteStudent() {
+		setIsModalOpen(true);
+	}
+
 	return (
 		<Home>
+			<DeleteModal
+				isModalOpen={isModalOpen}
+				setIsModalOpen={setIsModalOpen}
+				student={renderFinds[params.id]}
+			/>
 			<Box>
 				{renderFinds.length ? (
 					<div>
@@ -38,7 +50,17 @@ export default function ShowInformation({ renderFinds, setEditInformation }) {
 						<p>Cidade: {renderFinds[params.id].city}</p>
 						<p>Telefone: {renderFinds[params.id].phone}</p>
 						<p>E-mail: {renderFinds[params.id].email}</p>
-						<button onClick={editPage}>Editar informações</button>
+						<Button
+							variant="contained"
+							onClick={editPage}
+							sx={{ backgroundColor: "#87ceeb", color: "black" }}
+						>
+							Editar informações
+						</Button>
+
+						<Button onClick={deleteStudent} sx={{ color: "red" }}>
+							Remover aluno
+						</Button>
 					</div>
 				) : (
 					"Sem informação"
@@ -63,11 +85,15 @@ const Box = styled.div`
 
 		p {
 			width: 100%;
-			border: 1px solid gray;
+
 			margin-bottom: 8px;
 			font-size: 18px;
 			padding: 5px;
 			border-radius: 5px;
+		}
+
+		:first-child button {
+			margin: 20px 20px 0 0;
 		}
 
 		button {
@@ -75,7 +101,7 @@ const Box = styled.div`
 			border-radius: 5px;
 			height: 40px;
 			padding: 10px;
-			background-color: #87ceeb;
+
 			font-weight: bold;
 			margin: 0 auto 5px auto;
 

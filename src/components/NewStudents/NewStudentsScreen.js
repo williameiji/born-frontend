@@ -49,7 +49,7 @@ export default function NewStudentsScreen() {
 
 	async function signupNewStudent(e) {
 		e.preventDefault();
-		setIsModalOpen(false);
+		setIsModalOpen(true);
 
 		if (signupData.cpfStudent !== "" && !TestaCPF(signupData.cpfStudent))
 			return alert("CPF do aluno inválido");

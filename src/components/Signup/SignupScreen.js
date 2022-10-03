@@ -41,7 +41,7 @@ export default function SignupScreen() {
 				setModalStatus({ status: "Sucesso!", message: "Cadastro efetuado!" });
 				setTimeout(() => {
 					navigate("/");
-				}, 4000);
+				}, 2000);
 			})
 			.catch((err) => {
 				setModalStatus({ status: "Erro:", message: err.response.data });

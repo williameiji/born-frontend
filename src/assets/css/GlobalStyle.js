@@ -57,7 +57,6 @@ const GlobalStyle = createGlobalStyle`
         flex-direction: column;
         padding: 20px;
         background: white;
-        pointer-events: none;
         border-radius: 5px;
         outline: none;
         z-index: 1;

@@ -1,13 +1,15 @@
 import axios from "axios";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 import Home from "../Home/Home";
 import TestaCPF from "../Shared/checkCPF";
 import url from "../Services/url";
 import EditStudentForm from "./EditStudentForm";
 import UserContext from "../Contexts/UserContext";
+import ModalGeneric from "../Shared/ModalGeneric";
+import ModalContext from "../Contexts/ModalContext";
 
 export default function EditStudentInformation({
 	editInformation,
@@ -17,6 +19,8 @@ export default function EditStudentInformation({
 	const navigate = useNavigate();
 
 	const { userData } = useContext(UserContext);
+	const { setModalStatus } = useContext(ModalContext);
+	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	function handleSignupForm(e) {
 		let data = { ...editInformation };
@@ -33,6 +37,8 @@ export default function EditStudentInformation({
 	async function editStudentInfo(e) {
 		e.preventDefault();
 
+		setIsModalOpen(true);
+
 		if (
 			editInformation.cpfStudent !== "" &&
 			!TestaCPF(editInformation.cpfStudent)
@@ -45,11 +51,15 @@ export default function EditStudentInformation({
 		if (userData) {
 			try {
 				await axios.put(url.editInfo, editInformation, config);
-				navigate("/students");
-				setRenderFinds([]);
-				setEditInformation(null);
-			} catch (error) {
-				alert(error);
+				setModalStatus({ status: "Sucesso!", message: "Cadastro editado!" });
+
+				setTimeout(() => {
+					navigate("/students");
+					setRenderFinds([]);
+					setEditInformation(null);
+				}, 2000);
+			} catch (err) {
+				setModalStatus({ status: "Error:", message: err.response.data });
 			}
 		} else {
 			alert("Você precisa estar logado!");
@@ -59,6 +69,7 @@ export default function EditStudentInformation({
 
 	return (
 		<Home>
+			<ModalGeneric isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
 			<Box>
 				<EditStudentForm
 					editInformation={editInformation}
@@ -92,6 +103,12 @@ const Box = styled.div`
 			margin: 0 auto;
 			background-color: #87ceeb;
 			font-weight: bold;
+
+			:hover {
+				background-color: darkblue;
+				color: white;
+				cursor: pointer;
+			}
 		}
 
 		p {

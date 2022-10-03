@@ -64,7 +64,7 @@ export default function NewStudentsScreen() {
 
 				setTimeout(() => {
 					navigate("/students");
-				}, 4000);
+				}, 2000);
 			} catch (err) {
 				setModalStatus({ status: "Error:", message: err.response.data });
 			}

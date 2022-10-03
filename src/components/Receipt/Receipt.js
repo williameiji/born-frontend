@@ -66,19 +66,10 @@ const Box = styled.div`
 		display: flex;
 		padding: 20px;
 
-		input {
-			width: 100%;
-			border: 1px solid #87ceeb;
-			border-radius: 5px;
-			height: 30px;
-			text-align: center;
-			margin-right: 10px;
-		}
-
 		button {
 			border: none;
 			border-radius: 5px;
-			height: 30px;
+			height: 38px;
 			width: 100px;
 			margin-left: 10px;
 			background-color: #87ceeb;

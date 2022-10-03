@@ -1,3 +1,5 @@
+import TextField from "@mui/material/TextField";
+
 export default function ReceiptForm({
 	receiptDataInput,
 	handleReceiptForm,
@@ -6,34 +8,42 @@ export default function ReceiptForm({
 	return (
 		<>
 			<form>
-				<input
+				<TextField
 					type="text"
 					name="nome"
-					placeholder="Nome"
+					size="small"
+					label="Nome"
 					onChange={(e) => handleReceiptForm(e)}
 					value={receiptDataInput.nome}
-				></input>
-				<input
+					sx={{ mr: "15px" }}
+				/>
+				<TextField
 					type="text"
 					name="cpf"
-					placeholder="CPF/RG"
+					size="small"
+					label="CPF/RG"
 					onChange={(e) => handleReceiptForm(e)}
 					value={receiptDataInput.cpf}
-				></input>
-				<input
+					sx={{ mr: "15px" }}
+				/>
+				<TextField
 					type="text"
 					name="valor"
-					placeholder="Valor"
+					size="small"
+					label="Valor"
 					onChange={(e) => handleReceiptForm(e)}
 					value={receiptDataInput.valor}
-				></input>
-				<input
+					sx={{ mr: "15px" }}
+				/>
+				<TextField
 					type="text"
 					name="ref"
-					placeholder="Referente"
+					size="small"
+					label="Referente"
 					onChange={(e) => handleReceiptForm(e)}
 					value={receiptDataInput.ref}
-				></input>
+					sx={{ mr: "15px" }}
+				/>
 				<button onClick={print}>Imprimir</button>
 			</form>
 		</>

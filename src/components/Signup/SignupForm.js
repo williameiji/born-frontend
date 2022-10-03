@@ -1,7 +1,7 @@
 import { TextField } from "@mui/material";
 import Button from "@mui/material/Button";
 
-export default function SignupForm({ handleFormSignup, signup, blockInput }) {
+export default function SignupForm({ handleFormSignup, signup }) {
 	return (
 		<>
 			<form onSubmit={signup}>
@@ -13,7 +13,6 @@ export default function SignupForm({ handleFormSignup, signup, blockInput }) {
 					size="small"
 					onChange={(e) => handleFormSignup(e)}
 					sx={{ mb: "15px" }}
-					disabled={blockInput}
 				/>
 				<TextField
 					data-cy="password"
@@ -24,7 +23,6 @@ export default function SignupForm({ handleFormSignup, signup, blockInput }) {
 					type="password"
 					onChange={(e) => handleFormSignup(e)}
 					sx={{ mb: "15px" }}
-					disabled={blockInput}
 				/>
 				<TextField
 					data-cy="key"
@@ -34,7 +32,6 @@ export default function SignupForm({ handleFormSignup, signup, blockInput }) {
 					size="small"
 					onChange={(e) => handleFormSignup(e)}
 					sx={{ mb: "15px" }}
-					disabled={blockInput}
 				/>
 				<Button variant="outlined" size="medium" type="submit" data-cy="signup">
 					Cadastrar

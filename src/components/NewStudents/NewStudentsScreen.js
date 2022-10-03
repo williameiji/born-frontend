@@ -9,6 +9,7 @@ import url from "../Services/url";
 import NewStudentsForm from "./NewStudentsForm";
 import UserContext from "../Contexts/UserContext";
 import ModalContext from "../Contexts/ModalContext";
+import ModalGeneric from "../Shared/ModalGeneric";
 
 export default function NewStudentsScreen() {
 	const [signupData, setSignupData] = useState({
@@ -30,6 +31,7 @@ export default function NewStudentsScreen() {
 
 	const { userData } = useContext(UserContext);
 	const { setModalStatus } = useContext(ModalContext);
+	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	const navigate = useNavigate();
 
@@ -47,6 +49,7 @@ export default function NewStudentsScreen() {
 
 	async function signupNewStudent(e) {
 		e.preventDefault();
+		setIsModalOpen(false);
 
 		if (signupData.cpfStudent !== "" && !TestaCPF(signupData.cpfStudent))
 			return alert("CPF do aluno inválido");
@@ -56,11 +59,14 @@ export default function NewStudentsScreen() {
 
 		if (userData) {
 			try {
-				const promise = await axios.post(url.addStudent, signupData, config);
-				alert(promise.data);
-				navigate("/students");
+				await axios.post(url.addStudent, signupData, config);
+				setModalStatus({ status: "Sucesso!", message: "Cadastro efetuado!" });
+
+				setTimeout(() => {
+					navigate("/students");
+				}, 4000);
 			} catch (err) {
-				setModalStatus({ status: "error", message: err.response.data });
+				setModalStatus({ status: "Error:", message: err.response.data });
 			}
 		} else {
 			alert("Você precisa estar logado!");
@@ -70,6 +76,7 @@ export default function NewStudentsScreen() {
 
 	return (
 		<Home>
+			<ModalGeneric isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
 			<Box>
 				<NewStudentsForm
 					signupData={signupData}

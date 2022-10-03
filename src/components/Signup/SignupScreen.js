@@ -16,7 +16,7 @@ export default function SignupScreen() {
 		key: 0,
 	});
 	const { setModalStatus } = useContext(ModalContext);
-	const [blockInput, setBlockInput] = useState(false);
+
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	const navigate = useNavigate();
@@ -29,7 +29,7 @@ export default function SignupScreen() {
 
 	function signup(e) {
 		e.preventDefault();
-		setBlockInput(!blockInput);
+
 		setIsModalOpen(true);
 
 		axios
@@ -37,13 +37,14 @@ export default function SignupScreen() {
 				...signupDataInput,
 				key: Number(signupDataInput.key),
 			})
-			.then((response) => {
-				setIsModalOpen(false);
-
-				navigate("/");
+			.then(() => {
+				setModalStatus({ status: "Sucesso!", message: "Cadastro efetuado!" });
+				setTimeout(() => {
+					navigate("/");
+				}, 4000);
 			})
 			.catch((err) => {
-				setModalStatus({ status: "error", message: err.response.data });
+				setModalStatus({ status: "Erro:", message: err.response.data });
 			});
 	}
 
@@ -53,16 +54,8 @@ export default function SignupScreen() {
 
 	return (
 		<AuthScreen>
-			<ModalGeneric
-				isModalOpen={isModalOpen}
-				setIsModalOpen={setIsModalOpen}
-				setBlockInput={setBlockInput}
-			/>
-			<SignupForm
-				handleFormSignup={handleFormSignup}
-				signup={signup}
-				blockInput={blockInput}
-			/>
+			<ModalGeneric isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+			<SignupForm handleFormSignup={handleFormSignup} signup={signup} />
 			<LoginText onClick={goToLogin}>Já tem conta? Entrar</LoginText>
 		</AuthScreen>
 	);

@@ -4,11 +4,7 @@ import { useContext } from "react";
 
 import ModalContext from "../Contexts/ModalContext";
 
-export default function ModalGeneric({
-	isModalOpen,
-	setIsModalOpen,
-	setBlockInput,
-}) {
+export default function ModalGeneric({ isModalOpen, setIsModalOpen }) {
 	const { modalStatus } = useContext(ModalContext);
 
 	function closeModal() {
@@ -25,9 +21,9 @@ export default function ModalGeneric({
 				overlayClassName="Overlay"
 			>
 				<Box>
-					{modalStatus.status === "error" ? (
+					{modalStatus ? (
 						<>
-							<TextTitle>Erro:</TextTitle>
+							<TextTitle>{modalStatus.status}</TextTitle>
 							<p>{modalStatus.message}</p>
 						</>
 					) : (

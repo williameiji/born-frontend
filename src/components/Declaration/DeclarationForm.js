@@ -1,3 +1,5 @@
+import TextField from "@mui/material/TextField";
+
 export default function DeclarationForm({
 	declarationDataInput,
 	handleDeclarationForm,
@@ -7,65 +9,80 @@ export default function DeclarationForm({
 		<>
 			<form onSubmit={print}>
 				<div>
-					<input
+					<TextField
 						type="text"
 						name="nome"
-						placeholder="Nome"
+						size="small"
+						label="Nome"
 						onChange={(e) => handleDeclarationForm(e)}
 						value={declarationDataInput.nome}
-					></input>
-					<input
+						sx={{ mr: "15px", width: "100%" }}
+					/>
+					<TextField
 						type="text"
 						name="cpf"
-						placeholder="CPF"
+						size="small"
+						label="CPF"
 						onChange={(e) => handleDeclarationForm(e)}
 						value={declarationDataInput.cpf}
-					></input>
-					<input
+						sx={{ mr: "15px", width: "100%" }}
+					/>
+					<TextField
 						type="text"
 						name="idioma"
-						placeholder="Idioma"
+						size="small"
+						label="Idioma"
 						onChange={(e) => handleDeclarationForm(e)}
 						value={declarationDataInput.idioma}
-					></input>
+						sx={{ mr: "15px", width: "100%" }}
+					/>
 					<button type="submit">Imprimir</button>
 				</div>
 				<div>
-					<input
+					<TextField
 						type="text"
 						name="inicio"
-						placeholder="Data de início"
+						size="small"
+						label="Data de início"
 						onChange={(e) => handleDeclarationForm(e)}
 						value={declarationDataInput.inicio}
-					></input>
-					<input
+						sx={{ mr: "15px" }}
+					/>
+					<TextField
 						type="text"
 						name="final"
-						placeholder="Data final"
+						size="small"
+						label="Data final"
 						onChange={(e) => handleDeclarationForm(e)}
 						value={declarationDataInput.final}
-					></input>
-					<input
+						sx={{ mr: "15px" }}
+					/>
+					<TextField
 						type="text"
 						name="horas"
-						placeholder="Total em horas"
+						size="small"
+						label="Total em horas"
 						onChange={(e) => handleDeclarationForm(e)}
 						value={declarationDataInput.horas}
-					></input>
-					<input
+						sx={{ mr: "15px" }}
+					/>
+					<TextField
 						type="text"
 						name="pontos"
-						placeholder="Pontos"
+						size="small"
+						label="Pontos"
 						onChange={(e) => handleDeclarationForm(e)}
 						value={declarationDataInput.pontos}
-					></input>
-					<input
+						sx={{ mr: "15px" }}
+					/>
+					<TextField
 						type="text"
 						name="presença"
-						placeholder="Frequência"
+						size="small"
+						label="Frequência"
 						onChange={(e) => handleDeclarationForm(e)}
 						value={declarationDataInput.presença}
-					></input>
+					/>
 				</div>
 			</form>
 		</>

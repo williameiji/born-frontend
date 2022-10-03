@@ -7,7 +7,7 @@ import url from "../Services/url";
 import SignupForm from "./SignupForm";
 import AuthScreen from "../AuthScreen/AuthScreen";
 import ModalGeneric from "../Shared/ModalGeneric";
-import ModalContext from "../Contexts/ModelContext";
+import ModalContext from "../Contexts/ModalContext";
 
 export default function SignupScreen() {
 	const [signupDataInput, setSignupDataInput] = useState({

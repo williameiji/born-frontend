@@ -8,7 +8,7 @@ import TestaCPF from "../Shared/checkCPF";
 import url from "../Services/url";
 import NewStudentsForm from "./NewStudentsForm";
 import UserContext from "../Contexts/UserContext";
-import ModalContext from "../Contexts/ModelContext";
+import ModalContext from "../Contexts/ModalContext";
 
 export default function NewStudentsScreen() {
 	const [signupData, setSignupData] = useState({

@@ -8,7 +8,7 @@ import LoginForm from "./LoginForm";
 import UserContext from "../Contexts/UserContext";
 import AuthScreen from "../AuthScreen/AuthScreen";
 import ModalGeneric from "../Shared/ModalGeneric";
-import ModalContext from "../Contexts/ModelContext";
+import ModalContext from "../Contexts/ModalContext";
 
 export default function Login() {
 	const [loginDataInput, setLoginDataInput] = useState({

@@ -7,11 +7,11 @@ import Home from "../Home/Home";
 import url from "../Services/url";
 import UserContext from "../Contexts/UserContext";
 import ModalGeneric from "../Shared/ModalGeneric";
-import ModalContext from "../Contexts/ModelContext";
+import ModalContext from "../Contexts/ModalContext";
 
 export default function SearchStudent({ setRenderFinds, renderFinds }) {
-	const [loginDataInput, setLoginDataInput] = useState({
-		nome: "",
+	const [searchDataInput, setSearchDataInput] = useState({
+		name: "",
 	});
 
 	const navigate = useNavigate();
@@ -20,20 +20,24 @@ export default function SearchStudent({ setRenderFinds, renderFinds }) {
 	const { setModalStatus } = useContext(ModalContext);
 
 	function handleFormSearch(e) {
-		let loginData = { ...loginDataInput };
-		loginData[e.target.name] = e.target.value;
-		setLoginDataInput(loginData);
+		let data = { ...searchDataInput };
+		data[e.target.name] = e.target.value;
+		setSearchDataInput(data);
 	}
 
 	async function searchName(e) {
 		e.preventDefault();
 		setIsModalOpen(true);
 
+		let searchFor = searchDataInput.name;
+
+		if (searchDataInput.name === "") {
+			searchFor = "all";
+		}
+
 		if (userData) {
 			try {
-				const data = await axios.get(
-					url.searchStudent + "/" + loginDataInput.nome
-				);
+				const data = await axios.get(url.searchStudent + "/" + searchFor);
 
 				setIsModalOpen(false);
 
@@ -61,7 +65,7 @@ export default function SearchStudent({ setRenderFinds, renderFinds }) {
 						name="nome"
 						placeholder="Nome do aluno"
 						onChange={(e) => handleFormSearch(e)}
-						value={loginDataInput.name}
+						value={searchDataInput.name}
 					></input>
 					<button type="submit">Pesquisar</button>
 				</form>

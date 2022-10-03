@@ -13,7 +13,7 @@ import Receipt from "./Receipt/Receipt";
 import SignupScreen from "./Signup/SignupScreen";
 import Declaration from "./Declaration/Declaration";
 import UserContext from "./Contexts/UserContext";
-import ModalContext from "./Contexts/ModelContext";
+import ModalContext from "./Contexts/ModalContext";
 
 export default function App() {
 	const [renderFinds, setRenderFinds] = useState([]);

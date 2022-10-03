@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Modal from "react-modal";
 import { useContext } from "react";
 
-import ModalContext from "../Contexts/ModelContext";
+import ModalContext from "../Contexts/ModalContext";
 
 export default function ModalGeneric({
 	isModalOpen,
@@ -13,7 +13,6 @@ export default function ModalGeneric({
 
 	function closeModal() {
 		setIsModalOpen(false);
-		setBlockInput(false);
 	}
 
 	return (

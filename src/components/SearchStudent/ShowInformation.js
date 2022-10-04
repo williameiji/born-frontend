@@ -75,7 +75,6 @@ export default function ShowInformation({ renderFinds, setEditInformation }) {
 const Box = styled.div`
 	background-color: white;
 	width: 100%;
-	height: 75vh;
 	margin-left: 5px;
 	border-radius: 5px;
 	padding: 20px;
@@ -99,11 +98,11 @@ const Box = styled.div`
 
 		p {
 			width: 100%;
-
 			margin-bottom: 8px;
 			font-size: 18px;
 			padding: 5px;
 			border-radius: 5px;
+			background-color: #eeeeee;
 		}
 
 		:first-child button {

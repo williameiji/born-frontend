@@ -91,7 +91,6 @@ export default function NewStudentsScreen() {
 const Box = styled.div`
 	background-color: white;
 	width: 100%;
-	height: 75vh;
 	border-radius: 5px;
 	padding: 20px;
 	overflow: auto;
@@ -108,7 +107,6 @@ const Box = styled.div`
 
 		input {
 			width: 100%;
-
 			text-align: center;
 		}
 

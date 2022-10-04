@@ -63,7 +63,6 @@ export default function Declaration() {
 const Box = styled.div`
 	background-color: white;
 	width: 100%;
-	height: 75vh;
 	margin-left: 5px;
 	border-radius: 5px;
 	padding: 20px;

@@ -56,7 +56,6 @@ export default function Receipt() {
 const Box = styled.div`
 	background-color: white;
 	width: 100%;
-	height: 75vh;
 	margin-left: 5px;
 	border-radius: 5px;
 	padding: 20px;
@@ -74,6 +73,7 @@ const Box = styled.div`
 			flex-wrap: wrap;
 			padding: 0;
 			justify-content: center;
+			padding: 20px 0 20px 10px;
 		}
 
 		button {

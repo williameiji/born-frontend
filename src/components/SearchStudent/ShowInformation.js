@@ -50,17 +50,19 @@ export default function ShowInformation({ renderFinds, setEditInformation }) {
 						<p>Cidade: {renderFinds[params.id].city}</p>
 						<p>Telefone: {renderFinds[params.id].phone}</p>
 						<p>E-mail: {renderFinds[params.id].email}</p>
-						<Button
-							variant="contained"
-							onClick={editPage}
-							sx={{ backgroundColor: "#87ceeb", color: "black" }}
-						>
-							Editar informações
-						</Button>
+						<div>
+							<Button
+								variant="contained"
+								onClick={editPage}
+								sx={{ backgroundColor: "#87ceeb", color: "black" }}
+							>
+								Editar informações
+							</Button>
 
-						<Button onClick={deleteStudent} sx={{ color: "red" }}>
-							Remover aluno
-						</Button>
+							<Button onClick={deleteStudent} sx={{ color: "red" }}>
+								Remover aluno
+							</Button>
+						</div>
 					</div>
 				) : (
 					"Sem informação"
@@ -79,9 +81,21 @@ const Box = styled.div`
 	padding: 20px;
 	overflow: auto;
 
+	@media (max-width: 480px) {
+		margin: 0;
+		height: 100%;
+	}
+
 	div {
 		width: 100%;
 		height: 100%;
+
+		@media (max-width: 480px) {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
 
 		p {
 			width: 100%;
@@ -101,7 +115,6 @@ const Box = styled.div`
 			border-radius: 5px;
 			height: 40px;
 			padding: 10px;
-
 			font-weight: bold;
 			margin: 0 auto 5px auto;
 

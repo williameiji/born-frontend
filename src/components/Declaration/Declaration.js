@@ -69,6 +69,10 @@ const Box = styled.div`
 	padding: 20px;
 	overflow: auto;
 
+	@media (max-width: 480px) {
+		margin: 0;
+	}
+
 	form {
 		display: flex;
 		flex-direction: column;
@@ -77,6 +81,13 @@ const Box = styled.div`
 		div {
 			display: flex;
 			margin-bottom: 10px;
+
+			@media (max-width: 1000px) {
+				flex-wrap: wrap;
+				padding: 0;
+				justify-content: center;
+				margin: 0 0 5px 0;
+			}
 		}
 
 		button {

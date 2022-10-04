@@ -62,9 +62,19 @@ const Box = styled.div`
 	padding: 20px;
 	overflow: auto;
 
+	@media (max-width: 480px) {
+		margin: 0;
+	}
+
 	form {
 		display: flex;
 		padding: 20px;
+
+		@media (max-width: 1000px) {
+			flex-wrap: wrap;
+			padding: 0;
+			justify-content: center;
+		}
 
 		button {
 			border: none;
@@ -74,6 +84,10 @@ const Box = styled.div`
 			margin-left: 10px;
 			background-color: #87ceeb;
 			font-weight: bold;
+
+			@media (max-width: 1000px) {
+				margin-top: 5px;
+			}
 
 			:hover {
 				background-color: darkblue;

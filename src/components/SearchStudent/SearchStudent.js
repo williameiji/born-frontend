@@ -99,6 +99,10 @@ const Box = styled.div`
 	border-radius: 5px;
 	padding: 20px;
 
+	@media (max-width: 480px) {
+		margin: 0;
+	}
+
 	form {
 		display: flex;
 		padding: 20px;

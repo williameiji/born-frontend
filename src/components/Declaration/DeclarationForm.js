@@ -1,4 +1,5 @@
 import TextField from "@mui/material/TextField";
+import styled from "styled-components";
 
 export default function DeclarationForm({
 	declarationDataInput,
@@ -39,9 +40,9 @@ export default function DeclarationForm({
 						value={declarationDataInput.idioma}
 						sx={{ mr: "15px", width: "100%" }}
 					/>
-					<button type="submit" data-cy="print">
+					<Button type="submit" data-cy="print">
 						Imprimir
-					</button>
+					</Button>
 				</div>
 				<div>
 					<TextField
@@ -95,7 +96,31 @@ export default function DeclarationForm({
 						sx={{ width: "100%" }}
 					/>
 				</div>
+				<ButtonMobile type="submit" data-cy="print">
+					Imprimir
+				</ButtonMobile>
 			</form>
 		</>
 	);
 }
+
+const Button = styled.button`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	@media (max-width: 1000px) {
+		display: none;
+	}
+`;
+
+const ButtonMobile = styled.button`
+	display: none;
+	justify-content: center;
+	align-items: center;
+	margin: 0 auto;
+
+	@media (max-width: 1000px) {
+		display: flex;
+	}
+`;

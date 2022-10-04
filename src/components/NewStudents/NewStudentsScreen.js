@@ -92,10 +92,14 @@ const Box = styled.div`
 	background-color: white;
 	width: 100%;
 	height: 75vh;
-	margin-left: 5px;
 	border-radius: 5px;
 	padding: 20px;
 	overflow: auto;
+	margin-left: 5px;
+
+	@media (max-width: 480px) {
+		margin: 0;
+	}
 
 	form {
 		display: flex;

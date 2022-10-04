@@ -22,6 +22,15 @@ export default function Home(props) {
 const Container = styled.div`
 	display: flex;
 	margin: 10px 5px 5px 5px;
+
+	@media (max-width: 480px) {
+		display: flex;
+		flex-direction: column;
+
+		:first-child div {
+			margin: 0 0 30px 0;
+		}
+	}
 `;
 
 const NothingToRender = styled.div`

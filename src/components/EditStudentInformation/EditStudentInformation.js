@@ -90,6 +90,10 @@ const Box = styled.div`
 	padding: 20px;
 	overflow: auto;
 
+	@media (max-width: 480px) {
+		margin: 0;
+	}
+
 	form {
 		display: flex;
 		flex-direction: column;

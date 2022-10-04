@@ -19,5 +19,9 @@ const Box = styled.div`
 
 	img {
 		height: 100px;
+
+		@media (max-width: 480px) {
+			width: 90%;
+		}
 	}
 `;

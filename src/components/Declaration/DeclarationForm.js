@@ -46,7 +46,7 @@ export default function DeclarationForm({
 						label="Data de início"
 						onChange={(e) => handleDeclarationForm(e)}
 						value={declarationDataInput.inicio}
-						sx={{ mr: "15px" }}
+						sx={{ mr: "15px", width: "100%" }}
 					/>
 					<TextField
 						type="text"
@@ -55,7 +55,7 @@ export default function DeclarationForm({
 						label="Data final"
 						onChange={(e) => handleDeclarationForm(e)}
 						value={declarationDataInput.final}
-						sx={{ mr: "15px" }}
+						sx={{ mr: "15px", width: "100%" }}
 					/>
 					<TextField
 						type="text"
@@ -64,7 +64,7 @@ export default function DeclarationForm({
 						label="Total em horas"
 						onChange={(e) => handleDeclarationForm(e)}
 						value={declarationDataInput.horas}
-						sx={{ mr: "15px" }}
+						sx={{ mr: "15px", width: "100%" }}
 					/>
 					<TextField
 						type="text"
@@ -73,7 +73,7 @@ export default function DeclarationForm({
 						label="Pontos"
 						onChange={(e) => handleDeclarationForm(e)}
 						value={declarationDataInput.pontos}
-						sx={{ mr: "15px" }}
+						sx={{ mr: "15px", width: "100%" }}
 					/>
 					<TextField
 						type="text"
@@ -82,6 +82,7 @@ export default function DeclarationForm({
 						label="Frequência"
 						onChange={(e) => handleDeclarationForm(e)}
 						value={declarationDataInput.presença}
+						sx={{ width: "100%" }}
 					/>
 				</div>
 			</form>

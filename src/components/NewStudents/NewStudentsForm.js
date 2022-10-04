@@ -59,7 +59,7 @@ export default function NewStudentsForm({
 						size="small"
 						onChange={(e) => handleSignupForm(e)}
 						value={signupData.rgStudent}
-						sx={{ mb: "15px", mr: "20px", width: "100%" }}
+						sx={{ mb: "15px", width: "100%" }}
 					/>
 				</Box>
 				<p>Caso menor:</p>
@@ -89,7 +89,7 @@ export default function NewStudentsForm({
 						label="RG"
 						onChange={(e) => handleSignupForm(e)}
 						value={signupData.rgResp}
-						sx={{ mb: "15px", mr: "20px", width: "100%" }}
+						sx={{ mb: "15px", width: "100%" }}
 					/>
 				</Box>
 				<p>Dados de localização:</p>

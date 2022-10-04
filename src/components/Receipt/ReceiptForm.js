@@ -15,7 +15,7 @@ export default function ReceiptForm({
 					label="Nome"
 					onChange={(e) => handleReceiptForm(e)}
 					value={receiptDataInput.nome}
-					sx={{ mr: "15px" }}
+					sx={{ mr: "15px", width: "100%" }}
 				/>
 				<TextField
 					type="text"
@@ -24,7 +24,7 @@ export default function ReceiptForm({
 					label="CPF/RG"
 					onChange={(e) => handleReceiptForm(e)}
 					value={receiptDataInput.cpf}
-					sx={{ mr: "15px" }}
+					sx={{ mr: "15px", width: "100%" }}
 				/>
 				<TextField
 					type="text"
@@ -33,7 +33,7 @@ export default function ReceiptForm({
 					label="Valor"
 					onChange={(e) => handleReceiptForm(e)}
 					value={receiptDataInput.valor}
-					sx={{ mr: "15px" }}
+					sx={{ mr: "15px", width: "100%" }}
 				/>
 				<TextField
 					type="text"
@@ -42,7 +42,7 @@ export default function ReceiptForm({
 					label="Referente"
 					onChange={(e) => handleReceiptForm(e)}
 					value={receiptDataInput.ref}
-					sx={{ mr: "15px" }}
+					sx={{ mr: "15px", width: "100%" }}
 				/>
 				<button onClick={print}>Imprimir</button>
 			</form>

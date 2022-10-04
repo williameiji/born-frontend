@@ -131,7 +131,7 @@ const Box = styled.div`
 
 const ContainerStudents = styled.div`
 	width: 100%;
-	height: 85%;
+	height: 50vh;
 	border: 1px solid #87ceeb;
 	border-radius: 5px;
 	overflow: auto;

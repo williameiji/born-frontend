@@ -107,7 +107,6 @@ const Box = styled.div`
 
 		input {
 			width: 100%;
-			text-align: center;
 		}
 
 		button {

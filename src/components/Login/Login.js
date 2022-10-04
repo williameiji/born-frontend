@@ -18,7 +18,6 @@ export default function Login() {
 	const { setUserData } = useContext(UserContext);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const { setModalStatus } = useContext(ModalContext);
-	const [blockInput, setBlockInput] = useState(false);
 
 	const navigate = useNavigate();
 
@@ -30,7 +29,6 @@ export default function Login() {
 
 	function login(e) {
 		e.preventDefault();
-		setBlockInput(!blockInput);
 		setIsModalOpen(true);
 
 		axios
@@ -55,16 +53,11 @@ export default function Login() {
 
 	return (
 		<AuthScreen>
-			<ModalGeneric
-				isModalOpen={isModalOpen}
-				setIsModalOpen={setIsModalOpen}
-				setBlockInput={setBlockInput}
-			/>
+			<ModalGeneric isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
 			<LoginForm
 				loginDataInput={loginDataInput}
 				handleFormLogin={handleFormLogin}
 				login={login}
-				blockInput={blockInput}
 			/>
 			<SignupText onClick={goToSignup}>Cadastro de administradores</SignupText>
 		</AuthScreen>

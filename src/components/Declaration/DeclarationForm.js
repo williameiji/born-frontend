@@ -10,6 +10,7 @@ export default function DeclarationForm({
 			<form onSubmit={print}>
 				<div>
 					<TextField
+						data-cy="name"
 						type="text"
 						name="nome"
 						size="small"
@@ -19,6 +20,7 @@ export default function DeclarationForm({
 						sx={{ mr: "15px", width: "100%" }}
 					/>
 					<TextField
+						data-cy="cpf"
 						type="text"
 						name="cpf"
 						size="small"
@@ -28,6 +30,7 @@ export default function DeclarationForm({
 						sx={{ mr: "15px", width: "100%" }}
 					/>
 					<TextField
+						data-cy="language"
 						type="text"
 						name="idioma"
 						size="small"
@@ -36,10 +39,13 @@ export default function DeclarationForm({
 						value={declarationDataInput.idioma}
 						sx={{ mr: "15px", width: "100%" }}
 					/>
-					<button type="submit">Imprimir</button>
+					<button type="submit" data-cy="print">
+						Imprimir
+					</button>
 				</div>
 				<div>
 					<TextField
+						data-cy="startDate"
 						type="text"
 						name="inicio"
 						size="small"
@@ -49,6 +55,7 @@ export default function DeclarationForm({
 						sx={{ mr: "15px", width: "100%" }}
 					/>
 					<TextField
+						data-cy="endDate"
 						type="text"
 						name="final"
 						size="small"
@@ -58,6 +65,7 @@ export default function DeclarationForm({
 						sx={{ mr: "15px", width: "100%" }}
 					/>
 					<TextField
+						data-cy="hour"
 						type="text"
 						name="horas"
 						size="small"
@@ -67,6 +75,7 @@ export default function DeclarationForm({
 						sx={{ mr: "15px", width: "100%" }}
 					/>
 					<TextField
+						data-cy="score"
 						type="text"
 						name="pontos"
 						size="small"
@@ -76,6 +85,7 @@ export default function DeclarationForm({
 						sx={{ mr: "15px", width: "100%" }}
 					/>
 					<TextField
+						data-cy="frequency"
 						type="text"
 						name="presença"
 						size="small"

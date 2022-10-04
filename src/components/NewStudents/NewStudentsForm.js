@@ -11,6 +11,7 @@ export default function NewStudentsForm({
 			<form onSubmit={signupNewStudent}>
 				<p>CADASTRO</p>
 				<TextField
+					data-cy="date"
 					type="text"
 					name="date"
 					size="small"
@@ -21,6 +22,7 @@ export default function NewStudentsForm({
 					required
 				/>
 				<TextField
+					data-cy="value"
 					type="text"
 					label="Valor da Mensalidade"
 					name="value"
@@ -32,6 +34,7 @@ export default function NewStudentsForm({
 				/>
 				<p>Dados do aluno:</p>
 				<TextField
+					data-cy="name"
 					type="text"
 					name="name"
 					size="small"
@@ -43,6 +46,7 @@ export default function NewStudentsForm({
 				/>
 				<Box>
 					<TextField
+						data-cy="cpfStudent"
 						type="text"
 						name="cpfStudent"
 						label="CPF"
@@ -53,6 +57,7 @@ export default function NewStudentsForm({
 						required
 					/>
 					<TextField
+						data-cy="rgStudent"
 						type="text"
 						name="rgStudent"
 						label="RG"
@@ -64,6 +69,7 @@ export default function NewStudentsForm({
 				</Box>
 				<p>Caso menor:</p>
 				<TextField
+					data-cy="nameResp"
 					type="text"
 					name="nameResp"
 					size="small"
@@ -74,6 +80,7 @@ export default function NewStudentsForm({
 				/>
 				<Box>
 					<TextField
+						data-cy="cpfResp"
 						type="text"
 						name="cpfResp"
 						size="small"
@@ -83,6 +90,7 @@ export default function NewStudentsForm({
 						sx={{ mb: "15px", mr: "20px", width: "100%" }}
 					/>
 					<TextField
+						data-cy="rgResp"
 						type="text"
 						name="rgResp"
 						size="small"
@@ -95,6 +103,7 @@ export default function NewStudentsForm({
 				<p>Dados de localização:</p>
 				<Box>
 					<TextField
+						data-cy="adress"
 						type="text"
 						name="adress"
 						size="small"
@@ -104,6 +113,7 @@ export default function NewStudentsForm({
 						sx={{ mb: "15px", mr: "20px", width: "100%" }}
 					/>
 					<TextField
+						data-cy="number"
 						type="text"
 						name="number"
 						size="small"
@@ -114,6 +124,7 @@ export default function NewStudentsForm({
 					/>
 				</Box>
 				<TextField
+					data-cy="district"
 					type="text"
 					size="small"
 					name="district"
@@ -132,6 +143,7 @@ export default function NewStudentsForm({
 					sx={{ mb: "15px" }}
 				/>
 				<TextField
+					data-cy="phone"
 					type="text"
 					name="phone"
 					size="small"
@@ -141,6 +153,7 @@ export default function NewStudentsForm({
 					sx={{ mb: "15px" }}
 				/>
 				<TextField
+					data-cy="email"
 					type="text"
 					name="email"
 					size="small"
@@ -149,7 +162,9 @@ export default function NewStudentsForm({
 					value={signupData.email}
 					sx={{ mb: "15px" }}
 				/>
-				<button type="submit">Cadastrar</button>
+				<button type="submit" data-cy="send">
+					Cadastrar
+				</button>
 			</form>
 		</>
 	);

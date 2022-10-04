@@ -11,6 +11,7 @@ export default function EditStudentForm({
 			<form onSubmit={editStudentInfo}>
 				<p>CADASTRO</p>
 				<TextField
+					data-cy="date"
 					type="text"
 					name="date"
 					size="small"
@@ -21,6 +22,7 @@ export default function EditStudentForm({
 					required
 				/>
 				<TextField
+					data-cy="value"
 					type="text"
 					size="small"
 					sx={{ mb: "15px" }}
@@ -32,6 +34,7 @@ export default function EditStudentForm({
 				/>
 				<p>Dados do aluno:</p>
 				<TextField
+					data-cy="name"
 					type="text"
 					name="name"
 					size="small"
@@ -43,6 +46,7 @@ export default function EditStudentForm({
 				/>
 				<Box>
 					<TextField
+						data-cy="cpfStudent"
 						type="text"
 						name="cpfStudent"
 						size="small"
@@ -52,6 +56,7 @@ export default function EditStudentForm({
 						value={editInformation.cpfStudent}
 					/>
 					<TextField
+						data-cy="rgStudent"
 						type="text"
 						name="rgStudent"
 						size="small"
@@ -63,6 +68,7 @@ export default function EditStudentForm({
 				</Box>
 				<p>Caso menor:</p>
 				<TextField
+					data-cy="nameResp"
 					type="text"
 					name="nameResp"
 					size="small"
@@ -73,6 +79,7 @@ export default function EditStudentForm({
 				/>
 				<Box>
 					<TextField
+						data-cy="cpfResp"
 						type="text"
 						name="cpfResp"
 						size="small"
@@ -82,6 +89,7 @@ export default function EditStudentForm({
 						value={editInformation.cpfResp}
 					/>
 					<TextField
+						data-cy="rgResp"
 						type="text"
 						name="rgResp"
 						size="small"
@@ -94,6 +102,7 @@ export default function EditStudentForm({
 				<p>Dados de localização:</p>
 				<Box>
 					<TextField
+						data-cy="adress"
 						type="text"
 						name="adress"
 						size="small"
@@ -103,6 +112,7 @@ export default function EditStudentForm({
 						value={editInformation.adress}
 					/>
 					<TextField
+						data-cy="number"
 						type="text"
 						name="number"
 						size="small"
@@ -113,6 +123,7 @@ export default function EditStudentForm({
 					/>
 				</Box>
 				<TextField
+					data-cy="district"
 					type="text"
 					name="district"
 					size="small"
@@ -122,6 +133,7 @@ export default function EditStudentForm({
 					value={editInformation.district}
 				/>
 				<TextField
+					data-cy="city"
 					type="text"
 					name="city"
 					size="small"
@@ -131,6 +143,7 @@ export default function EditStudentForm({
 					value={editInformation.city}
 				/>
 				<TextField
+					data-cy="phone"
 					type="text"
 					name="phone"
 					size="small"
@@ -140,6 +153,7 @@ export default function EditStudentForm({
 					value={editInformation.phone}
 				/>
 				<TextField
+					data-cy="email"
 					type="text"
 					name="email"
 					size="small"
@@ -148,7 +162,9 @@ export default function EditStudentForm({
 					onChange={(e) => handleSignupForm(e)}
 					value={editInformation.email}
 				/>
-				<button type="submit">Editar</button>
+				<button type="submit" data-cy="send">
+					Editar
+				</button>
 			</form>
 		</>
 	);

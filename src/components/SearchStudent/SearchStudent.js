@@ -70,7 +70,9 @@ export default function SearchStudent({ setRenderFinds, renderFinds }) {
 						onChange={(e) => handleFormSearch(e)}
 						sx={{ height: "30px", width: "100%" }}
 					/>
-					<button type="submit">Pesquisar</button>
+					<button type="submit" data-cy="search">
+						Pesquisar
+					</button>
 				</form>
 				<ContainerStudents>
 					{renderFinds.length !== 0

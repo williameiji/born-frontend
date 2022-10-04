@@ -9,6 +9,7 @@ export default function ReceiptForm({
 		<>
 			<form>
 				<TextField
+					data-cy="name"
 					type="text"
 					name="nome"
 					size="small"
@@ -18,6 +19,7 @@ export default function ReceiptForm({
 					sx={{ mr: "15px", width: "100%" }}
 				/>
 				<TextField
+					data-cy="cpf"
 					type="text"
 					name="cpf"
 					size="small"
@@ -27,6 +29,7 @@ export default function ReceiptForm({
 					sx={{ mr: "15px", width: "100%" }}
 				/>
 				<TextField
+					data-cy="value"
 					type="text"
 					name="valor"
 					size="small"
@@ -36,6 +39,7 @@ export default function ReceiptForm({
 					sx={{ mr: "15px", width: "100%" }}
 				/>
 				<TextField
+					data-cy="reference"
 					type="text"
 					name="ref"
 					size="small"
@@ -44,7 +48,9 @@ export default function ReceiptForm({
 					value={receiptDataInput.ref}
 					sx={{ mr: "15px", width: "100%" }}
 				/>
-				<button onClick={print}>Imprimir</button>
+				<button onClick={print} data-cy="print">
+					Imprimir
+				</button>
 			</form>
 		</>
 	);

@@ -51,11 +51,13 @@ export default function NewStudentsScreen() {
 		e.preventDefault();
 		setIsModalOpen(true);
 
+		//disable for tests (must be a valid 'cpf')
 		if (signupData.cpfStudent !== "" && !TestaCPF(signupData.cpfStudent))
 			return alert("CPF do aluno inválido");
 
 		if (signupData.cpfResp !== "" && !TestaCPF(signupData.cpfResp))
 			return alert("CPF do responsável inválido");
+		//disable for tests (must be a valid 'cpf')
 
 		if (userData) {
 			try {

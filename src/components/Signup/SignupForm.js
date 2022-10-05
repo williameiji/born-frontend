@@ -33,7 +33,7 @@ export default function SignupForm({ handleFormSignup, signup }) {
 					onChange={(e) => handleFormSignup(e)}
 					sx={{ mb: "15px" }}
 				/>
-				<Button variant="outlined" size="medium" type="submit" data-cy="signup">
+				<Button variant="outlined" size="medium" type="submit" data-cy="submit">
 					Cadastrar
 				</Button>
 			</form>

@@ -24,7 +24,7 @@ export default function LoginForm({ handleFormLogin, login }) {
 					onChange={(e) => handleFormLogin(e)}
 					sx={{ mb: "15px" }}
 				/>
-				<Button variant="outlined" size="medium" type="submit" data-cy="login">
+				<Button variant="outlined" size="medium" type="submit" data-cy="submit">
 					Entrar
 				</Button>
 			</form>

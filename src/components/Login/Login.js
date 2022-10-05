@@ -59,7 +59,9 @@ export default function Login() {
 				handleFormLogin={handleFormLogin}
 				login={login}
 			/>
-			<SignupText onClick={goToSignup}>Cadastro de administradores</SignupText>
+			<SignupText onClick={goToSignup} data-cy="signup">
+				Cadastro de administradores
+			</SignupText>
 		</AuthScreen>
 	);
 }

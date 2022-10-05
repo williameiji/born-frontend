@@ -1,5 +1,9 @@
 import { adminFactory } from "../factories/adminFactory";
 
+beforeEach(() => {
+	cy.truncate();
+});
+
 describe("Test admin login", () => {
 	it("Test admin login with valid params", async () => {
 		const admin = await adminFactory();

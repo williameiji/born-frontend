@@ -134,6 +134,7 @@ export default function NewStudentsForm({
 					sx={{ mb: "15px" }}
 				/>
 				<TextField
+					data-cy="city"
 					type="text"
 					name="city"
 					size="small"

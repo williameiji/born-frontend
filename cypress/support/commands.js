@@ -30,3 +30,12 @@ Cypress.Commands.add("truncate", () => {
 Cypress.Commands.add("addAdmin", (admin) => {
 	cy.request("POST", "http://localhost:5001/signup", admin);
 });
+
+Cypress.Commands.add("loginAdmin", (admin) => {
+	const token = cy
+		.request("POST", "http://localhost:5001/login", admin)
+		.then((response) => {
+			window.localStorage.setItem("token", response.body);
+		});
+	return token;
+});

@@ -70,11 +70,11 @@ export default function SearchStudent({ setRenderFinds, renderFinds }) {
 						onChange={(e) => handleFormSearch(e)}
 						sx={{ height: "30px", width: "100%" }}
 					/>
-					<button type="submit" data-cy="search">
+					<button type="submit" data-cy="submit">
 						Pesquisar
 					</button>
 				</form>
-				<ContainerStudents>
+				<ContainerStudents data-cy="students">
 					{renderFinds.length !== 0
 						? renderFinds.map((element, index) => (
 								<RenderStudent

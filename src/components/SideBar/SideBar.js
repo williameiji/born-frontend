@@ -30,10 +30,18 @@ export default function SideBar() {
 	return (
 		<>
 			<Box>
-				<button onClick={navigateToSearch}>Pesquisar Aluno</button>
-				<button onClick={navigateToSignupStudents}>Cadastrar Aluno</button>
-				<button onClick={navigateToReceipt}>Gerar Recibo</button>
-				<button onClick={navigateToDeclaration}>Gerar Declaração</button>
+				<button onClick={navigateToSearch} data-cy="search">
+					Pesquisar Aluno
+				</button>
+				<button onClick={navigateToSignupStudents} data-cy="newStudent">
+					Cadastrar Aluno
+				</button>
+				<button onClick={navigateToReceipt} data-cy="receipt">
+					Gerar Recibo
+				</button>
+				<button onClick={navigateToDeclaration} data-cy="declaration">
+					Gerar Declaração
+				</button>
 			</Box>
 			<BoxAccordion>
 				<Accordion sx={{ mb: "5px", width: "100%" }}>

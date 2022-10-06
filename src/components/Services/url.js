@@ -13,6 +13,7 @@ const url = {
 	searchStudent: `${BASE_URL}/students/search`,
 	editInfo: `${BASE_URL}/students/edit`,
 	deleteStudent: `${BASE_URL}/students`,
+	payment: `${BASE_URL}/payments`,
 };
 
 export default url;

@@ -7,13 +7,14 @@ import Login from "./Login/Login";
 import Home from "./Home/Home";
 import SearchStudent from "./SearchStudent/SearchStudent";
 import NewStudentsScreen from "./NewStudents/NewStudentsScreen";
-import ShowInformation from "./SearchStudent/ShowInformation";
 import EditStudentInformation from "./EditStudentInformation/EditStudentInformation";
 import Receipt from "./Receipt/Receipt";
 import SignupScreen from "./Signup/SignupScreen";
 import Declaration from "./Declaration/Declaration";
 import UserContext from "./Contexts/UserContext";
 import ModalContext from "./Contexts/ModalContext";
+import MenuScreen from "./SearchStudent/MenuScreen";
+import PaymentScreen from "./Payment/PaymentScreen";
 
 export default function App() {
 	const [renderFinds, setRenderFinds] = useState([]);
@@ -46,7 +47,7 @@ export default function App() {
 							<Route
 								path="/studentinfo/:id"
 								element={
-									<ShowInformation
+									<MenuScreen
 										renderFinds={renderFinds}
 										setEditInformation={setEditInformation}
 									/>
@@ -64,6 +65,7 @@ export default function App() {
 							/>
 							<Route path="/receipt" element={<Receipt />} />
 							<Route path="/declaration" element={<Declaration />} />
+							<Route path="/payment" element={<PaymentScreen />} />
 						</Routes>
 					</ModalContext.Provider>
 				</UserContext.Provider>

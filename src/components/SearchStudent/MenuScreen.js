@@ -7,6 +7,7 @@ import TabPanel from "@mui/lab/TabPanel";
 
 import Home from "../Home/Home";
 import ShowInformation from "./ShowInformation";
+import ShowPayments from "./ShowPayments";
 
 export default function MenuScreen({ renderFinds, setEditInformation }) {
 	const [value, setValue] = useState("1");
@@ -30,7 +31,9 @@ export default function MenuScreen({ renderFinds, setEditInformation }) {
 							setEditInformation={setEditInformation}
 						/>
 					</TabPanel>
-					<TabPanel value="2">Item Two</TabPanel>
+					<TabPanel value="2">
+						<ShowPayments renderFinds={renderFinds} />
+					</TabPanel>
 				</TabContext>
 			</Box>
 		</Home>

@@ -27,11 +27,18 @@ export default function SideBar() {
 		navigate("/declaration");
 	}
 
+	function navigateToPayment() {
+		navigate("/payment");
+	}
+
 	return (
 		<>
 			<Box>
 				<button onClick={navigateToSearch} data-cy="search">
 					Pesquisar Aluno
+				</button>
+				<button onClick={navigateToPayment} data-cy="payment">
+					Lançamento de pagamento
 				</button>
 				<button onClick={navigateToSignupStudents} data-cy="newStudent">
 					Cadastrar Aluno
@@ -58,6 +65,9 @@ export default function SideBar() {
 					>
 						<Button variant="text" onClick={navigateToSearch}>
 							Pesquisar Aluno
+						</Button>
+						<Button variant="text" onClick={navigateToPayment}>
+							Lançamento de pagamento
 						</Button>
 						<Button variant="text" onClick={navigateToSignupStudents}>
 							Cadastrar Aluno

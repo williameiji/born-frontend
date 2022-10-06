@@ -75,16 +75,18 @@ export default function SearchStudent({ setRenderFinds, renderFinds }) {
 					</button>
 				</form>
 				<ContainerStudents data-cy="students">
-					{renderFinds.length !== 0
-						? renderFinds.map((element, index) => (
-								<RenderStudent
-									key={index}
-									onClick={() => showStudentInformation(index)}
-								>
-									{element.name}
-								</RenderStudent>
-						  ))
-						: null}
+					{renderFinds.length !== 0 ? (
+						renderFinds.map((element, index) => (
+							<RenderStudent
+								key={index}
+								onClick={() => showStudentInformation(index)}
+							>
+								{element.name}
+							</RenderStudent>
+						))
+					) : (
+						<Text>Pesquise um aluno por nome</Text>
+					)}
 				</ContainerStudents>
 			</Box>
 		</Home>
@@ -129,9 +131,14 @@ const Box = styled.div`
 	}
 `;
 
+const Text = styled.p`
+	text-align: center;
+	color: lightgray;
+`;
+
 const ContainerStudents = styled.div`
 	width: 100%;
-	height: 50vh;
+	height: 100%;
 	border: 1px solid #87ceeb;
 	border-radius: 5px;
 	overflow: auto;
@@ -147,4 +154,8 @@ const RenderStudent = styled.div`
 	border: 1px solid lightgray;
 	border-radius: 5px;
 	margin-bottom: 5px;
+
+	:hover {
+		cursor: pointer;
+	}
 `;

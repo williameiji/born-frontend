@@ -61,7 +61,7 @@ export default function NewStudentsScreen() {
 
 		if (userData) {
 			try {
-				await axios.post(url.addStudent, signupData, config);
+				await axios.post(url.students, signupData, config);
 				setModalStatus({ status: "Sucesso!", message: "Cadastro efetuado!" });
 
 				setTimeout(() => {

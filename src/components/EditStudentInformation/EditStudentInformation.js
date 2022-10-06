@@ -50,7 +50,7 @@ export default function EditStudentInformation({
 
 		if (userData) {
 			try {
-				await axios.put(url.editInfo, editInformation, config);
+				await axios.put(`${url.students}/edit`, editInformation, config);
 				setModalStatus({ status: "Sucesso!", message: "Cadastro editado!" });
 
 				setTimeout(() => {
@@ -84,7 +84,7 @@ export default function EditStudentInformation({
 const Box = styled.div`
 	background-color: white;
 	width: 100%;
-	height: 75vh;
+	height: 100%;
 	margin-left: 5px;
 	border-radius: 5px;
 	padding: 20px;

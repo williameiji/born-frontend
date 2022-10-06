@@ -38,7 +38,7 @@ export default function SearchStudent({ setRenderFinds, renderFinds }) {
 
 		if (userData) {
 			try {
-				const data = await axios.get(url.searchStudent + "/" + searchFor);
+				const data = await axios.get(url.students + `/search/${searchFor}`);
 
 				setIsModalOpen(false);
 

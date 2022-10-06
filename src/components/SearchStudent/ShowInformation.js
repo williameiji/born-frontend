@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { useState } from "react";
 import { Button } from "@mui/material";
 
-import Home from "../Home/Home";
 import mCPF from "../Shared/mCPF";
 import DeleteModal from "./DeleteModal";
 
@@ -22,7 +21,7 @@ export default function ShowInformation({ renderFinds, setEditInformation }) {
 	}
 
 	return (
-		<Home>
+		<>
 			<DeleteModal
 				isModalOpen={isModalOpen}
 				setIsModalOpen={setIsModalOpen}
@@ -68,7 +67,7 @@ export default function ShowInformation({ renderFinds, setEditInformation }) {
 					"Sem informação"
 				)}
 			</Box>
-		</Home>
+		</>
 	);
 }
 

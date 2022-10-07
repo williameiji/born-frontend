@@ -19,7 +19,7 @@ export default function AsynchronousInput({ getStudentInformation }) {
 		}
 
 		(async () => {
-			const response = await axios.get(url.searchStudent + "/all");
+			const response = await axios.get(url.students + "/search/all");
 
 			if (active) {
 				setOptions(response.data);

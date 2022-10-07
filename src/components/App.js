@@ -15,6 +15,7 @@ import UserContext from "./Contexts/UserContext";
 import ModalContext from "./Contexts/ModalContext";
 import MenuScreen from "./SearchStudent/MenuScreen";
 import PaymentScreen from "./Payment/PaymentScreen";
+import InitialScreen from "./InitialScreen/InitialScreen";
 
 export default function App() {
 	const [renderFinds, setRenderFinds] = useState([]);
@@ -30,7 +31,8 @@ export default function App() {
 				<UserContext.Provider value={{ userData, setUserData }}>
 					<ModalContext.Provider value={{ modalStatus, setModalStatus }}>
 						<Routes>
-							<Route path="/" element={<Login />} />
+							<Route path="/" element={<InitialScreen />} />
+							<Route path="/login" element={<Login />} />
 							<Route path="/signup" element={<SignupScreen />} />
 							<Route path="/home" element={<Home />} />
 

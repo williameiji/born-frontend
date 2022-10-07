@@ -5,10 +5,11 @@ import { useContext } from "react";
 import ModalContext from "../Contexts/ModalContext";
 
 export default function ModalGeneric({ isModalOpen, setIsModalOpen }) {
-	const { modalStatus } = useContext(ModalContext);
+	const { modalStatus, setModalStatus } = useContext(ModalContext);
 
 	function closeModal() {
 		setIsModalOpen(false);
+		setModalStatus(null);
 	}
 
 	return (

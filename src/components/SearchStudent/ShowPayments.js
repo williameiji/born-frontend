@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 import url from "../Services/url";
 import ModalGeneric from "../Shared/ModalGeneric";
@@ -10,6 +11,7 @@ export default function ShowPayments({ renderFinds }) {
 	const [renderPayments, setRenderPayments] = useState(null);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const { setModalStatus } = useContext(ModalContext);
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		setIsModalOpen(true);
@@ -24,8 +26,11 @@ export default function ShowPayments({ renderFinds }) {
 			} catch (error) {
 				setModalStatus({
 					status: "Erro:",
-					message: error.response.data,
+					message: error.response?.data,
 				});
+				setTimeout(() => {
+					navigate("/students");
+				}, 2000);
 			}
 		})();
 	}, []);
@@ -82,4 +87,9 @@ const RenderPayments = styled.div`
 	border: 1px solid lightgray;
 	border-radius: 5px;
 	margin-bottom: 5px;
+	padding: 0 10px;
+
+	p {
+		width: 100%;
+	}
 `;

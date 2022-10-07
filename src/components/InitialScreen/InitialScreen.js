@@ -18,7 +18,7 @@ export default function InitialScreen() {
 
 		const encodedMessage = encodeURIComponent(message);
 
-		window.open(`https://wa.me/5514997235927?text=${encodedMessage}`);
+		window.open(`https://wa.me/5514999999999?text=${encodedMessage}`);
 	}
 
 	return (
@@ -41,9 +41,9 @@ export default function InitialScreen() {
 				</Container>
 				<Footer>
 					<div>
-						<p>Avenida Santo Antônio nº 1562</p>
-						<p>Marilía - SP</p>
-						<p>(14) 3454-2853 / (14) 99723-5927</p>
+						<p>Avenida Exemplo nº 1000</p>
+						<p>Exemplo - SP</p>
+						<p>(14) 9999-9999 / (14) 99999-9999</p>
 					</div>
 					<div>
 						<img

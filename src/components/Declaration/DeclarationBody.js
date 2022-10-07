@@ -33,8 +33,8 @@ export const DeclarationBody = React.forwardRef((props, ref) => {
 					<p>Sem mais para o momento,</p>
 					<p>Atenciosamente,</p>
 					<p>__________________________________________</p>
-					<p>Rocha Centro de Idiomas LTDA</p>
-					<p>CNPJ 09.586.161/0001-83</p>
+					<p>Exemplo LTDA</p>
+					<p>CNPJ 00.000.000/0001-00</p>
 				</Assign>
 			</ContainerDeclaration>
 		</div>

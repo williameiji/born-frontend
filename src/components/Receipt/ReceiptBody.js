@@ -14,10 +14,10 @@ export const ReceiptBody = React.forwardRef((props, ref) => {
 					<img src={logo} alt="logo" />
 					<div>
 						<p>Rocha Centro de Idiomas LTDA</p>
-						<p>CNPJ 09.586.161/0001-83</p>
-						<p>Avenida Santo Antônio nº 1562</p>
-						<p>Marilía - SP</p>
-						<p>3454-2853 / 99723-5927</p>
+						<p>CNPJ 00.000.000/0001-00</p>
+						<p>Avenida Exemplo nº 100</p>
+						<p>Exemplo - SP</p>
+						<p>9999-9999 / 99999-9999</p>
 					</div>
 				</Top>
 				<Body>
@@ -42,8 +42,8 @@ export const ReceiptBody = React.forwardRef((props, ref) => {
 				</Body>
 				<Assign>
 					<p>__________________________________________</p>
-					<p>Rocha Centro de Idiomas LTDA</p>
-					<p>CNPJ 09.586.161/0001-83</p>
+					<p>Exemplo LTDA</p>
+					<p>CNPJ 00.000.000/0001-00</p>
 					<p>{`Marilía-SP - ${dayjs().format("DD/MM/YYYY HH:mm:ss")}`}</p>
 				</Assign>
 			</ContainerReceipt>

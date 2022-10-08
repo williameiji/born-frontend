@@ -8,7 +8,7 @@ import ModalGeneric from "../Shared/ModalGeneric";
 import ModalContext from "../Contexts/ModalContext";
 
 export default function ShowPayments({ renderFinds }) {
-	const [renderPayments, setRenderPayments] = useState(null);
+	const [renderPayments, setRenderPayments] = useState([]);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const { setModalStatus } = useContext(ModalContext);
 	const navigate = useNavigate();
@@ -40,7 +40,7 @@ export default function ShowPayments({ renderFinds }) {
 			<ModalGeneric isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
 			<Box>
 				<ContainerPayments>
-					{renderPayments
+					{renderPayments.length
 						? renderPayments.map((payment, index) => (
 								<RenderPayments key={index}>
 									<p>{payment.reference.toUpperCase()}</p>

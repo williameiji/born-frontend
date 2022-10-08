@@ -44,6 +44,7 @@ export default function PaymentScreen() {
 				});
 
 				setTimeout(() => {
+					setIsModalOpen(false);
 					navigate("/students");
 				}, 2000);
 			} catch (err) {

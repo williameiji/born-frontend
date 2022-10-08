@@ -49,7 +49,7 @@ export default function SignupScreen() {
 	}
 
 	function goToLogin() {
-		navigate("/");
+		navigate("/login");
 	}
 
 	return (

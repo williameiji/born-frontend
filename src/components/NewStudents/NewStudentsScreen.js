@@ -52,11 +52,15 @@ export default function NewStudentsScreen() {
 		setIsModalOpen(true);
 
 		//disable for tests (must be a valid 'cpf')
-		if (signupData.cpfStudent !== "" && !TestaCPF(signupData.cpfStudent))
+		if (signupData.cpfStudent !== "" && !TestaCPF(signupData.cpfStudent)) {
+			setIsModalOpen(false);
 			return alert("CPF do aluno inválido");
+		}
 
-		if (signupData.cpfResp !== "" && !TestaCPF(signupData.cpfResp))
+		if (signupData.cpfResp !== "" && !TestaCPF(signupData.cpfResp)) {
+			setIsModalOpen(false);
 			return alert("CPF do responsável inválido");
+		}
 		//disable for tests (must be a valid 'cpf')
 
 		if (userData) {

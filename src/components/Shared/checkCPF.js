@@ -2,7 +2,7 @@ function TestaCPF(strCPF) {
 	let sum;
 	let rest;
 	sum = 0;
-	if (strCPF === "00000000000") return false;
+	if (strCPF === "00000000000") return true;
 
 	for (let i = 1; i <= 9; i++)
 		sum = sum + parseInt(strCPF.substring(i - 1, i)) * (11 - i);

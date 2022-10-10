@@ -6,7 +6,11 @@ import { Button } from "@mui/material";
 import mCPF from "../Shared/mCPF";
 import DeleteModal from "./DeleteModal";
 
-export default function ShowInformation({ renderFinds, setEditInformation }) {
+export default function ShowInformation({
+	renderFinds,
+	setEditInformation,
+	setRenderFinds,
+}) {
 	const params = useParams();
 	const navigate = useNavigate();
 	const [isModalOpen, setIsModalOpen] = useState(false);
@@ -26,6 +30,7 @@ export default function ShowInformation({ renderFinds, setEditInformation }) {
 				isModalOpen={isModalOpen}
 				setIsModalOpen={setIsModalOpen}
 				student={renderFinds[params.id]}
+				setRenderFinds={setRenderFinds}
 			/>
 			<Box>
 				{renderFinds.length ? (

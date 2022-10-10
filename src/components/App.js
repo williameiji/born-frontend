@@ -45,13 +45,17 @@ export default function App() {
 									/>
 								}
 							/>
-							<Route path="/newstudent" element={<NewStudentsScreen />} />
+							<Route
+								path="/newstudent"
+								element={<NewStudentsScreen setRenderFinds={setRenderFinds} />}
+							/>
 							<Route
 								path="/studentinfo/:id"
 								element={
 									<MenuScreen
 										renderFinds={renderFinds}
 										setEditInformation={setEditInformation}
+										setRenderFinds={setRenderFinds}
 									/>
 								}
 							/>

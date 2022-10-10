@@ -9,7 +9,12 @@ import axios from "axios";
 import url from "../Services/url";
 import UserContext from "../Contexts/UserContext";
 
-export default function DeleteModal({ isModalOpen, setIsModalOpen, student }) {
+export default function DeleteModal({
+	isModalOpen,
+	setIsModalOpen,
+	student,
+	setRenderFinds,
+}) {
 	const [loading, setLoading] = useState(false);
 	const [modalStatus, setModalStatus] = useState({
 		status: "Deseja remover esse aluno?",
@@ -37,6 +42,7 @@ export default function DeleteModal({ isModalOpen, setIsModalOpen, student }) {
 			axios
 				.delete(`${url.students}/${student._id}`, config)
 				.then((response) => {
+					setRenderFinds([]);
 					setIsModalOpen(false);
 					navigate("/students");
 				});

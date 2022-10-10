@@ -9,7 +9,11 @@ import Home from "../Home/Home";
 import ShowInformation from "./ShowInformation";
 import ShowPayments from "./ShowPayments";
 
-export default function MenuScreen({ renderFinds, setEditInformation }) {
+export default function MenuScreen({
+	renderFinds,
+	setEditInformation,
+	setRenderFinds,
+}) {
 	const [value, setValue] = useState("1");
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
@@ -29,6 +33,7 @@ export default function MenuScreen({ renderFinds, setEditInformation }) {
 						<ShowInformation
 							renderFinds={renderFinds}
 							setEditInformation={setEditInformation}
+							setRenderFinds={setRenderFinds}
 						/>
 					</TabPanel>
 					<TabPanel value="2">

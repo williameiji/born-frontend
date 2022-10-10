@@ -39,17 +39,20 @@ export default function EditStudentInformation({
 
 		setIsModalOpen(true);
 
-		if (
-			editInformation.cpfStudent !== "" &&
-			!TestaCPF(editInformation.cpfStudent)
-		)
-			return alert("CPF do aluno inválido");
-
-		if (editInformation.cpfResp !== "" && !TestaCPF(editInformation.cpfResp))
-			return alert("CPF do responsável inválido");
-
 		if (userData) {
 			try {
+				if (
+					editInformation.cpfStudent !== "" &&
+					!TestaCPF(editInformation.cpfStudent)
+				)
+					throw { status: "Error:", message: "CPF do aluno inválido" };
+
+				if (
+					editInformation.cpfResp !== "" &&
+					!TestaCPF(editInformation.cpfResp)
+				)
+					throw { status: "Error:", message: "CPF do responsável inválido" };
+
 				await axios.put(`${url.students}/edit`, editInformation, config);
 				setModalStatus({ status: "Sucesso!", message: "Cadastro editado!" });
 
@@ -59,7 +62,10 @@ export default function EditStudentInformation({
 					setEditInformation(null);
 				}, 2000);
 			} catch (err) {
-				setModalStatus({ status: "Error:", message: err.response.data });
+				setModalStatus({
+					status: "Error:",
+					message: err.response?.data || err.message,
+				});
 			}
 		} else {
 			alert("Você precisa estar logado!");

@@ -11,7 +11,7 @@ import UserContext from "../Contexts/UserContext";
 import ModalContext from "../Contexts/ModalContext";
 import ModalGeneric from "../Shared/ModalGeneric";
 
-export default function NewStudentsScreen() {
+export default function NewStudentsScreen({ setRenderFinds }) {
 	const [signupData, setSignupData] = useState({
 		date: "",
 		value: "",
@@ -51,28 +51,30 @@ export default function NewStudentsScreen() {
 		e.preventDefault();
 		setIsModalOpen(true);
 
-		//disable for tests (must be a valid 'cpf')
-		if (signupData.cpfStudent !== "" && !TestaCPF(signupData.cpfStudent)) {
-			setIsModalOpen(false);
-			return alert("CPF do aluno inválido");
-		}
-
-		if (signupData.cpfResp !== "" && !TestaCPF(signupData.cpfResp)) {
-			setIsModalOpen(false);
-			return alert("CPF do responsável inválido");
-		}
-		//disable for tests (must be a valid 'cpf')
-
 		if (userData) {
 			try {
+				//disable for tests (must be a valid 'cpf')
+				if (signupData.cpfStudent !== "" && !TestaCPF(signupData.cpfStudent)) {
+					throw { status: "Error:", message: "CPF do aluno inválido" };
+				}
+
+				if (signupData.cpfResp !== "" && !TestaCPF(signupData.cpfResp)) {
+					throw { status: "Error:", message: "CPF do responsável inválido" };
+				}
+				//disable for tests (must be a valid 'cpf')
+
 				await axios.post(url.students, signupData, config);
 				setModalStatus({ status: "Sucesso!", message: "Cadastro efetuado!" });
+				setRenderFinds([]);
 
 				setTimeout(() => {
 					navigate("/students");
 				}, 2000);
 			} catch (err) {
-				setModalStatus({ status: "Error:", message: err.response.data });
+				setModalStatus({
+					status: "Error:",
+					message: err.response?.data || err.message,
+				});
 			}
 		} else {
 			alert("Você precisa estar logado!");

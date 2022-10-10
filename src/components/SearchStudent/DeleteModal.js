@@ -35,7 +35,7 @@ export default function DeleteModal({ isModalOpen, setIsModalOpen, student }) {
 		setLoading(true);
 		try {
 			axios
-				.delete(`${url.deleteStudent}/${student._id}`, config)
+				.delete(`${url.students}/${student._id}`, config)
 				.then((response) => {
 					setIsModalOpen(false);
 					navigate("/students");

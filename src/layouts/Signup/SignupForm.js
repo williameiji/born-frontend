@@ -1,7 +1,7 @@
 import InputForms from "../../components/InputForms";
 import ButtonForms from "../../components/ButtonForms";
 
-export default function LoginForm({ handleFormLogin, submitForm }) {
+export default function SignupForm({ handleFormSignup, submitForm }) {
 	return (
 		<>
 			<form onSubmit={submitForm}>
@@ -10,7 +10,7 @@ export default function LoginForm({ handleFormLogin, submitForm }) {
 					name="name"
 					label="Nome"
 					variant="outlined"
-					onChange={(e) => handleFormLogin(e)}
+					onChange={(e) => handleFormSignup(e)}
 					css={{ mb: "15px" }}
 				/>
 				<InputForms
@@ -19,10 +19,18 @@ export default function LoginForm({ handleFormLogin, submitForm }) {
 					label="Senha"
 					variant="outlined"
 					type="password"
-					onChange={(e) => handleFormLogin(e)}
+					onChange={(e) => handleFormSignup(e)}
 					css={{ mb: "15px" }}
 				/>
-				<ButtonForms text="Entrar" type="submit" data-cy="submit" />
+				<InputForms
+					cyId="key"
+					label="Chave da empresa"
+					name="key"
+					variant="outlined"
+					onChange={(e) => handleFormSignup(e)}
+					css={{ mb: "15px" }}
+				/>
+				<ButtonForms text="Cadastrar" type="submit" data-cy="submit" />
 			</form>
 		</>
 	);

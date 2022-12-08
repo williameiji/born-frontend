@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
 import LoginForm from "./LoginForm";
-import ModalGeneric from "../Shared/ModalGeneric";
+import ModalGeneric from "../../shared/ModalGeneric";
 
 export default function Login({
 	setIsModalOpen,
 	isModalOpen,
 	loginDataInput,
 	handleFormLogin,
-	login,
+	submitForm,
 	goToSignup,
 }) {
 	return (
@@ -17,7 +17,7 @@ export default function Login({
 			<LoginForm
 				loginDataInput={loginDataInput}
 				handleFormLogin={handleFormLogin}
-				login={login}
+				submitForm={submitForm}
 			/>
 			<SignupText onClick={goToSignup} data-cy="signup">
 				Cadastro de administradores

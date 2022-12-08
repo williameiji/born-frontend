@@ -7,6 +7,7 @@ export default function ButtonForms({
 	type,
 	cyId,
 	onClick,
+	css,
 }) {
 	return (
 		<Button
@@ -15,6 +16,7 @@ export default function ButtonForms({
 			type={type}
 			data-cy={cyId}
 			onClick={onClick}
+			sx={css}
 		>
 			{text}
 		</Button>

@@ -36,6 +36,7 @@ export default function Signup() {
 
 			setTimeout(() => {
 				navigate("/login");
+				setModalStatus(null);
 			}, 2000);
 		} catch (err) {
 			setModalStatus({ status: "Erro:", message: err.response.data });

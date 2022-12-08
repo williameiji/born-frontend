@@ -39,8 +39,6 @@ export default function SearchStudent({ setRenderFinds, renderFinds }) {
 
 				setIsModalOpen(false);
 
-				console.log(data);
-
 				setRenderFinds(data);
 			} catch (err) {
 				setModalStatus({ status: "error", message: err.response.data });

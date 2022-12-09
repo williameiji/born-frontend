@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import Home from "./Index";
 import TestaCPF from "../../shared/checkCPF";
-import NewStudent from "../../layouts/NewStudents/NewStudent";
+import NewStudent from "../../layouts/Dashboard/NewStudents/NewStudent";
 import ModalContext from "../../contexts/ModalContext";
 import ModalGeneric from "../../shared/ModalGeneric";
 import { addStudent } from "../../services/studentsApi";

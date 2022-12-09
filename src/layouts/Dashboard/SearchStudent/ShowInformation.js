@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import { Button } from "@mui/material";
 
-import mCPF from "../../shared/mCPF";
+import mCPF from "../../../shared/mCPF";
 import DeleteModal from "./DeleteModal";
 
 export default function ShowInformation({

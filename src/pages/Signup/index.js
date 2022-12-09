@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import AuthLayout from "../../layouts/AuthLayout";
-import { default as SignupLayout } from "../../layouts/Signup/Signup";
+import { default as SignupLayout } from "../../layouts/AuthLayout/Signup/Signup";
 import ModalContext from "../../contexts/ModalContext";
 import { signup } from "../../services/authApi";
 

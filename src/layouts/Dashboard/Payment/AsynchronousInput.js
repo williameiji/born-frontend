@@ -3,7 +3,7 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import CircularProgress from "@mui/material/CircularProgress";
 
-import { getAllStudents } from "../../services/studentsApi";
+import { getAllStudents } from "../../../services/studentsApi";
 
 export default function AsynchronousInput({ getStudentInformation }) {
 	const [open, setOpen] = useState(false);

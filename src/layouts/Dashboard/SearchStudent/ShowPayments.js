@@ -2,9 +2,9 @@ import styled from "styled-components";
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
-import ModalGeneric from "../../shared/ModalGeneric";
-import ModalContext from "../../contexts/ModalContext";
-import { getPaymentById } from "../../services/paymentsApi";
+import ModalGeneric from "../../../shared/ModalGeneric";
+import ModalContext from "../../../contexts/ModalContext";
+import { getPaymentById } from "../../../services/paymentsApi";
 
 export default function ShowPayments({ renderFinds, params }) {
 	const [renderPayments, setRenderPayments] = useState([]);

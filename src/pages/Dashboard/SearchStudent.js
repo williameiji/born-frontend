@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Home from "./Index";
 import ModalContext from "../../contexts/ModalContext";
 import ModalGeneric from "../../shared/ModalGeneric";
-import InitialSearch from "../../layouts/SearchStudent/InitialSearch";
+import InitialSearch from "../../layouts/Dashboard/SearchStudent/InitialSearch";
 import { getStudentByName } from "../../services/studentsApi";
 import { getToken } from "../../shared/getToken";
 

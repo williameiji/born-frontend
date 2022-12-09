@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
 
 import Home from "./Index";
-import ReceiptScreen from "../../layouts/Receipt/ReceiptScreen";
+import ReceiptScreen from "../../layouts/Dashboard/Receipt/ReceiptScreen";
 import { getToken } from "../../shared/getToken";
 
 export default function Receipt() {

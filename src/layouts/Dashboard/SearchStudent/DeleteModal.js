@@ -5,8 +5,8 @@ import Modal from "react-modal";
 import LoadingButton from "@mui/lab/LoadingButton";
 import Button from "@mui/material/Button";
 
-import UserContext from "../../contexts/UserContext";
-import { removeStudent } from "../../services/studentsApi";
+import UserContext from "../../../contexts/UserContext";
+import { removeStudent } from "../../../services/studentsApi";
 
 export default function DeleteModal({
 	isModalOpen,

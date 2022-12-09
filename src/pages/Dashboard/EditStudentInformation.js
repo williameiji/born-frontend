@@ -4,7 +4,7 @@ import { useContext, useState } from "react";
 
 import Home from "./Index";
 import TestaCPF from "../../shared/checkCPF";
-import EditStudentForm from "../../layouts/EditStudentInformation/EditStudentForm";
+import EditStudentForm from "../../layouts/Dashboard/EditStudentInformation/EditStudentForm";
 import ModalGeneric from "../../shared/ModalGeneric";
 import ModalContext from "../../contexts/ModalContext";
 import { editStudent } from "../../services/studentsApi";

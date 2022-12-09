@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import LoginForm from "./LoginForm";
-import ModalGeneric from "../../shared/ModalGeneric";
+import ModalGeneric from "../../../shared/ModalGeneric";
 
 export default function Login({
 	setIsModalOpen,

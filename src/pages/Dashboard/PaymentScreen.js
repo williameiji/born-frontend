@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
 
 import Home from "./Index";
-import PaymentForm from "../../layouts/Payment/PaymentForm";
+import PaymentForm from "../../layouts/Dashboard/Payment/PaymentForm";
 import ModalContext from "../../contexts/ModalContext";
 import ModalGeneric from "../../shared/ModalGeneric";
 import { newPayment } from "../../services/paymentsApi";

@@ -1,10 +1,10 @@
-import { useState, useContext, useRef } from "react";
+import { useState, useRef } from "react";
 
 import { useNavigate } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
 
 import Home from "./Index";
-import DeclarationScreen from "../../layouts/Declaration/DeclarationScreen";
+import DeclarationScreen from "../../layouts/Dashboard/Declaration/DeclarationScreen";
 import { getToken } from "../../shared/getToken";
 
 export default function Declaration() {

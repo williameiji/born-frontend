@@ -3,8 +3,8 @@ import numero from "numero-por-extenso";
 import dayjs from "dayjs";
 import React from "react";
 
-import logo from "../../assets/image/logo-born.png";
-import mCPF from "../../shared/mCPF";
+import logo from "../../../assets/image/logo-born.png";
+import mCPF from "../../../shared/mCPF";
 
 export const ReceiptBody = React.forwardRef((props, ref) => {
 	return (

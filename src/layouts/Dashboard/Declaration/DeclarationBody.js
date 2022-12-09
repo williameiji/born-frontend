@@ -2,8 +2,8 @@ import styled from "styled-components";
 import dayjs from "dayjs";
 import React from "react";
 
-import logo from "../../assets/image/logo-timbre.png";
-import mCPF from "../../shared/mCPF";
+import logo from "../../../assets/image/logo-timbre.png";
+import mCPF from "../../../shared/mCPF";
 import "dayjs/locale/pt-br";
 
 export const DeclarationBody = React.forwardRef((props, ref) => {

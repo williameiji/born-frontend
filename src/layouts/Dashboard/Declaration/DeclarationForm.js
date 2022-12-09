@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import InputForms from "../../components/InputForms";
+import InputForms from "../../../components/InputForms";
 
 export default function DeclarationForm({
 	declarationDataInput,

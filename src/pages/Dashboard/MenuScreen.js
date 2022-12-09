@@ -6,8 +6,8 @@ import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 
 import Home from "./Index";
-import ShowInformation from "../../layouts/SearchStudent/ShowInformation";
-import ShowPayments from "../../layouts/SearchStudent/ShowPayments";
+import ShowInformation from "../../layouts/Dashboard/SearchStudent/ShowInformation";
+import ShowPayments from "../../layouts/Dashboard/SearchStudent/ShowPayments";
 import { useParams } from "react-router-dom";
 
 export default function MenuScreen({

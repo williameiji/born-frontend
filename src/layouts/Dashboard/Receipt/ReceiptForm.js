@@ -1,5 +1,5 @@
-import InputForms from "../../components/InputForms";
-import ButtonForms from "../../components/ButtonForms";
+import InputForms from "../../../components/InputForms";
+import ButtonForms from "../../../components/ButtonForms";
 
 export default function ReceiptForm({
 	receiptDataInput,

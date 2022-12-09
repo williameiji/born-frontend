@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import SignupForm from "./SignupForm";
-import ModalGeneric from "../../shared/ModalGeneric";
+import ModalGeneric from "../../../shared/ModalGeneric";
 
 export default function Signup({
 	isModalOpen,

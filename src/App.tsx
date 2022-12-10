@@ -19,8 +19,8 @@ import { UserProvider } from "./contexts/UserContext";
 import { ModalProvider } from "./contexts/ModalContext";
 
 export default function App() {
-	const [renderFinds, setRenderFinds] = useState([]);
-	const [editInformation, setEditInformation] = useState(null);
+	const [renderFinds, setRenderFinds] = useState<[]>([]);
+	const [editInformation, setEditInformation] = useState<Object | null>(null);
 
 	return (
 		<>

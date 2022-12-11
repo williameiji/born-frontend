@@ -1,4 +1,4 @@
-function TestaCPF(strCPF) {
+function TestaCPF(strCPF: string): boolean {
 	let sum;
 	let rest;
 	sum = 0;

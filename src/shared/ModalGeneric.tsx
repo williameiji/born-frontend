@@ -4,20 +4,25 @@ import { useContext } from "react";
 
 import ModalContext from "../contexts/ModalContext";
 
-export default function ModalGeneric({ isModalOpen, setIsModalOpen }) {
-	const { modalStatus, setModalStatus } = useContext(ModalContext);
+type TModal = {
+	isModalOpen: boolean;
+	setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+export default function ModalGeneric({ isModalOpen, setIsModalOpen }: TModal) {
+	const status = useContext(ModalContext);
 
 	function closeModal() {
 		setIsModalOpen(false);
-		setModalStatus(null);
+		status?.setModalStatus(null);
 	}
 
 	function RenderStatus() {
-		if (modalStatus) {
+		if (status?.modalStatus) {
 			return (
 				<>
-					<TextTitle>{modalStatus.status}</TextTitle>
-					<p>{modalStatus.message}</p>
+					<TextTitle>{status.modalStatus.status}</TextTitle>
+					<p>{status.modalStatus.message}</p>
 				</>
 			);
 		}

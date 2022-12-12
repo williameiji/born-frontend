@@ -1,4 +1,5 @@
 import Button from "@mui/material/Button";
+import * as types from "./types";
 
 export default function ButtonForms({
 	text,
@@ -8,7 +9,7 @@ export default function ButtonForms({
 	cyId,
 	onClick,
 	css,
-}) {
+}: types.TButtonForms) {
 	return (
 		<Button
 			variant={variant}

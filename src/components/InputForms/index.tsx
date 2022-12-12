@@ -1,5 +1,7 @@
 import TextField from "@mui/material/TextField";
 
+import * as types from "./types";
+
 export default function InputForms({
 	size = "small",
 	label,
@@ -10,7 +12,7 @@ export default function InputForms({
 	css,
 	name,
 	variant,
-}) {
+}: types.TInputForms) {
 	return (
 		<TextField
 			data-cy={cyId}

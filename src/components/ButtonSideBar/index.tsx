@@ -1,6 +1,12 @@
 import styled from "styled-components";
 
-export default function ButtonSideBar({ text, handleClick, cyId }) {
+import * as types from "./types";
+
+export default function ButtonSideBar({
+	text,
+	handleClick,
+	cyId,
+}: types.TButtonSideBar) {
 	return (
 		<>
 			<Button onClick={handleClick} data-cy={cyId}>

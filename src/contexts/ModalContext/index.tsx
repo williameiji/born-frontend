@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
 
-import * as types from "./type";
+import * as types from "./types";
 
 const ModalContext = createContext<types.IModal | null>(null);
 export default ModalContext;

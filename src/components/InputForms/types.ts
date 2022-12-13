@@ -3,8 +3,8 @@ export type TInputForms = {
 	label: string;
 	type?: string;
 	cyId: string;
-	onChange: () => void;
-	inputValue: string;
+	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	inputValue?: string;
 	css?: object;
 	name: string;
 	variant?: "outlined" | "standard" | "filled" | undefined;

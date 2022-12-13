@@ -5,5 +5,5 @@ export type TButtonForms = {
 	type?: "button" | "submit" | "reset" | undefined;
 	cyId?: string;
 	css?: object;
-	onClick: () => void;
+	onClick?: () => void;
 };

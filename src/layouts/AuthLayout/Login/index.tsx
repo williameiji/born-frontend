@@ -2,23 +2,19 @@ import styled from "styled-components";
 
 import LoginForm from "./LoginForm";
 import ModalGeneric from "../../../shared/ModalGeneric";
+import * as types from "./types";
 
 export default function Login({
 	setIsModalOpen,
 	isModalOpen,
-	loginDataInput,
 	handleFormLogin,
 	submitForm,
 	goToSignup,
-}) {
+}: types.TLogin) {
 	return (
 		<>
 			<ModalGeneric isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
-			<LoginForm
-				loginDataInput={loginDataInput}
-				handleFormLogin={handleFormLogin}
-				submitForm={submitForm}
-			/>
+			<LoginForm handleFormLogin={handleFormLogin} submitForm={submitForm} />
 			<SignupText onClick={goToSignup} data-cy="signup">
 				Cadastro de administradores
 			</SignupText>

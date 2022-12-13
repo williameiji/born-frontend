@@ -7,7 +7,6 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Button from "@mui/material/Button";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
-
 import ButtonSideBar from "../../components/ButtonSideBar";
 
 export default function SideBar() {
@@ -79,7 +78,7 @@ export default function SideBar() {
 							Pesquisar Aluno
 						</Button>
 						<Button variant="text" onClick={navigateToPayment}>
-							Lançamento de pagamento
+							Receber pagamento
 						</Button>
 						<Button variant="text" onClick={navigateToSignupStudents}>
 							Cadastrar Aluno

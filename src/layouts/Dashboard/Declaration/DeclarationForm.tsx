@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
 import InputForms from "../../../components/InputForms";
+import * as types from "./types";
 
 export default function DeclarationForm({
 	declarationDataInput,
 	handleDeclarationForm,
 	print,
-}) {
+}: types.TDeclaration) {
 	return (
 		<>
 			<form onSubmit={print}>
@@ -89,7 +90,11 @@ export default function DeclarationForm({
 	);
 }
 
-const Button = styled.button`
+const Button = styled.button<{
+	children: string;
+	type: "submit";
+	cyId: string;
+}>`
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -99,7 +104,11 @@ const Button = styled.button`
 	}
 `;
 
-const ButtonMobile = styled.button`
+const ButtonMobile = styled.button<{
+	children: string;
+	type: "submit";
+	cyId: string;
+}>`
 	display: none;
 	justify-content: center;
 	align-items: center;

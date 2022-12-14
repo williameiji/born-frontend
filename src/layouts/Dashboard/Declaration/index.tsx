@@ -2,13 +2,14 @@ import styled from "styled-components";
 
 import DeclarationForm from "./DeclarationForm";
 import { DeclarationBody } from "./DeclarationBody";
+import * as types from "./types";
 
 export default function DeclarationScreen({
 	declarationDataInput,
 	handleDeclarationForm,
 	print,
 	componentRef,
-}) {
+}: types.TDeclaration) {
 	return (
 		<Box>
 			<DeclarationForm

@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 import SignupForm from "./SignupForm";
 import ModalGeneric from "../../../shared/ModalGeneric";
+import * as types from "./types";
 
 export default function Signup({
 	isModalOpen,
@@ -9,7 +10,7 @@ export default function Signup({
 	handleFormSignup,
 	submitForm,
 	goToLogin,
-}) {
+}: types.TSignup) {
 	return (
 		<>
 			<ModalGeneric isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />

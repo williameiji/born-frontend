@@ -1,7 +1,12 @@
 import InputForms from "../../../components/InputForms";
 import ButtonForms from "../../../components/ButtonForms";
 
-export default function SignupForm({ handleFormSignup, submitForm }) {
+import * as types from "./types";
+
+export default function SignupForm({
+	handleFormSignup,
+	submitForm,
+}: types.TSignupForm) {
 	return (
 		<>
 			<form onSubmit={submitForm}>

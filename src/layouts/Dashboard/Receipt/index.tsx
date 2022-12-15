@@ -2,13 +2,14 @@ import styled from "styled-components";
 
 import ReceiptForm from "./ReceiptForm";
 import { ReceiptBody } from "./ReceiptBody";
+import { TReceipt } from "./types";
 
 export default function ReceiptScreen({
 	receiptDataInput,
 	handleReceiptForm,
 	print,
 	componentRef,
-}) {
+}: TReceipt) {
 	return (
 		<Box>
 			<ReceiptForm

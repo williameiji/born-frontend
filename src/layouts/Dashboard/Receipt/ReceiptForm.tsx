@@ -1,20 +1,22 @@
 import InputForms from "../../../components/InputForms";
 import ButtonForms from "../../../components/ButtonForms";
 
+import { TReceipt } from "./types";
+
 export default function ReceiptForm({
 	receiptDataInput,
 	handleReceiptForm,
 	print,
-}) {
+}: TReceipt) {
 	return (
 		<>
 			<form>
 				<InputForms
 					cyId="name"
-					name="nome"
+					name="name"
 					label="Nome"
 					onChange={(e) => handleReceiptForm(e)}
-					value={receiptDataInput.nome}
+					value={receiptDataInput.name}
 					css={{ mr: "10px", width: "100%", mb: "5px" }}
 				/>
 				<InputForms
@@ -28,10 +30,10 @@ export default function ReceiptForm({
 
 				<InputForms
 					cyId="value"
-					name="valor"
+					name="value"
 					label="Valor"
 					onChange={(e) => handleReceiptForm(e)}
-					value={receiptDataInput.valor}
+					value={receiptDataInput.value}
 					css={{ mr: "10px", width: "100%", mb: "5px" }}
 				/>
 

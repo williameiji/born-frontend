@@ -4,10 +4,13 @@ import Autocomplete from "@mui/material/Autocomplete";
 import CircularProgress from "@mui/material/CircularProgress";
 
 import { getAllStudents } from "../../../services/studentsApi";
+import { TAsynchronousInput } from "./types";
 
-export default function AsynchronousInput({ getStudentInformation }) {
-	const [open, setOpen] = useState(false);
-	const [options, setOptions] = useState([]);
+export default function AsynchronousInput({
+	getStudentInformation,
+}: TAsynchronousInput) {
+	const [open, setOpen] = useState<boolean | undefined>(false);
+	const [options, setOptions] = useState<[]>([]);
 	const loading = open && options.length === 0;
 
 	useEffect(() => {
@@ -48,8 +51,11 @@ export default function AsynchronousInput({ getStudentInformation }) {
 				setOpen(false);
 			}}
 			onChange={(event, value) => getStudentInformation(value)}
-			isOptionEqualToValue={(option, value) => option.name === value.name}
-			getOptionLabel={(option) => option.name}
+			isOptionEqualToValue={(
+				option: { name: string },
+				value: { name: string }
+			) => option.name === value.name}
+			getOptionLabel={(option: { name: string }) => option.name}
 			options={options}
 			loading={loading}
 			renderInput={(params) => (

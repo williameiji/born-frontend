@@ -1,18 +1,19 @@
 import styled from "styled-components";
 
 import NewStudentsForm from "./NewStudentsForm";
+import { TNewStudentsForm } from "./types";
 
 export default function NewStudent({
-	signupData,
-	handleSignupForm,
-	signupNewStudent,
-}) {
+	newStudentData,
+	handleNewStudent,
+	submit,
+}: TNewStudentsForm) {
 	return (
 		<Box>
 			<NewStudentsForm
-				signupData={signupData}
-				handleSignupForm={handleSignupForm}
-				signupNewStudent={signupNewStudent}
+				newStudentData={newStudentData}
+				handleNewStudent={handleNewStudent}
+				submit={submit}
 			/>
 		</Box>
 	);

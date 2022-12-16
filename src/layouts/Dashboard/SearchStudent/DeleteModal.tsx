@@ -1,21 +1,22 @@
 import styled from "styled-components";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Modal from "react-modal";
 import LoadingButton from "@mui/lab/LoadingButton";
 import Button from "@mui/material/Button";
 
-import UserContext from "../../../contexts/UserContext";
 import { removeStudent } from "../../../services/studentsApi";
+import { TDeleteModal, TModalStatus } from "./types";
+import { getToken } from "../../../shared/getToken";
 
 export default function DeleteModal({
 	isModalOpen,
 	setIsModalOpen,
 	student,
 	setRenderFinds,
-}) {
-	const [loading, setLoading] = useState(false);
-	const [modalStatus, setModalStatus] = useState({
+}: TDeleteModal) {
+	const [loading, setLoading] = useState<boolean>(false);
+	const [modalStatus, setModalStatus] = useState<TModalStatus>({
 		status: "Deseja remover esse aluno?",
 		message: "",
 		button: true,
@@ -27,26 +28,24 @@ export default function DeleteModal({
 		setIsModalOpen(false);
 	}
 
-	const { userData } = useContext(UserContext);
-
 	let config = {
 		headers: {
-			Authorization: `Bearer ${userData}`,
+			Authorization: `Bearer ${getToken()}`,
 		},
 	};
 
-	function deleteStudent() {
+	async function deleteStudent() {
 		setLoading(true);
 		try {
-			removeStudent(student._id, config).then(() => {
+			await removeStudent(student._id, config).then(() => {
 				setRenderFinds([]);
 				setIsModalOpen(false);
 				navigate("/students");
 			});
-		} catch (error) {
+		} catch (error: any) {
 			setModalStatus({
 				status: "Erro:",
-				message: error.response.data,
+				message: String(error.response.data),
 				button: false,
 			});
 		}

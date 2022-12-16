@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import InputForms from "../../../components/InputForms";
+import { TSearchStudent } from "./types";
 
 export default function InitialSearch({
 	handleFormSearch,
@@ -7,7 +8,7 @@ export default function InitialSearch({
 	showStudentInformation,
 	renderFinds,
 	searchDataInput,
-}) {
+}: TSearchStudent) {
 	return (
 		<Box>
 			<form onSubmit={searchByName}>

@@ -4,27 +4,22 @@ import { useContext, useState } from "react";
 
 import Home from "./Index";
 import TestaCPF from "../../shared/checkCPF";
-import EditStudentForm from "../../layouts/Dashboard/EditStudentInformation/EditStudentForm";
+import EditStudentForm from "../../layouts/Dashboard/EditStudentInformation";
 import ModalGeneric from "../../shared/ModalGeneric";
 import ModalContext from "../../contexts/ModalContext";
 import { editStudent } from "../../services/studentsApi";
 import { getToken } from "../../shared/getToken";
+import { TEditInformation } from "../../layouts/Dashboard/SearchStudent/types";
+import EditContext from "../../contexts/EditInformationContext";
 
 export default function EditStudentInformation({
-	editInformation,
-	setEditInformation,
 	setRenderFinds,
-}) {
+}: TEditInformation) {
 	const navigate = useNavigate();
 
-	const { setModalStatus } = useContext(ModalContext);
+	const modalStatus = useContext(ModalContext);
+	const informationToEdit = useContext(EditContext);
 	const [isModalOpen, setIsModalOpen] = useState(false);
-
-	function handleSignupForm(e) {
-		let data = { ...editInformation };
-		data[e.target.name] = e.target.value;
-		setEditInformation(data);
-	}
 
 	let config = {
 		headers: {
@@ -32,7 +27,7 @@ export default function EditStudentInformation({
 		},
 	};
 
-	async function editStudentInfo(e) {
+	async function submit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
 
 		setIsModalOpen(true);
@@ -40,27 +35,46 @@ export default function EditStudentInformation({
 		if (getToken()) {
 			try {
 				if (
-					editInformation.cpfStudent !== "" &&
-					!TestaCPF(editInformation.cpfStudent)
+					informationToEdit.editInformation.cpfStudent !== "" &&
+					!TestaCPF(informationToEdit.editInformation.cpfStudent)
 				)
-					throw { status: "Error:", message: "CPF do aluno inválido" };
+					throw new Error("CPF do aluno inválido");
 
 				if (
-					editInformation.cpfResp !== "" &&
-					!TestaCPF(editInformation.cpfResp)
+					informationToEdit.editInformation.cpfResp !== "" &&
+					!TestaCPF(informationToEdit.editInformation.cpfResp)
 				)
-					throw { status: "Error:", message: "CPF do responsável inválido" };
+					throw new Error("CPF do responsável inválido");
 
-				await editStudent(editInformation, config);
-				setModalStatus({ status: "Sucesso!", message: "Cadastro editado!" });
+				await editStudent(informationToEdit?.editInformation, config);
+				modalStatus?.setModalStatus({
+					status: "Sucesso!",
+					message: "Cadastro editado!",
+				});
 
 				setTimeout(() => {
 					navigate("/students");
 					setRenderFinds([]);
-					setEditInformation(null);
+					informationToEdit.setEditInformation({
+						_id: "",
+						date: "",
+						value: "",
+						name: "",
+						cpfStudent: "",
+						rgStudent: "",
+						nameResp: "",
+						cpfResp: "",
+						rgResp: "",
+						adress: "",
+						number: "",
+						district: "",
+						city: "",
+						phone: "",
+						email: "",
+					});
 				}, 2000);
-			} catch (err) {
-				setModalStatus({
+			} catch (err: any) {
+				modalStatus?.setModalStatus({
 					status: "Error:",
 					message: err.response?.data || err.message,
 				});
@@ -82,9 +96,9 @@ export default function EditStudentInformation({
 			<ModalGeneric isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
 			<Box>
 				<EditStudentForm
-					editInformation={editInformation}
-					handleSignupForm={handleSignupForm}
-					editStudentInfo={editStudentInfo}
+					editInformation={informationToEdit.editInformation}
+					setEditInformation={informationToEdit.setEditInformation}
+					submit={submit}
 				/>
 			</Box>
 		</Home>

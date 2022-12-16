@@ -5,11 +5,19 @@ import { useNavigate } from "react-router-dom";
 import ModalGeneric from "../../../shared/ModalGeneric";
 import ModalContext from "../../../contexts/ModalContext";
 import { getPaymentById } from "../../../services/paymentsApi";
+import { TEditForm } from "../EditStudentInformation/types";
+import { TPayments } from "./types";
 
-export default function ShowPayments({ renderFinds, params }) {
-	const [renderPayments, setRenderPayments] = useState([]);
+export default function ShowPayments({
+	renderFinds,
+	params,
+}: {
+	renderFinds: TEditForm[];
+	params: number;
+}) {
+	const [renderPayments, setRenderPayments] = useState<TPayments[]>([]);
 	const [isModalOpen, setIsModalOpen] = useState(false);
-	const { setModalStatus } = useContext(ModalContext);
+	const modal = useContext(ModalContext);
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -20,8 +28,8 @@ export default function ShowPayments({ renderFinds, params }) {
 				const response = await getPaymentById(renderFinds[params]._id);
 				setRenderPayments(response);
 				setIsModalOpen(false);
-			} catch (error) {
-				setModalStatus({
+			} catch (error: any) {
+				modal?.setModalStatus({
 					status: "Erro:",
 					message: error.response?.data,
 				});

@@ -1,22 +1,23 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Params } from "react-router-dom";
 import styled from "styled-components";
 import { useState } from "react";
 import { Button } from "@mui/material";
 
 import mCPF from "../../../shared/mCPF";
 import DeleteModal from "./DeleteModal";
+import { TShowInformation } from "./types";
 
 export default function ShowInformation({
 	renderFinds,
 	setEditInformation,
 	setRenderFinds,
-}) {
-	const params = useParams();
+}: TShowInformation) {
+	const { id }: Readonly<Params<string>> = useParams();
 	const navigate = useNavigate();
-	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
 	function editPage() {
-		setEditInformation(renderFinds[params.id]);
+		setEditInformation(renderFinds[Number(id)]);
 		navigate("/edit");
 	}
 
@@ -29,31 +30,31 @@ export default function ShowInformation({
 			<DeleteModal
 				isModalOpen={isModalOpen}
 				setIsModalOpen={setIsModalOpen}
-				student={renderFinds[params.id]}
+				student={renderFinds[Number(id)]}
 				setRenderFinds={setRenderFinds}
 			/>
 			<Box>
 				{renderFinds.length ? (
 					<div>
-						<p>Data de início: {renderFinds[params.id].date}</p>
+						<p>Data de início: {renderFinds[Number(id)].date}</p>
 						<p>
 							Valor da mensalidade: R$
-							{parseInt(renderFinds[params.id].value)
+							{parseInt(renderFinds[Number(id)].value)
 								.toFixed(2)
 								.replace(".", ",")}
 						</p>
-						<p>Nome do aluno: {renderFinds[params.id].name}</p>
-						<p>CPF: {mCPF(renderFinds[params.id].cpfStudent)}</p>
-						<p>RG: {renderFinds[params.id].rgStudent}</p>
-						<p>Nome do responsável: {renderFinds[params.id].nameResp}</p>
-						<p>CPF: {mCPF(renderFinds[params.id].cpfResp)}</p>
-						<p>RG: {renderFinds[params.id].rgResp}</p>
-						<p>Endereço: {renderFinds[params.id].adress}</p>
-						<p>Número: {renderFinds[params.id].number}</p>
-						<p>Bairro: {renderFinds[params.id].district}</p>
-						<p>Cidade: {renderFinds[params.id].city}</p>
-						<p>Telefone: {renderFinds[params.id].phone}</p>
-						<p>E-mail: {renderFinds[params.id].email}</p>
+						<p>Nome do aluno: {renderFinds[Number(id)].name}</p>
+						<p>CPF: {mCPF(renderFinds[Number(id)].cpfStudent)}</p>
+						<p>RG: {renderFinds[Number(id)].rgStudent}</p>
+						<p>Nome do responsável: {renderFinds[Number(id)].nameResp}</p>
+						<p>CPF: {mCPF(renderFinds[Number(id)].cpfResp)}</p>
+						<p>RG: {renderFinds[Number(id)].rgResp}</p>
+						<p>Endereço: {renderFinds[Number(id)].adress}</p>
+						<p>Número: {renderFinds[Number(id)].number}</p>
+						<p>Bairro: {renderFinds[Number(id)].district}</p>
+						<p>Cidade: {renderFinds[Number(id)].city}</p>
+						<p>Telefone: {renderFinds[Number(id)].phone}</p>
+						<p>E-mail: {renderFinds[Number(id)].email}</p>
 						<div>
 							<Button
 								variant="contained"

@@ -1,10 +1,11 @@
 export type TEditStudentForm = {
-	handleEditForm: (e: React.ChangeEvent<HTMLInputElement>) => void;
-	submit: () => void;
+	setEditInformation: React.Dispatch<React.SetStateAction<TEditForm>>;
+	submit: (e: any) => Promise<void>;
 	editInformation: TEditForm;
 };
 
-type TEditForm = {
+export type TEditForm = {
+	_id: string;
 	date: string;
 	value: string;
 	name: string;

@@ -1,8 +1,9 @@
+import { PropsWithChildren } from "react";
 import styled from "styled-components";
 
 import logo from "../../assets/image/logo-born.png";
 
-export default function AuthLayout(props) {
+export default function AuthLayout(props: PropsWithChildren) {
 	return (
 		<Box>
 			<Container>

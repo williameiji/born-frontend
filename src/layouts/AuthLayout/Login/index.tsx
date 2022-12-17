@@ -7,14 +7,19 @@ import * as types from "./types";
 export default function Login({
 	setIsModalOpen,
 	isModalOpen,
-	handleFormLogin,
+	loginDataInput,
 	submitForm,
 	goToSignup,
+	setLoginDataInput,
 }: types.TLogin) {
 	return (
 		<>
 			<ModalGeneric isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
-			<LoginForm handleFormLogin={handleFormLogin} submitForm={submitForm} />
+			<LoginForm
+				loginDataInput={loginDataInput}
+				submitForm={submitForm}
+				setLoginDataInput={setLoginDataInput}
+			/>
 			<SignupText onClick={goToSignup} data-cy="signup">
 				Cadastro de administradores
 			</SignupText>

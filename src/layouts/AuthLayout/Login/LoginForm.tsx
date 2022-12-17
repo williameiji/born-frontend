@@ -4,8 +4,9 @@ import ButtonForms from "../../../components/ButtonForms";
 import * as types from "./types";
 
 export default function LoginForm({
-	handleFormLogin,
+	loginDataInput,
 	submitForm,
+	setLoginDataInput,
 }: types.TLoginForm) {
 	return (
 		<>
@@ -15,7 +16,12 @@ export default function LoginForm({
 					name="name"
 					label="Nome"
 					variant="outlined"
-					onChange={(e) => handleFormLogin(e)}
+					onChange={(e) =>
+						setLoginDataInput({
+							...loginDataInput,
+							name: e.target.value,
+						})
+					}
 					css={{ mb: "15px" }}
 				/>
 				<InputForms
@@ -24,7 +30,12 @@ export default function LoginForm({
 					label="Senha"
 					variant="outlined"
 					type="password"
-					onChange={(e) => handleFormLogin(e)}
+					onChange={(e) =>
+						setLoginDataInput({
+							...loginDataInput,
+							password: e.target.value,
+						})
+					}
 					css={{ mb: "15px" }}
 				/>
 				<ButtonForms text="Entrar" type="submit" data-cy="submit" />

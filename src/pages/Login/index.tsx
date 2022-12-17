@@ -13,19 +13,13 @@ export default function Login() {
 		password: "",
 	});
 
-	const { setUserData } = useContext(UserContext);
+	const token = useContext(UserContext);
 	const [isModalOpen, setIsModalOpen] = useState(false);
-	const { setModalStatus } = useContext(ModalContext);
+	const modal = useContext(ModalContext);
 
 	const navigate = useNavigate();
 
-	function handleFormLogin(e) {
-		let loginData = { ...loginDataInput };
-		loginData[e.target.name] = e.target.value;
-		setLoginDataInput(loginData);
-	}
-
-	async function submitForm(e) {
+	async function submitForm(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
 		setIsModalOpen(true);
 
@@ -34,13 +28,13 @@ export default function Login() {
 
 			setIsModalOpen(false);
 
-			setUserData(userData);
+			token?.setUserData(userData);
 
 			localStorage.setItem("token", userData);
 
 			navigate("/students");
-		} catch (err) {
-			setModalStatus({ status: "error", message: err.response.data });
+		} catch (err: any) {
+			modal?.setModalStatus({ status: "error", message: err.response.data });
 		}
 	}
 
@@ -54,9 +48,9 @@ export default function Login() {
 				setIsModalOpen={setIsModalOpen}
 				isModalOpen={isModalOpen}
 				loginDataInput={loginDataInput}
-				handleFormLogin={handleFormLogin}
 				submitForm={submitForm}
 				goToSignup={goToSignup}
+				setLoginDataInput={setLoginDataInput}
 			/>
 		</AuthLayout>
 	);

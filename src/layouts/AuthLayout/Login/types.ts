@@ -1,6 +1,7 @@
 export type TLoginForm = {
-	handleFormLogin: (e: React.ChangeEvent<HTMLInputElement>) => void;
-	submitForm: () => void;
+	loginDataInput: TForms;
+	submitForm: (e: React.FormEvent<HTMLFormElement>) => void;
+	setLoginDataInput: React.Dispatch<React.SetStateAction<TForms>>;
 };
 
 export interface TLogin extends TLoginForm {
@@ -8,3 +9,8 @@ export interface TLogin extends TLoginForm {
 	isModalOpen: boolean;
 	goToSignup: () => void;
 }
+
+type TForms = {
+	name: string;
+	password: string;
+};

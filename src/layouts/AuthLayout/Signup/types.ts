@@ -1,6 +1,7 @@
 export type TSignupForm = {
-	handleFormSignup: (e: React.ChangeEvent<HTMLInputElement>) => void;
-	submitForm: () => void;
+	signupDataInput: TForms;
+	submitForm: (e: React.FormEvent<HTMLFormElement>) => void;
+	setSignupDataInput: React.Dispatch<React.SetStateAction<TForms>>;
 };
 
 export interface TSignup extends TSignupForm {
@@ -8,3 +9,9 @@ export interface TSignup extends TSignupForm {
 	isModalOpen: boolean;
 	goToLogin: () => void;
 }
+
+type TForms = {
+	name: string;
+	password: string;
+	key: number;
+};

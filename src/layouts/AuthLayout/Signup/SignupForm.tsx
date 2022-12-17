@@ -4,8 +4,9 @@ import ButtonForms from "../../../components/ButtonForms";
 import * as types from "./types";
 
 export default function SignupForm({
-	handleFormSignup,
+	signupDataInput,
 	submitForm,
+	setSignupDataInput,
 }: types.TSignupForm) {
 	return (
 		<>
@@ -15,7 +16,12 @@ export default function SignupForm({
 					name="name"
 					label="Nome"
 					variant="outlined"
-					onChange={(e) => handleFormSignup(e)}
+					onChange={(e) =>
+						setSignupDataInput({
+							...signupDataInput,
+							name: e.target.value,
+						})
+					}
 					css={{ mb: "15px" }}
 				/>
 				<InputForms
@@ -24,7 +30,12 @@ export default function SignupForm({
 					label="Senha"
 					variant="outlined"
 					type="password"
-					onChange={(e) => handleFormSignup(e)}
+					onChange={(e) =>
+						setSignupDataInput({
+							...signupDataInput,
+							password: e.target.value,
+						})
+					}
 					css={{ mb: "15px" }}
 				/>
 				<InputForms
@@ -32,7 +43,12 @@ export default function SignupForm({
 					label="Chave da empresa"
 					name="key"
 					variant="outlined"
-					onChange={(e) => handleFormSignup(e)}
+					onChange={(e) =>
+						setSignupDataInput({
+							...signupDataInput,
+							key: Number(e.target.value),
+						})
+					}
 					css={{ mb: "15px" }}
 				/>
 				<ButtonForms text="Cadastrar" type="submit" data-cy="submit" />

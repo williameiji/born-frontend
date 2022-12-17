@@ -38,27 +38,27 @@ export default function SideBar() {
 				<ButtonSideBar
 					handleClick={navigateToSearch}
 					text="Pesquisar Aluno"
-					data-cy="search"
+					cyId="search"
 				/>
 				<ButtonSideBar
 					handleClick={navigateToPayment}
 					text="Receber pagamento"
-					data-cy="payment"
+					cyId="payment"
 				/>
 				<ButtonSideBar
 					handleClick={navigateToSignupStudents}
 					text="Cadastrar Aluno"
-					data-cy="newStudent"
+					cyId="newStudent"
 				/>
 				<ButtonSideBar
 					handleClick={navigateToReceipt}
 					text="Gerar Recibo"
-					data-cy="receipt"
+					cyId="receipt"
 				/>
 				<ButtonSideBar
 					handleClick={navigateToDeclaration}
 					text="Gerar Declaração"
-					data-cy="declaration"
+					cyId="declaration"
 				/>
 			</Box>
 			<BoxAccordion>

@@ -1,6 +1,7 @@
 import api from "./api";
 import { AxiosRequestConfig } from "axios";
 import { TEditForm } from "../layouts/Dashboard/EditStudentInformation/types";
+import { TStudent } from "../layouts/Dashboard/NewStudents/types";
 
 export async function getAllStudents() {
 	const { data } = await api.get("/students/search/all");
@@ -27,7 +28,7 @@ export async function getStudentByName(name: string) {
 }
 
 export async function addStudent(
-	informations: TEditForm,
+	informations: TStudent,
 	config: AxiosRequestConfig<any>
 ) {
 	await api.post(`/students`, informations, config);

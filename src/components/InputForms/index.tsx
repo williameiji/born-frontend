@@ -8,7 +8,7 @@ export default function InputForms({
 	type = "text",
 	cyId,
 	onChange,
-	inputValue,
+	value,
 	css,
 	name,
 	variant,
@@ -21,7 +21,7 @@ export default function InputForms({
 			size={size}
 			label={label}
 			onChange={onChange}
-			value={inputValue}
+			value={value}
 			sx={css}
 			variant={variant}
 		/>

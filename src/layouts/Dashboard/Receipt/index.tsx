@@ -6,7 +6,7 @@ import { TReceipt } from "./types";
 
 export default function ReceiptScreen({
 	receiptDataInput,
-	handleReceiptForm,
+	setReceiptDataInput,
 	print,
 	componentRef,
 }: TReceipt) {
@@ -14,7 +14,7 @@ export default function ReceiptScreen({
 		<Box>
 			<ReceiptForm
 				receiptDataInput={receiptDataInput}
-				handleReceiptForm={handleReceiptForm}
+				setReceiptDataInput={setReceiptDataInput}
 				print={print}
 			/>
 			<ReceiptBody ref={componentRef} receiptDataInput={receiptDataInput} />

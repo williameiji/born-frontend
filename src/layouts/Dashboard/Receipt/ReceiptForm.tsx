@@ -5,7 +5,7 @@ import { TReceipt } from "./types";
 
 export default function ReceiptForm({
 	receiptDataInput,
-	handleReceiptForm,
+	setReceiptDataInput,
 	print,
 }: TReceipt) {
 	return (
@@ -15,7 +15,12 @@ export default function ReceiptForm({
 					cyId="name"
 					name="name"
 					label="Nome"
-					onChange={(e) => handleReceiptForm(e)}
+					onChange={(e) =>
+						setReceiptDataInput({
+							...receiptDataInput,
+							name: e.target.value,
+						})
+					}
 					value={receiptDataInput.name}
 					css={{ mr: "10px", width: "100%", mb: "5px" }}
 				/>
@@ -23,7 +28,12 @@ export default function ReceiptForm({
 					cyId="cpf"
 					name="cpf"
 					label="CPF/RG"
-					onChange={(e) => handleReceiptForm(e)}
+					onChange={(e) =>
+						setReceiptDataInput({
+							...receiptDataInput,
+							cpf: e.target.value,
+						})
+					}
 					value={receiptDataInput.cpf}
 					css={{ mr: "10px", width: "100%", mb: "5px" }}
 				/>
@@ -32,7 +42,12 @@ export default function ReceiptForm({
 					cyId="value"
 					name="value"
 					label="Valor"
-					onChange={(e) => handleReceiptForm(e)}
+					onChange={(e) =>
+						setReceiptDataInput({
+							...receiptDataInput,
+							value: e.target.value,
+						})
+					}
 					value={receiptDataInput.value}
 					css={{ mr: "10px", width: "100%", mb: "5px" }}
 				/>
@@ -41,12 +56,17 @@ export default function ReceiptForm({
 					cyId="reference"
 					name="ref"
 					label="Referente"
-					onChange={(e) => handleReceiptForm(e)}
+					onChange={(e) =>
+						setReceiptDataInput({
+							...receiptDataInput,
+							ref: e.target.value,
+						})
+					}
 					value={receiptDataInput.ref}
 					css={{ mr: "10px", width: "100%", mb: "5px" }}
 				/>
 
-				<ButtonForms onClick={print} text="Imprimir" data-cy="print" />
+				<ButtonForms onClick={print} text="Imprimir" cyId="print" />
 			</form>
 		</>
 	);

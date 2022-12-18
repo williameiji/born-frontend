@@ -1,6 +1,6 @@
 export type TReceipt = {
 	receiptDataInput: TReceiptForms;
-	handleReceiptForm: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	setReceiptDataInput: React.Dispatch<React.SetStateAction<TReceiptForms>>;
 	print: () => void;
 	componentRef?: React.Ref<HTMLDivElement>;
 };

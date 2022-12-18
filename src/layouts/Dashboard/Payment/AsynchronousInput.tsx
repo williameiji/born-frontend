@@ -5,12 +5,14 @@ import CircularProgress from "@mui/material/CircularProgress";
 
 import { getAllStudents } from "../../../services/studentsApi";
 import { TAsynchronousInput } from "./types";
+import { TEditForm } from "../EditStudentInformation/types";
 
 export default function AsynchronousInput({
-	getStudentInformation,
+	paymentDataInput,
+	setPaymentDataInput,
 }: TAsynchronousInput) {
 	const [open, setOpen] = useState<boolean | undefined>(false);
-	const [options, setOptions] = useState<[]>([]);
+	const [options, setOptions] = useState<readonly TEditForm[]>([]);
 	const loading = open && options.length === 0;
 
 	useEffect(() => {
@@ -50,12 +52,15 @@ export default function AsynchronousInput({
 			onClose={() => {
 				setOpen(false);
 			}}
-			onChange={(event, value) => getStudentInformation(value)}
-			isOptionEqualToValue={(
-				option: { name: string },
-				value: { name: string }
-			) => option.name === value.name}
-			getOptionLabel={(option: { name: string }) => option.name}
+			onChange={(event, value) =>
+				setPaymentDataInput({
+					...paymentDataInput,
+					name: value!.name,
+					id: value!._id,
+				})
+			}
+			isOptionEqualToValue={(option, value) => option.name === value.name}
+			getOptionLabel={(option) => option.name}
 			options={options}
 			loading={loading}
 			renderInput={(params) => (

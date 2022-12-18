@@ -8,8 +8,7 @@ import { TPaymentForm } from "./types";
 export default function PaymentForm({
 	paymentDataInput,
 	submitPayment,
-	handlePaymentForm,
-	getStudentInformation,
+	setPaymentDataInput,
 }: TPaymentForm) {
 	return (
 		<Box>
@@ -26,14 +25,22 @@ export default function PaymentForm({
 					required
 				/>
 
-				<AsynchronousInput getStudentInformation={getStudentInformation} />
+				<AsynchronousInput
+					setPaymentDataInput={setPaymentDataInput}
+					paymentDataInput={paymentDataInput}
+				/>
 
 				<InputForms
 					cyId="value"
 					name="value"
 					label="Valor"
 					variant="outlined"
-					onChange={(e) => handlePaymentForm(e)}
+					onChange={(e) =>
+						setPaymentDataInput({
+							...paymentDataInput,
+							value: e.target.value,
+						})
+					}
 					css={{ height: "30px", width: "100%", mb: "25px", mt: "20px" }}
 					required
 				/>
@@ -43,7 +50,12 @@ export default function PaymentForm({
 					name="reference"
 					label="Referente a"
 					variant="outlined"
-					onChange={(e) => handlePaymentForm(e)}
+					onChange={(e) =>
+						setPaymentDataInput({
+							...paymentDataInput,
+							reference: e.target.value,
+						})
+					}
 					css={{ height: "30px", width: "100%", mb: "25px" }}
 					required
 				/>

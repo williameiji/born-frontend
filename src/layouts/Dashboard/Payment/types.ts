@@ -1,15 +1,14 @@
 export type TAsynchronousInput = {
-	getStudentInformation: (e: { name: string } | null) => void;
+	paymentDataInput: Payment;
+	setPaymentDataInput: React.Dispatch<React.SetStateAction<Payment>>;
 };
 
 export interface TPaymentForm extends TAsynchronousInput {
-	handlePaymentForm: (e: React.ChangeEvent<HTMLInputElement>) => void;
-	submitPayment: () => void;
-	paymentDataInput: Payment;
+	submitPayment: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
 }
 
 export type Payment = {
-	id: string;
+	id?: string;
 	name: string;
 	value: string;
 	date: string;

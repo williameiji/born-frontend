@@ -1,10 +1,10 @@
 export type TNewStudentsForm = {
-	handleNewStudent: (e: React.ChangeEvent<HTMLInputElement>) => void;
-	submit: () => void;
-	newStudentData: TNewStudent;
+	setNewStudentData: React.Dispatch<React.SetStateAction<TStudent>>;
+	submit: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
+	newStudentData: TStudent;
 };
 
-type TNewStudent = {
+export type TStudent = {
 	date: string;
 	value: string;
 	name: string;

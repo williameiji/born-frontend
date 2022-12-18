@@ -5,14 +5,14 @@ import { TNewStudentsForm } from "./types";
 
 export default function NewStudent({
 	newStudentData,
-	handleNewStudent,
+	setNewStudentData,
 	submit,
 }: TNewStudentsForm) {
 	return (
 		<Box>
 			<NewStudentsForm
 				newStudentData={newStudentData}
-				handleNewStudent={handleNewStudent}
+				setNewStudentData={setNewStudentData}
 				submit={submit}
 			/>
 		</Box>

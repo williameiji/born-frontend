@@ -5,7 +5,7 @@ import { TNewStudentsForm } from "./types";
 
 export default function NewStudentsForm({
 	newStudentData,
-	handleNewStudent,
+	setNewStudentData,
 	submit,
 }: TNewStudentsForm) {
 	return (
@@ -16,7 +16,12 @@ export default function NewStudentsForm({
 					cyId="date"
 					name="date"
 					label="Data de início"
-					onChange={(e) => handleNewStudent(e)}
+					onChange={(e) =>
+						setNewStudentData({
+							...newStudentData,
+							date: e.target.value,
+						})
+					}
 					value={newStudentData.date}
 					css={{ mb: "15px" }}
 					required
@@ -25,7 +30,12 @@ export default function NewStudentsForm({
 					cyId="value"
 					label="Valor da Mensalidade"
 					name="value"
-					onChange={(e) => handleNewStudent(e)}
+					onChange={(e) =>
+						setNewStudentData({
+							...newStudentData,
+							value: e.target.value,
+						})
+					}
 					value={newStudentData.value}
 					css={{ mb: "15px" }}
 					required
@@ -35,7 +45,12 @@ export default function NewStudentsForm({
 					cyId="name"
 					name="name"
 					label="Nome do aluno"
-					onChange={(e) => handleNewStudent(e)}
+					onChange={(e) =>
+						setNewStudentData({
+							...newStudentData,
+							name: e.target.value,
+						})
+					}
 					value={newStudentData.name}
 					css={{ mb: "15px" }}
 					required
@@ -45,7 +60,12 @@ export default function NewStudentsForm({
 						cyId="cpfStudent"
 						name="cpfStudent"
 						label="CPF"
-						onChange={(e) => handleNewStudent(e)}
+						onChange={(e) =>
+							setNewStudentData({
+								...newStudentData,
+								cpfStudent: e.target.value,
+							})
+						}
 						value={newStudentData.cpfStudent}
 						css={{ mb: "15px", mr: "20px", width: "100%" }}
 						required
@@ -54,7 +74,12 @@ export default function NewStudentsForm({
 						cyId="rgStudent"
 						name="rgStudent"
 						label="RG"
-						onChange={(e) => handleNewStudent(e)}
+						onChange={(e) =>
+							setNewStudentData({
+								...newStudentData,
+								rgStudent: e.target.value,
+							})
+						}
 						value={newStudentData.rgStudent}
 						css={{ mb: "15px", width: "100%" }}
 					/>
@@ -64,7 +89,12 @@ export default function NewStudentsForm({
 					cyId="nameResp"
 					name="nameResp"
 					label="Nome do responsável"
-					onChange={(e) => handleNewStudent(e)}
+					onChange={(e) =>
+						setNewStudentData({
+							...newStudentData,
+							nameResp: e.target.value,
+						})
+					}
 					value={newStudentData.nameResp}
 					css={{ mb: "15px" }}
 				/>
@@ -73,7 +103,12 @@ export default function NewStudentsForm({
 						cyId="cpfResp"
 						name="cpfResp"
 						label="CPF"
-						onChange={(e) => handleNewStudent(e)}
+						onChange={(e) =>
+							setNewStudentData({
+								...newStudentData,
+								cpfResp: e.target.value,
+							})
+						}
 						value={newStudentData.cpfResp}
 						css={{ mb: "15px", mr: "20px", width: "100%" }}
 					/>
@@ -81,7 +116,12 @@ export default function NewStudentsForm({
 						cyId="rgResp"
 						name="rgResp"
 						label="RG"
-						onChange={(e) => handleNewStudent(e)}
+						onChange={(e) =>
+							setNewStudentData({
+								...newStudentData,
+								rgResp: e.target.value,
+							})
+						}
 						value={newStudentData.rgResp}
 						css={{ mb: "15px", width: "100%" }}
 					/>
@@ -92,7 +132,12 @@ export default function NewStudentsForm({
 						cyId="adress"
 						name="adress"
 						label="Endereço"
-						onChange={(e) => handleNewStudent(e)}
+						onChange={(e) =>
+							setNewStudentData({
+								...newStudentData,
+								adress: e.target.value,
+							})
+						}
 						value={newStudentData.adress}
 						css={{ mb: "15px", mr: "20px", width: "100%" }}
 					/>
@@ -100,7 +145,12 @@ export default function NewStudentsForm({
 						cyId="number"
 						name="number"
 						label="Nº"
-						onChange={(e) => handleNewStudent(e)}
+						onChange={(e) =>
+							setNewStudentData({
+								...newStudentData,
+								number: e.target.value,
+							})
+						}
 						value={newStudentData.number}
 						css={{ mb: "15px" }}
 					/>
@@ -109,7 +159,12 @@ export default function NewStudentsForm({
 					cyId="district"
 					name="district"
 					label="Bairro"
-					onChange={(e) => handleNewStudent(e)}
+					onChange={(e) =>
+						setNewStudentData({
+							...newStudentData,
+							district: e.target.value,
+						})
+					}
 					value={newStudentData.district}
 					css={{ mb: "15px" }}
 				/>
@@ -117,7 +172,12 @@ export default function NewStudentsForm({
 					cyId="city"
 					name="city"
 					label="Cidade"
-					onChange={(e) => handleNewStudent(e)}
+					onChange={(e) =>
+						setNewStudentData({
+							...newStudentData,
+							city: e.target.value,
+						})
+					}
 					value={newStudentData.city}
 					css={{ mb: "15px" }}
 				/>
@@ -125,7 +185,12 @@ export default function NewStudentsForm({
 					cyId="phone"
 					name="phone"
 					label="Telefone"
-					onChange={(e) => handleNewStudent(e)}
+					onChange={(e) =>
+						setNewStudentData({
+							...newStudentData,
+							phone: e.target.value,
+						})
+					}
 					value={newStudentData.phone}
 					css={{ mb: "15px" }}
 				/>
@@ -133,7 +198,12 @@ export default function NewStudentsForm({
 					cyId="email"
 					name="email"
 					label="E-mail"
-					onChange={(e) => handleNewStudent(e)}
+					onChange={(e) =>
+						setNewStudentData({
+							...newStudentData,
+							email: e.target.value,
+						})
+					}
 					value={newStudentData.email}
 					css={{ mb: "15px" }}
 				/>

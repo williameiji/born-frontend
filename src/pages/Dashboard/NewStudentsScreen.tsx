@@ -3,14 +3,17 @@ import { useNavigate } from "react-router-dom";
 
 import Home from "./Index";
 import TestaCPF from "../../shared/checkCPF";
-import NewStudent from "../../layouts/Dashboard/NewStudents/NewStudent";
+import NewStudent from "../../layouts/Dashboard/NewStudents";
 import ModalContext from "../../contexts/ModalContext";
 import ModalGeneric from "../../shared/ModalGeneric";
 import { addStudent } from "../../services/studentsApi";
 import { getToken } from "../../shared/getToken";
+import { TEditInformation } from "../../layouts/Dashboard/SearchStudent/types";
 
-export default function NewStudentsScreen({ setRenderFinds }) {
-	const [signupData, setSignupData] = useState({
+export default function NewStudentsScreen({
+	setRenderFinds,
+}: TEditInformation) {
+	const [newStudentData, setNewStudentData] = useState({
 		date: "",
 		value: "",
 		name: "",
@@ -27,16 +30,10 @@ export default function NewStudentsScreen({ setRenderFinds }) {
 		email: "",
 	});
 
-	const { setModalStatus } = useContext(ModalContext);
+	const modal = useContext(ModalContext);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	const navigate = useNavigate();
-
-	function handleSignupForm(e) {
-		let data = { ...signupData };
-		data[e.target.name] = e.target.value;
-		setSignupData(data);
-	}
 
 	let config = {
 		headers: {
@@ -44,31 +41,40 @@ export default function NewStudentsScreen({ setRenderFinds }) {
 		},
 	};
 
-	async function signupNewStudent(e) {
+	async function submit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
 		setIsModalOpen(true);
 
 		if (getToken()) {
 			try {
 				//disable for tests (must be a valid 'cpf')
-				if (signupData.cpfStudent !== "" && !TestaCPF(signupData.cpfStudent)) {
-					throw { status: "Error:", message: "CPF do aluno inválido" };
+				if (
+					newStudentData.cpfStudent !== "" &&
+					!TestaCPF(newStudentData.cpfStudent)
+				) {
+					throw new Error("CPF do aluno inválido");
 				}
 
-				if (signupData.cpfResp !== "" && !TestaCPF(signupData.cpfResp)) {
-					throw { status: "Error:", message: "CPF do responsável inválido" };
+				if (
+					newStudentData.cpfResp !== "" &&
+					!TestaCPF(newStudentData.cpfResp)
+				) {
+					throw new Error("CPF do responsável inválido");
 				}
 				//disable for tests (must be a valid 'cpf')
 
-				await addStudent(signupData, config);
-				setModalStatus({ status: "Sucesso!", message: "Cadastro efetuado!" });
+				await addStudent(newStudentData, config);
+				modal?.setModalStatus({
+					status: "Sucesso!",
+					message: "Cadastro efetuado!",
+				});
 				setRenderFinds([]);
 
 				setTimeout(() => {
 					navigate("/students");
 				}, 2000);
-			} catch (err) {
-				setModalStatus({
+			} catch (err: any) {
+				modal?.setModalStatus({
 					status: "Error:",
 					message: err.response?.data || err.message,
 				});
@@ -90,9 +96,9 @@ export default function NewStudentsScreen({ setRenderFinds }) {
 		<Home>
 			<ModalGeneric isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
 			<NewStudent
-				signupData={signupData}
-				handleSignupForm={handleSignupForm}
-				signupNewStudent={signupNewStudent}
+				newStudentData={newStudentData}
+				setNewStudentData={setNewStudentData}
+				submit={submit}
 			/>
 		</Home>
 	);

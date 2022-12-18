@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
@@ -10,16 +10,21 @@ import ShowInformation from "../../layouts/Dashboard/SearchStudent/ShowInformati
 import ShowPayments from "../../layouts/Dashboard/SearchStudent/ShowPayments";
 import { useParams } from "react-router-dom";
 
-export default function MenuScreen({
-	renderFinds,
-	setEditInformation,
-	setRenderFinds,
-}) {
+import EditContext from "../../contexts/EditInformationContext";
+import { TEditForm } from "../../layouts/Dashboard/EditStudentInformation/types";
+
+type TMenu = {
+	setRenderFinds: React.Dispatch<React.SetStateAction<[]>>;
+	renderFinds: TEditForm[];
+};
+
+export default function MenuScreen({ renderFinds, setRenderFinds }: TMenu) {
 	const [value, setValue] = useState("1");
-	const handleChange = (event, newValue) => {
+	const handleChange = (event: React.SyntheticEvent, newValue: string) => {
 		setValue(newValue);
 	};
 	const params = useParams();
+	const informationToEdit = useContext(EditContext);
 
 	return (
 		<Home>
@@ -34,7 +39,7 @@ export default function MenuScreen({
 					<TabPanel value="1">
 						<ShowInformation
 							renderFinds={renderFinds}
-							setEditInformation={setEditInformation}
+							setEditInformation={informationToEdit.setEditInformation}
 							setRenderFinds={setRenderFinds}
 						/>
 					</TabPanel>

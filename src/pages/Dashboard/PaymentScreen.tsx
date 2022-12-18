@@ -1,17 +1,17 @@
-import styled from "styled-components";
 import { useState, useContext } from "react";
 import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
 
 import Home from "./Index";
-import PaymentForm from "../../layouts/Dashboard/Payment/PaymentForm";
+import PaymentForm from "../../layouts/Dashboard/Payment";
 import ModalContext from "../../contexts/ModalContext";
 import ModalGeneric from "../../shared/ModalGeneric";
 import { newPayment } from "../../services/paymentsApi";
 import { getToken } from "../../shared/getToken";
+import { Payment } from "../../layouts/Dashboard/Payment/types";
 
 export default function PaymentScreen() {
-	const [paymentDataInput, setPaymentDataInput] = useState({
+	const [paymentDataInput, setPaymentDataInput] = useState<Payment>({
 		id: "",
 		name: "",
 		value: "",
@@ -20,7 +20,7 @@ export default function PaymentScreen() {
 	});
 
 	const navigate = useNavigate();
-	const { setModalStatus } = useContext(ModalContext);
+	const modal = useContext(ModalContext);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	let config = {
@@ -29,14 +29,14 @@ export default function PaymentScreen() {
 		},
 	};
 
-	async function submitPayment(e) {
+	async function submitPayment(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
 		setIsModalOpen(true);
 
 		if (getToken()) {
 			try {
 				await newPayment(paymentDataInput, config);
-				setModalStatus({
+				modal?.setModalStatus({
 					status: "Sucesso!",
 					message: "Pagamento registrado!",
 				});
@@ -45,8 +45,8 @@ export default function PaymentScreen() {
 					setIsModalOpen(false);
 					navigate("/students");
 				}, 2000);
-			} catch (err) {
-				setModalStatus({ status: "Error:", message: err.response.data });
+			} catch (err: any) {
+				modal?.setModalStatus({ status: "Error:", message: err.response.data });
 				if (err.response?.status === 401) {
 					setTimeout(() => {
 						setIsModalOpen(false);
@@ -63,40 +63,12 @@ export default function PaymentScreen() {
 	return (
 		<Home>
 			<ModalGeneric isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
-			<Box>
-				<PaymentForm
-					setPaymentDataInput={setPaymentDataInput}
-					paymentDataInput={paymentDataInput}
-					submitPayment={submitPayment}
-				/>
-			</Box>
+
+			<PaymentForm
+				setPaymentDataInput={setPaymentDataInput}
+				paymentDataInput={paymentDataInput}
+				submitPayment={submitPayment}
+			/>
 		</Home>
 	);
 }
-
-const Box = styled.div`
-	background-color: white;
-	width: 100%;
-	border-radius: 5px;
-	padding: 20px;
-	overflow: auto;
-	margin-left: 5px;
-
-	@media (max-width: 480px) {
-		margin: 0;
-	}
-
-	form {
-		display: flex;
-		flex-direction: column;
-		padding: 20px;
-
-		p {
-			text-align: center;
-			font-size: 20px;
-			font-weight: bold;
-			color: grey;
-			margin-bottom: 20px;
-		}
-	}
-`;

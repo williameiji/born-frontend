@@ -1,6 +1,7 @@
+import { PropsWithChildren } from "react";
 import styled from "styled-components";
 
-export default function DashboardLayout({ children }) {
+export default function DashboardLayout({ children }: PropsWithChildren) {
 	return <Container>{children}</Container>;
 }
 

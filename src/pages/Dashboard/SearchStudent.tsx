@@ -4,26 +4,29 @@ import { useNavigate } from "react-router-dom";
 import Home from "./Index";
 import ModalContext from "../../contexts/ModalContext";
 import ModalGeneric from "../../shared/ModalGeneric";
-import InitialSearch from "../../layouts/Dashboard/SearchStudent/InitialSearch";
+import InitialSearch from "../../layouts/Dashboard/SearchStudent";
 import { getStudentByName } from "../../services/studentsApi";
 import { getToken } from "../../shared/getToken";
+import { TEditForm } from "../../layouts/Dashboard/EditStudentInformation/types";
 
-export default function SearchStudent({ setRenderFinds, renderFinds }) {
+type TSearch = {
+	setRenderFinds: React.Dispatch<React.SetStateAction<[]>>;
+	renderFinds: TEditForm[];
+};
+
+export default function SearchStudent({
+	setRenderFinds,
+	renderFinds,
+}: TSearch) {
 	const navigate = useNavigate();
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
-	const { setModalStatus } = useContext(ModalContext);
+	const modal = useContext(ModalContext);
 	const [searchDataInput, setSearchDataInput] = useState({
 		name: "",
 	});
 
-	function handleFormSearch(e) {
-		let data = { ...searchDataInput };
-		data[e.target.name] = e.target.value;
-		setSearchDataInput(data);
-	}
-
-	async function searchByName(e) {
+	async function searchByName(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
 		setIsModalOpen(true);
 
@@ -40,8 +43,8 @@ export default function SearchStudent({ setRenderFinds, renderFinds }) {
 				setIsModalOpen(false);
 
 				setRenderFinds(data);
-			} catch (err) {
-				setModalStatus({ status: "error", message: err.response.data });
+			} catch (err: any) {
+				modal?.setModalStatus({ status: "error", message: err.response.data });
 				if (err.response?.status === 401) {
 					setTimeout(() => {
 						setIsModalOpen(false);
@@ -55,7 +58,7 @@ export default function SearchStudent({ setRenderFinds, renderFinds }) {
 		}
 	}
 
-	function showStudentInformation(index) {
+	function showStudentInformation(index: number) {
 		navigate(`/studentinfo/${index}`);
 	}
 
@@ -63,7 +66,7 @@ export default function SearchStudent({ setRenderFinds, renderFinds }) {
 		<Home>
 			<ModalGeneric isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
 			<InitialSearch
-				handleFormSearch={handleFormSearch}
+				setSearchDataInput={setSearchDataInput}
 				searchByName={searchByName}
 				showStudentInformation={showStudentInformation}
 				renderFinds={renderFinds}

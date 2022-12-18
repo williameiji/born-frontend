@@ -4,34 +4,28 @@ import { useNavigate } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
 
 import Home from "./Index";
-import DeclarationScreen from "../../layouts/Dashboard/Declaration/DeclarationScreen";
+import DeclarationScreen from "../../layouts/Dashboard/Declaration";
 import { getToken } from "../../shared/getToken";
 
 export default function Declaration() {
 	const [declarationDataInput, setDeclarationDataInput] = useState({
-		nome: "",
+		name: "",
 		cpf: "",
-		inicio: "",
-		final: "",
-		presença: "",
-		pontos: "",
-		horas: "",
-		idioma: "",
+		startDate: "",
+		endDate: "",
+		frequency: "",
+		score: "",
+		hours: "",
+		language: "",
 	});
 	const navigate = useNavigate();
-	const componentRef = useRef();
-
-	function handleDeclarationForm(e) {
-		let data = { ...declarationDataInput };
-		data[e.target.name] = e.target.value;
-		setDeclarationDataInput(data);
-	}
+	const componentRef = useRef<HTMLDivElement>(null);
 
 	const handlePrint = useReactToPrint({
 		content: () => componentRef.current,
 	});
 
-	function print(e) {
+	function print(e: any) {
 		e.preventDefault();
 		if (getToken()) {
 			handlePrint();
@@ -45,7 +39,7 @@ export default function Declaration() {
 		<Home>
 			<DeclarationScreen
 				declarationDataInput={declarationDataInput}
-				handleDeclarationForm={handleDeclarationForm}
+				setDeclarationDataInput={setDeclarationDataInput}
 				print={print}
 				componentRef={componentRef}
 			/>

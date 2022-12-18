@@ -1,4 +1,4 @@
-import InitialScreen from "../../layouts/InitialScreen/InitialScreen";
+import InitialScreen from "../../layouts/InitialScreen";
 
 export default function Initial() {
 	return (

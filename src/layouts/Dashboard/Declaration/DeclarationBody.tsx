@@ -21,14 +21,14 @@ export const DeclarationBody = React.forwardRef(
 							.format("MMMM")} de ${dayjs().format("YYYY")}`}</div>
 						<h2>**DECLARAÇÃO**</h2>
 
-						<p>{`Declaramos para os devidos fins que se fizerem necessários que ${props.declarationDataInput.nome.toUpperCase()}, portador(a) do CPF nº ${mCPF(
+						<p>{`Declaramos para os devidos fins que se fizerem necessários que ${props.declarationDataInput.name.toUpperCase()}, portador(a) do CPF nº ${mCPF(
 							props.declarationDataInput.cpf
-						)}, estudou ${props.declarationDataInput.idioma.toUpperCase()} de ${
-							props.declarationDataInput.inicio
-						} a ${props.declarationDataInput.final} com um total de ${
-							props.declarationDataInput.horas
-						} horas, com ${props.declarationDataInput.pontos} pontos e ${
-							props.declarationDataInput.presença
+						)}, estudou ${props.declarationDataInput.language.toUpperCase()} de ${
+							props.declarationDataInput.startDate
+						} a ${props.declarationDataInput.endDate} com um total de ${
+							props.declarationDataInput.hours
+						} horas, com ${props.declarationDataInput.score} pontos e ${
+							props.declarationDataInput.frequency
 						}% de frequência.`}</p>
 					</Body>
 					<Assign>

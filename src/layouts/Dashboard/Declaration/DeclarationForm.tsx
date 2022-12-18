@@ -5,7 +5,7 @@ import * as types from "./types";
 
 export default function DeclarationForm({
 	declarationDataInput,
-	handleDeclarationForm,
+	setDeclarationDataInput,
 	print,
 }: types.TDeclaration) {
 	return (
@@ -14,26 +14,41 @@ export default function DeclarationForm({
 				<div>
 					<InputForms
 						cyId="name"
-						name="nome"
+						name="name"
 						label="Nome"
-						onChange={(e) => handleDeclarationForm(e)}
-						value={declarationDataInput.nome}
+						onChange={(e) =>
+							setDeclarationDataInput({
+								...declarationDataInput,
+								name: e.target.value,
+							})
+						}
+						value={declarationDataInput.name}
 						css={{ mr: "15px", width: "100%" }}
 					/>
 					<InputForms
 						cyId="cpf"
 						name="cpf"
 						label="CPF"
-						onChange={(e) => handleDeclarationForm(e)}
+						onChange={(e) =>
+							setDeclarationDataInput({
+								...declarationDataInput,
+								cpf: e.target.value,
+							})
+						}
 						value={declarationDataInput.cpf}
 						css={{ mr: "15px", width: "100%" }}
 					/>
 					<InputForms
 						cyId="language"
-						name="idioma"
+						name="language"
 						label="Idioma"
-						onChange={(e) => handleDeclarationForm(e)}
-						value={declarationDataInput.idioma}
+						onChange={(e) =>
+							setDeclarationDataInput({
+								...declarationDataInput,
+								language: e.target.value,
+							})
+						}
+						value={declarationDataInput.language}
 						css={{ mr: "15px", width: "100%" }}
 					/>
 					<Button type="submit" cyId="print">
@@ -43,42 +58,67 @@ export default function DeclarationForm({
 				<div>
 					<InputForms
 						cyId="startDate"
-						name="inicio"
+						name="startDate"
 						label="Data de início"
-						onChange={(e) => handleDeclarationForm(e)}
-						value={declarationDataInput.inicio}
+						onChange={(e) =>
+							setDeclarationDataInput({
+								...declarationDataInput,
+								startDate: e.target.value,
+							})
+						}
+						value={declarationDataInput.startDate}
 						css={{ mr: "15px", width: "100%" }}
 					/>
 					<InputForms
 						cyId="endDate"
-						name="final"
+						name="endDate"
 						label="Data final"
-						onChange={(e) => handleDeclarationForm(e)}
-						value={declarationDataInput.final}
+						onChange={(e) =>
+							setDeclarationDataInput({
+								...declarationDataInput,
+								endDate: e.target.value,
+							})
+						}
+						value={declarationDataInput.endDate}
 						css={{ mr: "15px", width: "100%" }}
 					/>
 					<InputForms
-						cyId="hour"
-						name="horas"
+						cyId="hours"
+						name="hours"
 						label="Total em horas"
-						onChange={(e) => handleDeclarationForm(e)}
-						value={declarationDataInput.horas}
+						onChange={(e) =>
+							setDeclarationDataInput({
+								...declarationDataInput,
+								hours: e.target.value,
+							})
+						}
+						value={declarationDataInput.hours}
 						css={{ mr: "15px", width: "100%" }}
 					/>
 					<InputForms
 						cyId="score"
-						name="pontos"
+						name="score"
 						label="Pontos"
-						onChange={(e) => handleDeclarationForm(e)}
-						value={declarationDataInput.pontos}
+						onChange={(e) =>
+							setDeclarationDataInput({
+								...declarationDataInput,
+								score: e.target.value,
+							})
+						}
+						value={declarationDataInput.score}
 						css={{ mr: "15px", width: "100%" }}
 					/>
 					<InputForms
 						cyId="frequency"
-						name="presença"
+						name="frequency"
 						label="Frequência"
-						onChange={(e) => handleDeclarationForm(e)}
-						value={declarationDataInput.presença}
+						onChange={(e) =>
+							setDeclarationDataInput({
+								...declarationDataInput,
+								frequency: e.target.value,
+							})
+						}
+						value={declarationDataInput.frequency}
 						css={{ width: "100%" }}
 					/>
 				</div>

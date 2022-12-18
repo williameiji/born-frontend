@@ -1,19 +1,19 @@
 export type TDeclaration = {
 	declarationDataInput: TFormsValue;
-	handleDeclarationForm: (e: React.ChangeEvent<HTMLInputElement>) => void;
-	print: () => void;
+	setDeclarationDataInput: React.Dispatch<React.SetStateAction<TFormsValue>>;
+	print: (e: any) => void;
 	componentRef?: React.Ref<HTMLDivElement>;
 };
 
 type TFormsValue = {
-	nome: string;
+	name: string;
 	cpf: string;
-	idioma: string;
-	inicio: string;
-	final: string;
-	horas: string;
-	pontos: string;
-	presença: string;
+	language: string;
+	startDate: string;
+	endDate: string;
+	hours: string;
+	score: string;
+	frequency: string;
 };
 
 export type TDeclarationBody = {

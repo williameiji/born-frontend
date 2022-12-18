@@ -6,7 +6,7 @@ import * as types from "./types";
 
 export default function DeclarationScreen({
 	declarationDataInput,
-	handleDeclarationForm,
+	setDeclarationDataInput,
 	print,
 	componentRef,
 }: types.TDeclaration) {
@@ -14,7 +14,7 @@ export default function DeclarationScreen({
 		<Box>
 			<DeclarationForm
 				declarationDataInput={declarationDataInput}
-				handleDeclarationForm={handleDeclarationForm}
+				setDeclarationDataInput={setDeclarationDataInput}
 				print={print}
 			/>
 			<DeclarationBody

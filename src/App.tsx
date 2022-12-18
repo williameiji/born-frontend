@@ -17,10 +17,10 @@ import Initial from "./pages/InitalScreen";
 
 import { UserProvider } from "./contexts/UserContext";
 import { ModalProvider } from "./contexts/ModalContext";
+import { EditProvider } from "./contexts/EditInformationContext";
 
 export default function App() {
 	const [renderFinds, setRenderFinds] = useState<[]>([]);
-	const [editInformation, setEditInformation] = useState<Object | null>(null);
 
 	return (
 		<>
@@ -28,49 +28,48 @@ export default function App() {
 			<GlobalStyle />
 			<BrowserRouter>
 				<UserProvider>
-					<ModalProvider>
-						<Routes>
-							<Route path="/" element={<Initial />} />
-							<Route path="/login" element={<Login />} />
-							<Route path="/signup" element={<Signup />} />
-							<Route
-								path="/students"
-								element={
-									<SearchStudent
-										setRenderFinds={setRenderFinds}
-										renderFinds={renderFinds}
-									/>
-								}
-							/>
-							<Route
-								path="/newstudent"
-								element={<NewStudentsScreen setRenderFinds={setRenderFinds} />}
-							/>
-							<Route
-								path="/studentinfo/:id"
-								element={
-									<MenuScreen
-										renderFinds={renderFinds}
-										setEditInformation={setEditInformation}
-										setRenderFinds={setRenderFinds}
-									/>
-								}
-							/>
-							<Route
-								path="/edit"
-								element={
-									<EditStudentInformation
-										editInformation={editInformation}
-										setEditInformation={setEditInformation}
-										setRenderFinds={setRenderFinds}
-									/>
-								}
-							/>
-							<Route path="/receipt" element={<Receipt />} />
-							<Route path="/declaration" element={<Declaration />} />
-							<Route path="/payment" element={<PaymentScreen />} />
-						</Routes>
-					</ModalProvider>
+					<EditProvider>
+						<ModalProvider>
+							<Routes>
+								<Route path="/" element={<Initial />} />
+								<Route path="/login" element={<Login />} />
+								<Route path="/signup" element={<Signup />} />
+								<Route
+									path="/students"
+									element={
+										<SearchStudent
+											setRenderFinds={setRenderFinds}
+											renderFinds={renderFinds}
+										/>
+									}
+								/>
+								<Route
+									path="/newstudent"
+									element={
+										<NewStudentsScreen setRenderFinds={setRenderFinds} />
+									}
+								/>
+								<Route
+									path="/studentinfo/:id"
+									element={
+										<MenuScreen
+											renderFinds={renderFinds}
+											setRenderFinds={setRenderFinds}
+										/>
+									}
+								/>
+								<Route
+									path="/edit"
+									element={
+										<EditStudentInformation setRenderFinds={setRenderFinds} />
+									}
+								/>
+								<Route path="/receipt" element={<Receipt />} />
+								<Route path="/declaration" element={<Declaration />} />
+								<Route path="/payment" element={<PaymentScreen />} />
+							</Routes>
+						</ModalProvider>
+					</EditProvider>
 				</UserProvider>
 			</BrowserRouter>
 		</>

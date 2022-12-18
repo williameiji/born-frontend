@@ -3,7 +3,7 @@ import InputForms from "../../../components/InputForms";
 import { TSearchStudent } from "./types";
 
 export default function InitialSearch({
-	handleFormSearch,
+	setSearchDataInput,
 	searchByName,
 	showStudentInformation,
 	renderFinds,
@@ -18,7 +18,12 @@ export default function InitialSearch({
 					label="Nome do aluno"
 					variant="outlined"
 					inputValue={searchDataInput.name}
-					onChange={(e) => handleFormSearch(e)}
+					onChange={(e) =>
+						setSearchDataInput({
+							...searchDataInput,
+							name: e.target.value,
+						})
+					}
 					css={{ height: "30px", width: "100%" }}
 				/>
 				<button type="submit" data-cy="submit">

@@ -13,7 +13,7 @@ export default function ShowPayments({
 	params,
 }: {
 	renderFinds: TEditForm[];
-	params: number;
+	params?: string;
 }) {
 	const [renderPayments, setRenderPayments] = useState<TPayments[]>([]);
 	const [isModalOpen, setIsModalOpen] = useState(false);
@@ -25,7 +25,7 @@ export default function ShowPayments({
 
 		(async () => {
 			try {
-				const response = await getPaymentById(renderFinds[params]._id);
+				const response = await getPaymentById(renderFinds[Number(params)]._id);
 				setRenderPayments(response);
 				setIsModalOpen(false);
 			} catch (error: any) {

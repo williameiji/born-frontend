@@ -15,9 +15,9 @@ export type TModalStatus = {
 
 export type TSearchStudent = {
 	searchDataInput: { name: string };
-	handleFormSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	setSearchDataInput: React.Dispatch<React.SetStateAction<TSearch>>;
 	showStudentInformation: (index: number) => void;
-	searchByName: () => void;
+	searchByName: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
 	renderFinds: TEditForm[];
 };
 
@@ -35,4 +35,8 @@ export type TPayments = {
 	value: string;
 	reference: string;
 	date: string;
+};
+
+type TSearch = {
+	name: string;
 };

@@ -1,11 +1,9 @@
 import { useState, useRef } from "react";
 
-import { useNavigate } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
 
 import Home from "./Index";
 import DeclarationScreen from "../../layouts/Dashboard/Declaration";
-import { getToken } from "../../shared/getToken";
 
 export default function Declaration() {
 	const [declarationDataInput, setDeclarationDataInput] = useState({
@@ -18,7 +16,6 @@ export default function Declaration() {
 		hours: "",
 		language: "",
 	});
-	const navigate = useNavigate();
 	const componentRef = useRef<HTMLDivElement>(null);
 
 	const handlePrint = useReactToPrint({
@@ -27,12 +24,7 @@ export default function Declaration() {
 
 	function print(e: any) {
 		e.preventDefault();
-		if (getToken()) {
-			handlePrint();
-		} else {
-			alert("Você precisa estar logado!");
-			navigate("/login");
-		}
+		handlePrint();
 	}
 
 	return (

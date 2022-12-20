@@ -7,8 +7,9 @@ import PaymentForm from "../../layouts/Dashboard/Payment";
 import ModalContext from "../../contexts/ModalContext";
 import ModalGeneric from "../../shared/ModalGeneric";
 import { newPayment } from "../../services/paymentsApi";
-import { getToken } from "../../shared/getToken";
+
 import { Payment } from "../../layouts/Dashboard/Payment/types";
+import headerConfig from "../../shared/headerConfig";
 
 export default function PaymentScreen() {
 	const [paymentDataInput, setPaymentDataInput] = useState<Payment>({

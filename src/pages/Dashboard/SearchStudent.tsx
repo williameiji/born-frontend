@@ -6,20 +6,12 @@ import ModalContext from "../../contexts/ModalContext";
 import ModalGeneric from "../../shared/ModalGeneric";
 import InitialSearch from "../../layouts/Dashboard/SearchStudent";
 import { getStudentByName } from "../../services/studentsApi";
-import { getToken } from "../../shared/getToken";
-import { TEditForm } from "../../layouts/Dashboard/EditStudentInformation/types";
+import InformationContext from "../../contexts/InformationContext";
 
-type TSearch = {
-	setRenderFinds: React.Dispatch<React.SetStateAction<[]>>;
-	renderFinds: TEditForm[];
-};
-
-export default function SearchStudent({
-	setRenderFinds,
-	renderFinds,
-}: TSearch) {
+export default function SearchStudent() {
 	const navigate = useNavigate();
 	const [isModalOpen, setIsModalOpen] = useState(false);
+	const informations = useContext(InformationContext);
 
 	const modal = useContext(ModalContext);
 	const [searchDataInput, setSearchDataInput] = useState({
@@ -58,7 +50,7 @@ export default function SearchStudent({
 				setSearchDataInput={setSearchDataInput}
 				searchByName={searchByName}
 				showStudentInformation={showStudentInformation}
-				renderFinds={renderFinds}
+				renderFinds={informations.renderFinds}
 				searchDataInput={searchDataInput}
 			/>
 		</Home>

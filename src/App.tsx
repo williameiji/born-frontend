@@ -18,10 +18,9 @@ import { getToken } from "./shared/getToken";
 import { UserProvider } from "./contexts/UserContext";
 import { ModalProvider } from "./contexts/ModalContext";
 import { EditProvider } from "./contexts/EditInformationContext";
+import { InformationProvider } from "./contexts/InformationContext";
 
 export default function App() {
-	const [renderFinds, setRenderFinds] = useState<[]>([]);
-
 	return (
 		<>
 			<GlobalResetStyle />
@@ -30,73 +29,69 @@ export default function App() {
 				<UserProvider>
 					<EditProvider>
 						<ModalProvider>
-							<Routes>
-								<Route path="/" element={<Initial />} />
-								<Route path="/login" element={<Login />} />
-								<Route path="/signup" element={<Signup />} />
-								<Route
-									path="/students"
-									element={
-										<ProtectedRouteGuard>
-											<SearchStudent
-												setRenderFinds={setRenderFinds}
-												renderFinds={renderFinds}
-											/>
-										</ProtectedRouteGuard>
-									}
-								/>
-								<Route
-									path="/newstudent"
-									element={
-										<ProtectedRouteGuard>
-											<NewStudentsScreen setRenderFinds={setRenderFinds} />
-										</ProtectedRouteGuard>
-									}
-								/>
-								<Route
-									path="/studentinfo/:id"
-									element={
-										<ProtectedRouteGuard>
-											<MenuScreen
-												renderFinds={renderFinds}
-												setRenderFinds={setRenderFinds}
-											/>
-										</ProtectedRouteGuard>
-									}
-								/>
-								<Route
-									path="/edit"
-									element={
-										<ProtectedRouteGuard>
-											<EditStudentInformation setRenderFinds={setRenderFinds} />
-										</ProtectedRouteGuard>
-									}
-								/>
-								<Route
-									path="/receipt"
-									element={
-										<ProtectedRouteGuard>
-											<Receipt />
-										</ProtectedRouteGuard>
-									}
-								/>
-								<Route
-									path="/declaration"
-									element={
-										<ProtectedRouteGuard>
-											<Declaration />
-										</ProtectedRouteGuard>
-									}
-								/>
-								<Route
-									path="/payment"
-									element={
-										<ProtectedRouteGuard>
-											<PaymentScreen />
-										</ProtectedRouteGuard>
-									}
-								/>
-							</Routes>
+							<InformationProvider>
+								<Routes>
+									<Route path="/" element={<Initial />} />
+									<Route path="/login" element={<Login />} />
+									<Route path="/signup" element={<Signup />} />
+									<Route
+										path="/students"
+										element={
+											<ProtectedRouteGuard>
+												<SearchStudent />
+											</ProtectedRouteGuard>
+										}
+									/>
+									<Route
+										path="/newstudent"
+										element={
+											<ProtectedRouteGuard>
+												<NewStudentsScreen />
+											</ProtectedRouteGuard>
+										}
+									/>
+									<Route
+										path="/studentinfo/:id"
+										element={
+											<ProtectedRouteGuard>
+												<MenuScreen />
+											</ProtectedRouteGuard>
+										}
+									/>
+									<Route
+										path="/edit"
+										element={
+											<ProtectedRouteGuard>
+												<EditStudentInformation />
+											</ProtectedRouteGuard>
+										}
+									/>
+									<Route
+										path="/receipt"
+										element={
+											<ProtectedRouteGuard>
+												<Receipt />
+											</ProtectedRouteGuard>
+										}
+									/>
+									<Route
+										path="/declaration"
+										element={
+											<ProtectedRouteGuard>
+												<Declaration />
+											</ProtectedRouteGuard>
+										}
+									/>
+									<Route
+										path="/payment"
+										element={
+											<ProtectedRouteGuard>
+												<PaymentScreen />
+											</ProtectedRouteGuard>
+										}
+									/>
+								</Routes>
+							</InformationProvider>
 						</ModalProvider>
 					</EditProvider>
 				</UserProvider>

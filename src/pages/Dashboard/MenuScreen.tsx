@@ -11,20 +11,16 @@ import ShowPayments from "../../layouts/Dashboard/SearchStudent/ShowPayments";
 import { useParams } from "react-router-dom";
 
 import EditContext from "../../contexts/EditInformationContext";
-import { TEditForm } from "../../layouts/Dashboard/EditStudentInformation/types";
+import InformationContext from "../../contexts/InformationContext";
 
-type TMenu = {
-	setRenderFinds: React.Dispatch<React.SetStateAction<[]>>;
-	renderFinds: TEditForm[];
-};
-
-export default function MenuScreen({ renderFinds, setRenderFinds }: TMenu) {
+export default function MenuScreen() {
 	const [value, setValue] = useState("1");
 	const handleChange = (event: React.SyntheticEvent, newValue: string) => {
 		setValue(newValue);
 	};
 	const params = useParams();
 	const informationToEdit = useContext(EditContext);
+	const informations = useContext(InformationContext);
 
 	return (
 		<Home>
@@ -38,13 +34,16 @@ export default function MenuScreen({ renderFinds, setRenderFinds }: TMenu) {
 					</Box>
 					<TabPanel value="1">
 						<ShowInformation
-							renderFinds={renderFinds}
+							renderFinds={informations.renderFinds}
 							setEditInformation={informationToEdit.setEditInformation}
-							setRenderFinds={setRenderFinds}
+							setRenderFinds={informations.setRenderFinds}
 						/>
 					</TabPanel>
 					<TabPanel value="2">
-						<ShowPayments renderFinds={renderFinds} params={params.id} />
+						<ShowPayments
+							renderFinds={informations.renderFinds}
+							params={params.id}
+						/>
 					</TabPanel>
 				</TabContext>
 			</Box>

@@ -7,12 +7,10 @@ import NewStudent from "../../layouts/Dashboard/NewStudents";
 import ModalContext from "../../contexts/ModalContext";
 import ModalGeneric from "../../shared/ModalGeneric";
 import { addStudent } from "../../services/studentsApi";
-import { getToken } from "../../shared/getToken";
-import { TEditInformation } from "../../layouts/Dashboard/SearchStudent/types";
+import headerConfig from "../../shared/headerConfig";
+import InformationContext from "../../contexts/InformationContext";
 
-export default function NewStudentsScreen({
-	setRenderFinds,
-}: TEditInformation) {
+export default function NewStudentsScreen() {
 	const [newStudentData, setNewStudentData] = useState({
 		date: "",
 		value: "",

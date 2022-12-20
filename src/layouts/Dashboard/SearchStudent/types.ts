@@ -3,7 +3,7 @@ import { TEditForm } from "../EditStudentInformation/types";
 export type TDeleteModal = {
 	isModalOpen: boolean;
 	setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-	setRenderFinds: React.Dispatch<React.SetStateAction<[]>>;
+	setRenderFinds: React.Dispatch<React.SetStateAction<TEditForm[]>>;
 	student: { _id: string };
 };
 
@@ -24,11 +24,11 @@ export type TSearchStudent = {
 export type TShowInformation = {
 	renderFinds: TEditForm[];
 	setEditInformation: React.Dispatch<React.SetStateAction<TEditForm>>;
-	setRenderFinds: React.Dispatch<React.SetStateAction<[]>>;
+	setRenderFinds: React.Dispatch<React.SetStateAction<TEditForm[]>>;
 };
 
 export type TEditInformation = {
-	setRenderFinds: React.Dispatch<React.SetStateAction<[]>>;
+	setRenderFinds: React.Dispatch<React.SetStateAction<TEditForm[]>>;
 };
 
 export type TPayments = {

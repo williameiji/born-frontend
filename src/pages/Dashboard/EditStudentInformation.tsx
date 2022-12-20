@@ -8,86 +8,68 @@ import EditStudentForm from "../../layouts/Dashboard/EditStudentInformation";
 import ModalGeneric from "../../shared/ModalGeneric";
 import ModalContext from "../../contexts/ModalContext";
 import { editStudent } from "../../services/studentsApi";
-import { getToken } from "../../shared/getToken";
-import { TEditInformation } from "../../layouts/Dashboard/SearchStudent/types";
 import EditContext from "../../contexts/EditInformationContext";
+import headerConfig from "../../shared/headerConfig";
+import InformationContext from "../../contexts/InformationContext";
 
-export default function EditStudentInformation({
-	setRenderFinds,
-}: TEditInformation) {
+export default function EditStudentInformation() {
 	const navigate = useNavigate();
 
-	const modalStatus = useContext(ModalContext);
+	const modal = useContext(ModalContext);
 	const informationToEdit = useContext(EditContext);
 	const [isModalOpen, setIsModalOpen] = useState(false);
-
-	let config = {
-		headers: {
-			Authorization: `Bearer ${getToken()}`,
-		},
-	};
+	const information = useContext(InformationContext);
 
 	async function submit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
 
 		setIsModalOpen(true);
 
-		if (getToken()) {
-			try {
-				if (
-					informationToEdit.editInformation.cpfStudent !== "" &&
-					!TestaCPF(informationToEdit.editInformation.cpfStudent)
-				)
-					throw new Error("CPF do aluno inválido");
+		try {
+			if (
+				informationToEdit.editInformation.cpfStudent !== "" &&
+				!TestaCPF(informationToEdit.editInformation.cpfStudent)
+			)
+				throw new Error("CPF do aluno inválido");
 
-				if (
-					informationToEdit.editInformation.cpfResp !== "" &&
-					!TestaCPF(informationToEdit.editInformation.cpfResp)
-				)
-					throw new Error("CPF do responsável inválido");
+			if (
+				informationToEdit.editInformation.cpfResp !== "" &&
+				!TestaCPF(informationToEdit.editInformation.cpfResp)
+			)
+				throw new Error("CPF do responsável inválido");
 
-				await editStudent(informationToEdit?.editInformation, config);
-				modalStatus?.setModalStatus({
-					status: "Sucesso!",
-					message: "Cadastro editado!",
+			await editStudent(informationToEdit?.editInformation, headerConfig());
+			modal?.setModalStatus({
+				status: "Sucesso!",
+				message: "Cadastro editado!",
+			});
+
+			setTimeout(() => {
+				navigate("/students");
+				information.setRenderFinds([]);
+				informationToEdit.setEditInformation({
+					_id: "",
+					date: "",
+					value: "",
+					name: "",
+					cpfStudent: "",
+					rgStudent: "",
+					nameResp: "",
+					cpfResp: "",
+					rgResp: "",
+					adress: "",
+					number: "",
+					district: "",
+					city: "",
+					phone: "",
+					email: "",
 				});
-
-				setTimeout(() => {
-					navigate("/students");
-					setRenderFinds([]);
-					informationToEdit.setEditInformation({
-						_id: "",
-						date: "",
-						value: "",
-						name: "",
-						cpfStudent: "",
-						rgStudent: "",
-						nameResp: "",
-						cpfResp: "",
-						rgResp: "",
-						adress: "",
-						number: "",
-						district: "",
-						city: "",
-						phone: "",
-						email: "",
-					});
-				}, 2000);
-			} catch (err: any) {
-				modalStatus?.setModalStatus({
-					status: "Error:",
-					message: err.response?.data || err.message,
-				});
-				if (err.response?.status === 401) {
-					setTimeout(() => {
-						setIsModalOpen(false);
-						navigate("/login");
-					}, 2000);
-				}
-			}
-		} else {
-			alert("Você precisa estar logado!");
-			navigate("/");
+			}, 2000);
+		} catch (err: any) {
+			modal?.setModalStatus({
+				status: "Error:",
+				message: err.response?.data || err.message,
+			});
 		}
 	}
 

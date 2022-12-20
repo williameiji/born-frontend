@@ -36,25 +36,14 @@ export default function SearchStudent({
 			searchFor = "all";
 		}
 
-		if (getToken()) {
-			try {
-				const data = await getStudentByName(searchFor);
+		try {
+			const data = await getStudentByName(searchFor);
 
-				setIsModalOpen(false);
+			setIsModalOpen(false);
 
-				setRenderFinds(data);
-			} catch (err: any) {
-				modal?.setModalStatus({ status: "error", message: err.response.data });
-				if (err.response?.status === 401) {
-					setTimeout(() => {
-						setIsModalOpen(false);
-						navigate("/login");
-					}, 2000);
-				}
-			}
-		} else {
-			alert("Você precisa estar logado!");
-			navigate("/login");
+			informations.setRenderFinds(data);
+		} catch (err: any) {
+			modal?.setModalStatus({ status: "error", message: err.response.data });
 		}
 	}
 

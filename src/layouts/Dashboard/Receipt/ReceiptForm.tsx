@@ -6,7 +6,7 @@ import { TReceipt } from "./types";
 export default function ReceiptForm({
 	receiptDataInput,
 	setReceiptDataInput,
-	print,
+	handlePrint,
 }: TReceipt) {
 	return (
 		<>
@@ -66,7 +66,7 @@ export default function ReceiptForm({
 					css={{ mr: "10px", width: "100%", mb: "5px" }}
 				/>
 
-				<ButtonForms onClick={print} text="Imprimir" cyId="print" />
+				<ButtonForms onClick={handlePrint} text="Imprimir" cyId="print" />
 			</form>
 		</>
 	);

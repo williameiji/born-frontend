@@ -23,40 +23,23 @@ export default function PaymentScreen() {
 	const modal = useContext(ModalContext);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
-	let config = {
-		headers: {
-			Authorization: `Bearer ${getToken()}`,
-		},
-	};
-
 	async function submitPayment(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
 		setIsModalOpen(true);
 
-		if (getToken()) {
-			try {
-				await newPayment(paymentDataInput, config);
-				modal?.setModalStatus({
-					status: "Sucesso!",
-					message: "Pagamento registrado!",
-				});
+		try {
+			await newPayment(paymentDataInput, headerConfig());
+			modal?.setModalStatus({
+				status: "Sucesso!",
+				message: "Pagamento registrado!",
+			});
 
-				setTimeout(() => {
-					setIsModalOpen(false);
-					navigate("/students");
-				}, 2000);
-			} catch (err: any) {
-				modal?.setModalStatus({ status: "Error:", message: err.response.data });
-				if (err.response?.status === 401) {
-					setTimeout(() => {
-						setIsModalOpen(false);
-						navigate("/login");
-					}, 2000);
-				}
-			}
-		} else {
-			alert("Você precisa estar logado!");
-			navigate("/");
+			setTimeout(() => {
+				setIsModalOpen(false);
+				navigate("/students");
+			}, 2000);
+		} catch (err: any) {
+			modal?.setModalStatus({ status: "Error:", message: err.response.data });
 		}
 	}
 

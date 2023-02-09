@@ -32,6 +32,7 @@ export type TEditInformation = {
 };
 
 export type TPayments = {
+	_id: string;
 	value: string;
 	reference: string;
 	date: string;

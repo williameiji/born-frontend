@@ -37,16 +37,23 @@ export default function PaymentScreen() {
 
 			setTimeout(() => {
 				setIsModalOpen(false);
+				modal?.setModalStatus(null);
 				navigate("/students");
 			}, 2000);
 		} catch (err: any) {
-			modal?.setModalStatus({ status: "Error:", message: err.response.data });
+			modal?.setModalStatus({
+				status: "Error:",
+				message: err.response.data,
+			});
 		}
 	}
 
 	return (
 		<Home>
-			<ModalGeneric isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+			<ModalGeneric
+				isModalOpen={isModalOpen}
+				setIsModalOpen={setIsModalOpen}
+			/>
 
 			<PaymentForm
 				setPaymentDataInput={setPaymentDataInput}

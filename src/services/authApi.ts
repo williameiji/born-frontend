@@ -13,3 +13,7 @@ export async function signup(signupData: {
 	const response = await api.post("/signup", signupData);
 	return response.data;
 }
+
+export async function init() {
+	await api.post("/init");
+}

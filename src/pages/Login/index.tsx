@@ -5,7 +5,7 @@ import AuthLayout from "../../layouts/AuthLayout";
 import { default as LoginLayout } from "../../layouts/AuthLayout/Login";
 import UserContext from "../../contexts/UserContext";
 import ModalContext from "../../contexts/ModalContext";
-import { login } from "../../services/authApi";
+import { login, init } from "../../services/authApi";
 
 export default function Login() {
 	const [loginDataInput, setLoginDataInput] = useState({
@@ -23,6 +23,20 @@ export default function Login() {
 		e.preventDefault();
 		setIsModalOpen(true);
 
+		//avoiding error while server starts
+
+		try {
+			await init();
+
+			await callLogin();
+		} catch (err: any) {
+			await callLogin();
+		}
+
+		//avoiding error while server starts
+	}
+
+	async function callLogin() {
 		try {
 			const userData = await login(loginDataInput);
 
@@ -34,7 +48,10 @@ export default function Login() {
 
 			navigate("/students");
 		} catch (err: any) {
-			modal?.setModalStatus({ status: "error", message: err.response.data });
+			modal?.setModalStatus({
+				status: "error",
+				message: err.response.data,
+			});
 		}
 	}
 

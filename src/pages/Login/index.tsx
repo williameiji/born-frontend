@@ -19,19 +19,19 @@ export default function Login() {
 
 	const navigate = useNavigate();
 
-	async function submitForm(e: React.FormEvent<HTMLFormElement>) {
+	function submitForm(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
 		setIsModalOpen(true);
 
 		//avoiding error while server starts
 
-		try {
-			await init();
-
-			await callLogin();
-		} catch (err: any) {
-			await callLogin();
-		}
+		init()
+			.then(async () => {
+				callLogin();
+			})
+			.catch(async () => {
+				callLogin();
+			});
 
 		//avoiding error while server starts
 	}
